@@ -57,8 +57,8 @@ const Home = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
         </div>
-        <div className="relative container mx-auto h-full flex items-center px-4">
-          <div className="max-w-2xl text-white">
+        <div className="relative container mx-auto h-full flex items-center justify-center px-4">
+          <div className="max-w-2xl text-white text-center">
             <FadeIn direction="up" delay={100}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                 Building a Better Future Together
@@ -70,14 +70,14 @@ const Home = () => {
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={300}>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 <Link to="/projects">
-                  <Button size="lg" className="bg-foundation-purple hover:bg-foundation-dark text-white">
+                  <Button size="lg" className="bg-foundation-green hover:bg-foundation-green/90 text-white">
                     Our Projects
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
+                  <Button size="lg" variant="outline" className="bg-foundation-brown text-white hover:bg-foundation-brown/90">
                     Get In Touch
                   </Button>
                 </Link>
@@ -182,35 +182,6 @@ const Home = () => {
               <Button variant="outline">Follow Us For More Updates</Button>
             </a>
           </div>
-        </div>
-      </SectionContainer>
-
-      {/* Call To Action */}
-      <SectionContainer 
-        id="cta" 
-        bgColor="bg-foundation-purple dark:bg-foundation-dark" 
-        className="text-white"
-      >
-        <div className="text-center max-w-3xl mx-auto">
-          <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
-            <p className="text-xl mb-8">
-              Join us in our mission to create positive change. Whether you need help or want to help others,
-              we welcome you to connect with the Odzyskajmy Foundation.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/contact">
-                <Button size="lg" className="bg-white text-foundation-purple hover:bg-gray-100">
-                  Contact Us
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                  Learn More
-                </Button>
-              </Link>
-            </div>
-          </FadeIn>
         </div>
       </SectionContainer>
     </>

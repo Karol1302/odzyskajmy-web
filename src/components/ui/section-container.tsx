@@ -50,7 +50,7 @@ export const SectionTitle = ({
     >
       {children}
       <span className={cn(
-        'absolute bottom-0 left-0 h-1 w-20 bg-foundation-purple', 
+        'absolute bottom-0 left-0 h-1 w-20 bg-foundation-green', 
         centered && 'left-1/2 transform -translate-x-1/2'
       )} />
     </h2>
