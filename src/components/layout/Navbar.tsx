@@ -67,7 +67,7 @@ const Navbar = () => {
                 className={`px-4 py-2 rounded-md font-medium transition-colors ${
                   location.pathname === link.path
                     ? 'text-foundation-brown bg-foundation-light'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-foundation-green-light dark:hover:bg-foundation-green-dark/20'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20'
                 }`}
                 aria-current={location.pathname === link.path ? 'page' : undefined}
               >
@@ -84,7 +84,7 @@ const Navbar = () => {
               onClick={toggleDarkMode}
               aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
               title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-              className="hover:bg-foundation-green-light dark:hover:bg-foundation-green-dark/20"
+              className="hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20"
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
@@ -94,7 +94,7 @@ const Navbar = () => {
               onClick={toggleHighContrast}
               aria-label={isHighContrast ? "Switch to standard contrast" : "Switch to high contrast mode"}
               title={isHighContrast ? "Switch to standard contrast" : "Switch to high contrast mode"}
-              className="hover:bg-foundation-green-light dark:hover:bg-foundation-green-dark/20"
+              className="hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20"
             >
               <ZoomIn className="h-5 w-5" />
             </Button>
@@ -107,7 +107,7 @@ const Navbar = () => {
               size="icon"
               onClick={toggleDarkMode}
               aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-              className="hover:bg-foundation-green-light dark:hover:bg-foundation-green-dark/20"
+              className="hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20"
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
@@ -117,7 +117,7 @@ const Navbar = () => {
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              className="hover:bg-foundation-green-light dark:hover:bg-foundation-green-dark/20"
+              className="hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -135,7 +135,7 @@ const Navbar = () => {
                   className={`block px-3 py-2 rounded-md font-medium transition-colors ${
                     location.pathname === link.path
                       ? 'text-foundation-brown bg-foundation-light'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-foundation-green-light dark:hover:bg-foundation-green-dark/20'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20'
                   }`}
                   aria-current={location.pathname === link.path ? 'page' : undefined}
                 >
@@ -144,7 +144,7 @@ const Navbar = () => {
               ))}
               <Button
                 variant="ghost"
-                className="w-full justify-start text-left font-medium px-3 py-2 hover:bg-foundation-green-light dark:hover:bg-foundation-green-dark/20"
+                className="w-full justify-start text-left font-medium px-3 py-2 hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20"
                 onClick={toggleHighContrast}
               >
                 <ZoomIn className="h-5 w-5 mr-2" />

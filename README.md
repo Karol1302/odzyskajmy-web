@@ -1,69 +1,333 @@
-# Welcome to your Lovable project
+# Odzyskajmy Foundation Website
 
-## Project info
+## Project Overview
+This is the official website for the Odzyskajmy Foundation, built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/ac7b1b00-a371-47e2-be6a-cf73bd135f16
+## Table of Contents
+- [Development Setup](#development-setup)
+- [Production Deployment](#production-deployment)
+- [Content Management](#content-management)
+- [Facebook Integration](#facebook-integration)
+- [Security Enhancements](#security-enhancements)
+- [Color Scheme Management](#color-scheme-management)
 
-## How can I edit this code?
+## Development Setup
 
-There are several ways of editing your application.
+### Prerequisites
+- Node.js (v16 or later) - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- npm (included with Node.js)
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/ac7b1b00-a371-47e2-be6a-cf73bd135f16) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+### Installation Steps
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate to the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Install dependencies
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will run at http://localhost:5173/ by default.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Production Deployment
 
-**Use GitHub Codespaces**
+### Building for Production
+```sh
+# Create a production build
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview the production build locally
+npm run preview
+```
 
-## What technologies are used for this project?
+### Hosting Requirements
+1. **Static Hosting Service**: You can deploy this site to any static hosting service like:
+   - Netlify
+   - Vercel
+   - GitHub Pages
+   - AWS S3 + CloudFront
 
-This project is built with .
+2. **Environment Variables**: None are required for basic functionality.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+3. **Contact Form Backend**:
+   The contact form requires a backend service to process form submissions and send emails. Options include:
 
-## How can I deploy this project?
+   - **Using Netlify Forms**: 
+     If deploying to Netlify, you can use their built-in form handling service.
+     Add this to your form: `data-netlify="true" name="contact"`
 
-Simply open [Lovable](https://lovable.dev/projects/ac7b1b00-a371-47e2-be6a-cf73bd135f16) and click on Share -> Publish.
+   - **Custom Email Backend**: 
+     Set up a simple serverless function (AWS Lambda, Netlify Functions, etc.) that:
+     - Receives form data via POST request
+     - Validates the data
+     - Sends email via SMTP or an email service API (SendGrid, Mailgun, etc.)
+     - Returns success/error response
 
-## I want to use a custom domain - is that possible?
+   Example serverless function for email (Node.js with SendGrid):
+   ```javascript
+   const sgMail = require('@sendgrid/mail');
+   
+   exports.handler = async function(event, context) {
+     try {
+       const { name, email, message } = JSON.parse(event.body);
+       
+       sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+       
+       const msg = {
+         to: 'foundation@example.com',
+         from: 'website@example.com',
+         subject: `New contact form submission from ${name}`,
+         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+         html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p>`,
+       };
+       
+       await sgMail.send(msg);
+       
+       return {
+         statusCode: 200,
+         body: JSON.stringify({ message: "Email sent successfully" })
+       };
+     } catch (error) {
+       return {
+         statusCode: 500,
+         body: JSON.stringify({ error: "Failed to send email" })
+       };
+     }
+   };
+   ```
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## Content Management
+
+### Adding New Posts/Projects
+
+1. **Direct Code Editing**:
+   To add a new project, update the project data array in `/src/data/projects.ts`:
+
+   ```typescript
+   // Example of adding a new project
+   export const projects = [
+     // ... existing projects
+     {
+       id: "new-project-id",
+       title: "New Project Title",
+       description: "Description of the new project",
+       fullDescription: "Detailed information about the project...",
+       images: ["url-to-image1.jpg", "url-to-image2.jpg"],
+       startDate: "January 2024",
+       endDate: "Ongoing",
+       goals: ["Goal 1", "Goal 2"],
+       achievements: ["Achievement 1", "Achievement 2"],
+     }
+   ];
+   ```
+
+2. **CMS Integration** (recommended for non-technical users):
+   For easier content management, consider integrating with:
+   
+   - **Headless CMS** (Contentful, Sanity, Strapi)
+   - **Firebase** for real-time content updates
+   - **Supabase** for content storage with authentication
+
+   Basic CMS integration involves:
+   1. Setting up a content model in your chosen CMS
+   2. Fetching content via API in your React components
+   3. Displaying the fetched content dynamically
+
+## Facebook Integration
+
+To display the latest post from a specific Facebook page:
+
+1. **Create a Facebook Developer Account** at [developers.facebook.com](https://developers.facebook.com/)
+2. **Create a Facebook App** in the Developer Dashboard
+3. **Get a Page Access Token** with permissions to access the page's posts
+4. **Add the Facebook Graph API integration**:
+
+```javascript
+// src/components/FacebookFeed.jsx
+import { useState, useEffect } from 'react';
+
+const FacebookFeed = ({ pageId, accessToken }) => {
+  const [latestPost, setLatestPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchLatestPost = async () => {
+      try {
+        const response = await fetch(
+          `https://graph.facebook.com/v18.0/${pageId}/posts?fields=message,created_time,full_picture,permalink_url&limit=1&access_token=${accessToken}`
+        );
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch from Facebook API');
+        }
+        
+        const data = await response.json();
+        if (data.data && data.data.length > 0) {
+          setLatestPost(data.data[0]);
+        }
+      } catch (err) {
+        console.error('Error fetching Facebook post:', err);
+        setError('Could not load the latest post');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLatestPost();
+  }, [pageId, accessToken]);
+
+  if (loading) return <div>Loading latest update...</div>;
+  if (error) return <div>{error}</div>;
+  if (!latestPost) return <div>No recent posts found</div>;
+
+  return (
+    <div className="facebook-post">
+      <div className="post-date">
+        {new Date(latestPost.created_time).toLocaleDateString()}
+      </div>
+      {latestPost.message && <p>{latestPost.message}</p>}
+      {latestPost.full_picture && (
+        <img 
+          src={latestPost.full_picture} 
+          alt="Facebook post" 
+          className="w-full h-64 object-cover rounded-md my-4"
+        />
+      )}
+      <a 
+        href={latestPost.permalink_url} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="btn-secondary"
+      >
+        View on Facebook
+      </a>
+    </div>
+  );
+};
+
+export default FacebookFeed;
+```
+
+**Important Notes**:
+- Store your access token securely (environment variables)
+- Facebook access tokens expire, so implement token refresh logic
+- This approach is for client-side rendering; for production, consider fetching posts server-side to protect your access token
+
+## Security Enhancements
+
+### Adding CAPTCHA to Forms
+
+1. **Google reCAPTCHA Integration**:
+
+   a. Sign up for reCAPTCHA at [google.com/recaptcha](https://www.google.com/recaptcha/admin/create)
+   
+   b. Install the package:
+   ```bash
+   npm install react-google-recaptcha
+   ```
+   
+   c. Add to your form component:
+   ```jsx
+   import ReCAPTCHA from "react-google-recaptcha";
+
+   function ContactForm() {
+     const recaptchaRef = React.createRef();
+     
+     const handleSubmit = async (e) => {
+       e.preventDefault();
+       
+       // Get the reCAPTCHA token
+       const token = await recaptchaRef.current.executeAsync();
+       
+       // Verify token on your backend before processing the form
+       const formData = new FormData(e.target);
+       formData.append('recaptchaToken', token);
+       
+       // Submit form data to your backend
+       // ...
+       
+       // Reset the reCAPTCHA
+       recaptchaRef.current.reset();
+     };
+     
+     return (
+       <form onSubmit={handleSubmit}>
+         {/* Form fields */}
+         <ReCAPTCHA
+           ref={recaptchaRef}
+           sitekey="YOUR_RECAPTCHA_SITE_KEY"
+           size="normal"
+         />
+         <button type="submit">Submit</button>
+       </form>
+     );
+   }
+   ```
+
+2. **Bot Protection Measures**:
+
+   a. **Honeypot Fields**:
+   ```jsx
+   function ContactForm() {
+     return (
+       <form>
+         {/* Visible form fields */}
+         
+         {/* Honeypot field - hidden from humans but bots will fill it */}
+         <input
+           type="text"
+           name="website"
+           style={{ display: 'none' }}
+           tabIndex="-1"
+           autoComplete="off"
+         />
+         
+         <button type="submit">Submit</button>
+       </form>
+     );
+   }
+   ```
+   
+   b. **Rate Limiting**:
+   Implement rate limiting on your backend to prevent form submission abuse.
+   
+   c. **Form Submission Timing**:
+   Check how quickly a form is submitted after page load. Submissions that happen too quickly are likely automated.
+
+## Color Scheme Management
+
+All color settings are consolidated in the following locations:
+
+1. **Primary Location**: `tailwind.config.ts` - Contains the color scheme definitions
+2. **CSS Variables**: `src/index.css` - Contains CSS variables for the color scheme
+3. **Component-specific styling**: Uses the Tailwind classes defined in the config
+
+To modify the site's colors:
+
+1. Edit the color definitions in `tailwind.config.ts` under the `theme.extend.colors` section
+2. Update corresponding CSS variables in `src/index.css` if needed
+3. The changes will automatically apply across the site
+
+Example of current color scheme:
+```typescript
+// In tailwind.config.ts
+foundation: {
+  green: '#15C39A',
+  'green-light': '#E6F7F4',
+  'green-dark': '#0E8A6B',
+  brown: '#BF884E',
+  'brown-light': '#F0E5D8',
+  'brown-dark': '#8A6235',
+  light: '#F5F5F5',
+  dark: '#333333',
+  orange: '#F97316',
+  gray: '#F1F5F9',
+  white: '#FFFFFF'
+}
+```
