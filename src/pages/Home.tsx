@@ -1,49 +1,57 @@
-
 import { Heart, Users, Globe, Accessibility } from 'lucide-react';
 import { SectionContainer, SectionTitle } from '@/components/ui/section-container';
 import FadeIn from '@/components/ui/animations/FadeIn';
 import GoalCard from '@/components/home/GoalCard';
-import ProjectCard from '@/components/projects/ProjectCard';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  // Mock data for the latest project
-  const latestProject = {
-    id: 1,
-    title: "Community Support Program",
-    description: "Our latest initiative focuses on providing essential resources and support to families affected by recent economic challenges.",
-    images: ["https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&h=500"],
-    date: "June 2023 - Present",
-  };
-
-  // Statutory goals with icons
-  const goals = [
+  // Tablica z danymi projektów – w przyszłości warto przenieść ją do oddzielnego pliku np. src/data/projectsData.ts
+  const projectsData = [
     {
-      title: "Social Assistance",
-      description: "Helping families and individuals in difficult situations and equalizing opportunities for all.",
-      icon: <Heart className="h-6 w-6" />,
-      image: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=800&h=500",
+      id: 1,
+      title: "Community Support Program",
+      description: "Our latest initiative focuses on providing essential resources and support to families affected by recent economic challenges.",
+      images: ["https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&h=500"],
+      date: "June 2023 - Present",
+      content: "The Community Support Program is our flagship initiative focused on providing comprehensive support to families facing economic hardships. Through this program, we offer food assistance, educational resources, and mental health counseling to help individuals and families navigate challenging times. Our team of volunteers has dedicated countless hours to ensuring that community members have access to the resources they need to thrive."
     },
     {
-      title: "Social Reintegration",
-      description: "Activities to promote professional and social reintegration of those at risk of social exclusion.",
-      icon: <Users className="h-6 w-6" />,
-      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&h=500",
+      id: 2,
+      title: "Youth Mentorship Initiative",
+      description: "Connecting at-risk youth with professional mentors to provide guidance and support for personal and academic development.",
+      images: ["https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=800&h=500"],
+      date: "January 2023 - Present",
+      content: "Our Youth Mentorship Initiative pairs at-risk youth with caring, professional mentors who provide guidance, support, and encouragement. Mentors help young people navigate challenges, set goals, and develop skills for success in school and beyond."
     },
     {
-      title: "European Integration",
-      description: "Promoting European integration through educational, cultural cooperation, sport, and environmental protection.",
-      icon: <Globe className="h-6 w-6" />,
-      image: "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=800&h=500",
+      id: 3,
+      title: "Digital Inclusion Workshop",
+      description: "Teaching essential digital skills to seniors and disadvantaged groups to bridge the digital divide.",
+      images: ["https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&h=500"],
+      date: "March 2023 - August 2023",
+      content: "The Digital Inclusion Workshop was designed to address the growing digital divide affecting seniors and disadvantaged communities. Over a six-month period, we conducted weekly workshops teaching essential digital skills including computer basics, internet navigation, email communication, and online safety."
     },
     {
-      title: "Disability Support",
-      description: "Activities for people with disabilities and their families to ensure equal opportunities and accessibility.",
-      icon: <Accessibility className="h-6 w-6" />,
-      image: "https://images.unsplash.com/photo-1458668383970-8ddd3927deed?auto=format&fit=crop&w=800&h=500",
+      id: 4,
+      title: "Accessibility Renovation Project",
+      description: "Helping modify homes for individuals with disabilities to improve accessibility and independence.",
+      images: ["https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=800&h=500"],
+      date: "September 2022 - May 2023",
+      content: "Our Accessibility Renovation Project focused on modifying homes for individuals with disabilities to enhance their independence and quality of life. Working with local contractors and volunteers, we completed renovations for 12 families."
+    },
+    {
+      id: 5,
+      title: "Career Readiness Program",
+      description: "Comprehensive job training and placement services for individuals facing barriers to employment.",
+      images: ["https://images.unsplash.com/photo-1458668383970-8ddd3927deed?auto=format&fit=crop&w=800&h=500"],
+      date: "February 2022 - Present",
+      content: "The Career Readiness Program provides comprehensive support to individuals facing barriers to employment. Through a combination of skills training, resume building, interview preparation, and job placement assistance, we help participants prepare for and secure meaningful employment."
     },
   ];
+
+  // Wybieramy najnowszy projekt – zakładamy, że projekt o największym id jest najnowszy
+  const latestProject = [...projectsData].sort((a, b) => b.id - a.id)[0];
 
   return (
     <>
@@ -51,7 +59,7 @@ const Home = () => {
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=1920&h=1080"
+            src="/sunset2.png"
             alt="Sunset over mountains"
             className="w-full h-full object-cover"
           />
@@ -61,24 +69,24 @@ const Home = () => {
           <div className="max-w-2xl text-white text-center">
             <FadeIn direction="up" delay={100}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
-                Building a Better Future Together
+                Fundacja Odzyskajmy
               </h1>
             </FadeIn>
             <FadeIn direction="up" delay={200}>
               <p className="text-xl md:text-2xl mb-8 text-white">
-                Odzyskajmy Foundation is dedicated to helping people in need and creating opportunities for everyone.
+                Obrona Ciebie, Twoich praw i Twojej przyszłości
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={300}>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link to="/projects">
                   <Button size="lg" className="bg-foundation-green hover:bg-foundation-green/90 text-white">
-                    Our Projects
+                    Nasze Projekty
                   </Button>
                 </Link>
                 <Link to="/contact">
                   <Button size="lg" variant="outline" className="bg-foundation-brown text-white hover:bg-foundation-brown/90">
-                    Get In Touch
+                    Skontaktuj się
                   </Button>
                 </Link>
               </div>
@@ -89,15 +97,39 @@ const Home = () => {
 
       {/* Statutory Goals Section */}
       <SectionContainer id="goals" bgColor="bg-foundation-light dark:bg-gray-800">
-        <SectionTitle>Our Statutory Goals</SectionTitle>
+        <SectionTitle>Cele statutowe fundacji</SectionTitle>
         <FadeIn>
           <p className="text-center text-lg mb-10 max-w-3xl mx-auto">
-            We are committed to making a meaningful difference in the lives of those facing challenges. 
-            Our foundation focuses on these key areas to create positive change:
+            Nasza fundacja koncentruje się na tych kluczowych obszarach, aby tworzyć pozytywne zmiany:
           </p>
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {goals.map((goal, index) => (
+          {[
+            {
+              title: "Pomoc społeczna",
+              description: "Pomoc społeczna, w tym pomoc rodzinom i osobom w trudnej sytuacji życiowej oraz wyrównanie szans tych rodzin i osób",
+              icon: <Heart className="h-6 w-6" />,
+              image: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=800&h=500",
+            },
+            {
+              title: "Reintegracja społeczna",
+              description: "Działalność na rzecz integracji i reintegracji zawodowej i społecznej osób zagrożonych wykluczeniem społecznym i wykluczonych społecznie",
+              icon: <Users className="h-6 w-6" />,
+              image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&h=500",
+            },
+            {
+              title: "Integracja europejska",
+              description: "Promowanie integracji europejskiej w aspekcie m.in. współpracy edukacyjnej i kulturalnej, upawszechniania sportu, ochrony środowiska",
+              icon: <Globe className="h-6 w-6" />,
+              image: "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=800&h=500",
+            },
+            {
+              title: "Wsparcie i dostępność",
+              description: "Działania na rzecz osób niepełnosprawnych i ich rodzin w celu zapewnienia równych szans i dostępności.",
+              icon: <Accessibility className="h-6 w-6" />,
+              image: "https://images.unsplash.com/photo-1458668383970-8ddd3927deed?auto=format&fit=crop&w=800&h=500",
+            },
+          ].map((goal, index) => (
             <GoalCard
               key={goal.title}
               title={goal.title}
@@ -112,7 +144,7 @@ const Home = () => {
 
       {/* Latest Project Section */}
       <SectionContainer id="latest-project">
-        <SectionTitle>Our Latest Project</SectionTitle>
+        <SectionTitle>Nasz najnowszy projekt</SectionTitle>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <FadeIn direction="right">
             <img
@@ -124,14 +156,12 @@ const Home = () => {
           <FadeIn direction="left">
             <h3 className="text-2xl font-bold mb-4 text-foundation-brown">{latestProject.title}</h3>
             <div className="mb-4 text-gray-600 dark:text-gray-400">{latestProject.date}</div>
-            <p className="text-lg mb-6">{latestProject.description}</p>
-            <p className="mb-6">
-              Through this initiative, we've been able to provide support to over 200 families, 
-              offering food assistance, educational resources, and mental health counseling.
-              Our team of volunteers has dedicated more than 1,000 hours to this project.
+            {/* Opis skrócony – używamy klasy Tailwind CSS line-clamp do ograniczenia liczby linii */}
+            <p className="text-lg mb-6 line-clamp-3">
+              {latestProject.description}
             </p>
             <Link to={`/projects/${latestProject.id}`}>
-              <Button>Learn More About This Project</Button>
+              <Button>Czytaj dalej</Button>
             </Link>
           </FadeIn>
         </div>
@@ -139,7 +169,7 @@ const Home = () => {
 
       {/* Social Media Section */}
       <SectionContainer id="social-media" bgColor="bg-foundation-light dark:bg-gray-800">
-        <SectionTitle>Connect With Us</SectionTitle>
+        <SectionTitle>Nasza fundacja w social media</SectionTitle>
         <div className="max-w-3xl mx-auto">
           <FadeIn>
             <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6">
@@ -150,14 +180,12 @@ const Home = () => {
                   className="w-12 h-12 rounded-full mr-4"
                 />
                 <div>
-                  <h4 className="font-bold text-foundation-brown">Odzyskajmy Foundation</h4>
+                  <h4 className="font-bold text-foundation-brown">Fundacja Odzyskajmy</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400">2 days ago</p>
                 </div>
               </div>
               <p className="mb-4">
-                We're excited to announce our upcoming community workshop series! 
-                Join us for free sessions on career development, financial literacy, 
-                and mental wellbeing. Everyone is welcome! 
+                Testowy wpis dla przykładu na stronie
                 #CommunitySupport #Odzyskajmy
               </p>
               <img
@@ -172,16 +200,7 @@ const Home = () => {
               </div>
             </div>
           </FadeIn>
-          <div className="text-center mt-8">
-            <a 
-              href="https://facebook.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block"
-            >
-              <Button variant="outline">Follow Us For More Updates</Button>
-            </a>
-          </div>
+          {/* Możesz dodać dodatkowy przycisk/link do obserwowania fundacji w social media */}
         </div>
       </SectionContainer>
     </>

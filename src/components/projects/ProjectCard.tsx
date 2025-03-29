@@ -1,8 +1,6 @@
-
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
-import FadeIn from '../ui/animations/FadeIn';
-import { Button } from '@/components/ui/button';
+import FadeIn from '@/components/ui/animations/FadeIn';
 
 export interface Project {
   id: number;
@@ -10,43 +8,62 @@ export interface Project {
   description: string;
   images: string[];
   date: string;
-  content?: string;
+  content: string;
 }
 
 interface ProjectCardProps {
   project: Project;
   delay?: number;
-  featured?: boolean;
 }
 
-const ProjectCard = ({ project, delay = 0, featured = false }: ProjectCardProps) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, delay = 0 }) => {
+  // Funkcja sprawdzająca, czy projekt jest aktywny (czy data końcowa jest w przyszłości)
+  const checkActive = () => {
+    const parts = project.date.split('-').map(part => part.trim());
+    if (parts.length < 2) return false;
+    const endDateStr = parts[1];
+    if (endDateStr.toLowerCase() === 'present') {
+      return true;
+    }
+    const endDate = new Date(endDateStr);
+    return endDate > new Date();
+  };
+
+  const isActive = checkActive();
+
   return (
-    <FadeIn delay={delay} className="h-full">
-      <div className={`card h-full flex flex-col ${featured ? 'border-2 border-foundation-purple' : ''}`}>
-        <div className="relative h-56 overflow-hidden">
-          <img
-            src={project.images[0]}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          />
-          {featured && (
-            <div className="absolute top-0 right-0 bg-foundation-purple text-white px-3 py-1 text-sm font-semibold">
-              Featured
+    <FadeIn delay={delay}>
+      <Link to={`/projects/${project.id}`}>
+        <div
+          className={`bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg ${
+            isActive ? 'border-2 border-foundation-green' : ''
+          }`}
+        >
+          {project.images && project.images.length > 0 && (
+            <div className="relative">
+              <img
+                src={project.images[0]}
+                alt={project.title}
+                className="w-full h-48 object-cover"
+              />
+              {isActive && (
+                <span className="absolute top-2 left-2 bg-foundation-green text-white text-xs font-bold px-2 py-1 rounded">
+                  Aktywny
+                </span>
+              )}
             </div>
           )}
+          <div className="p-4">
+            <h3 className="text-xl font-bold mb-2 text-foundation-brown dark:text-foundation-brown">
+              {project.title}
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300 mb-2">
+              {project.description}
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{project.date}</p>
+          </div>
         </div>
-        <div className="p-5 flex flex-col flex-grow">
-          <div className="mb-2 text-sm text-gray-500">{project.date}</div>
-          <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{project.title}</h3>
-          <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">{project.description}</p>
-          <Link to={`/projects/${project.id}`} className="mt-auto">
-            <Button className="w-full flex items-center justify-center">
-              <span>Read More</span>
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
-      </div>
+      </Link>
     </FadeIn>
   );
 };

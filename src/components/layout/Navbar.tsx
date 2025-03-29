@@ -18,8 +18,8 @@ const Navbar = () => {
     setIsDarkMode(!isDarkMode);
     document.documentElement.classList.toggle('dark');
     toast({
-      title: isDarkMode ? "Light mode enabled" : "Dark mode enabled",
-      description: "Your preference has been saved.",
+      title: isDarkMode ? "Tryb jasny włączony" : "Tryb ciemny włączony",
+      description: "Twoje preferencje zostały zapisane",
     });
   };
   
@@ -27,8 +27,8 @@ const Navbar = () => {
     setIsHighContrast(!isHighContrast);
     document.documentElement.classList.toggle('high-contrast');
     toast({
-      title: isHighContrast ? "Standard contrast mode" : "High contrast mode enabled",
-      description: "Accessibility setting updated.",
+      title: isHighContrast ? "Kontrast standardowy" : "Tryb wysokiego kontrastu włączony",
+      description: "Zaktualizowano ułatwienia dostępu.",
     });
   };
 
@@ -38,10 +38,10 @@ const Navbar = () => {
   }, [location]);
 
   const navLinks = [
-    { title: 'Home', path: '/' },
-    { title: 'About Us', path: '/about' },
-    { title: 'Projects', path: '/projects' },
-    { title: 'Contact', path: '/contact' },
+    { title: 'Strona główna', path: '/' },
+    { title: 'O nas', path: '/about' },
+    { title: 'Projekty', path: '/projects' },
+    { title: 'Kontakt', path: '/contact' },
   ];
 
   return (
@@ -51,11 +51,14 @@ const Navbar = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center space-x-2 text-2xl font-bold text-foundation-brown"
+            className="flex items-center" 
             aria-label="Go to Odzyskajmy Foundation homepage"
           >
-            <span className="hidden sm:inline">Odzyskajmy</span>
-            <span>Foundation</span>
+            <img 
+              src={isDarkMode ? '/Logo.png' : '/Logo2.png'} 
+              alt="Odzyskajmy Foundation Logo" 
+              className="h-10"
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -8,37 +8,36 @@ const AboutUs = () => {
   // Support categories with icons
   const supportCategories = [
     {
-      title: "Mental Health",
+      title: "Wsparcie zdrowia psychicznego",
       icon: <Brain className="h-12 w-12 text-foundation-green" />,
-      description: "We provide group therapy sessions and individual counseling to support mental wellbeing and emotional resilience.",
+      description: "Grupy terapeutyczne, spotkania indywidualne",
     },
     {
-      title: "Education & Integration",
+      title: "Edukacja",
       icon: <BookOpen className="h-12 w-12 text-foundation-green" />,
-      description: "Our training sessions, courses, and workshops aim to build skills and foster community integration.",
+      description: "Organizujemy szkolenia oraz kursy",
     },
     {
-      title: "Family Assistance",
+      title: "Integracja",
       icon: <Heart className="h-12 w-12 text-foundation-green" />,
-      description: "We offer support in building and maintaining healthy family bonds through counseling and activities.",
+      description: "Oferujemy pomoc z integracją ze społeczeństwem, pomoc w budowaniu więzi rodzinnych",
     },
     {
-      title: "Career Development",
+      title: "Pomoc w karierze",
       icon: <Briefcase className="h-12 w-12 text-foundation-green" />,
-      description: "Career counseling, CV writing assistance, and interview preparation to help find meaningful employment.",
+      description: "Pomoc w znalezieniu pracy (rozmowa z doradcą zawodowym, pomoc w napisaniu CV, przygotowanie do rozmowy kwalifikacyjnej)",
     },
   ];
 
   // Social exclusion causes
   const exclusionCauses = [
-    "Low education and limited access to learning opportunities",
-    "Poverty and economic hardship",
-    "Disability and chronic health conditions",
-    "Substance abuse and addiction",
-    "Long-term illness and mental health challenges",
-    "Discrimination and prejudice",
-    "Lack of social connections and support networks",
-    "Limited access to technology and digital resources",
+    "Niski poziom wykształcenia i ograniczony dostęp do nauki",
+    "Ubóstwo i trudności ekonomiczne",
+    "Niepełnosprawność i przewlekłe schorzenia",
+    "Uzależnienia",
+    "Dyskryminacja i uprzedzenia",
+    "Brak wsparcia społecznego",
+    "Ograniczony dostęp do nowoczesnych technologii",
   ];
 
   return (
@@ -48,10 +47,9 @@ const AboutUs = () => {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">About Odzyskajmy Foundation</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">O nas</h1>
               <p className="text-xl">
-                Created with a mission to help individuals at risk of social exclusion and create 
-                opportunities for a better future for all.
+              Pomagamy osobom zagrożonym wykluczeniem. Razem tworzymy szanse na godne życie.
               </p>
             </FadeIn>
           </div>
@@ -69,20 +67,15 @@ const AboutUs = () => {
             />
           </FadeIn>
           <FadeIn direction="left">
-            <h2 className="text-3xl font-bold mb-6 text-foundation-brown">Our Story</h2>
+            <h2 className="text-3xl font-bold mb-6 text-foundation-brown">Nasza misja</h2>
             <p className="mb-4">
-              The Odzyskajmy Foundation was established to address the growing needs of individuals facing 
-              social exclusion in our communities. Our founders recognized the gaps in support systems 
-              and decided to create an organization that could make a meaningful difference.
+              Fundacja Odzyskajmy została powołana, aby odpowiedzieć na rosnące potrzeby osób zagrożonych wykluczeniem społecznym w naszych społecznościach. Jej założyciele dostrzegli luki w systemach wsparcia i postanowili stworzyć organizację, która naprawdę może zmienić życie.
             </p>
             <p className="mb-4">
-              Since our beginning, we have worked tirelessly to develop programs that address 
-              not just immediate needs, but also provide long-term solutions to help people rebuild 
-              their lives and reintegrate into society.
+              Od samego początku nieustannie pracujemy nad rozwojem programów, które odpowiadają nie tylko na bieżące potrzeby, ale także oferują długoterminowe rozwiązania pomagające odbudować życie i reintegrować osoby dotknięte wykluczeniem.
             </p>
             <p>
-              We believe that everyone deserves a chance to thrive, regardless of their background 
-              or circumstances. This belief drives everything we do at the Odzyskajmy Foundation.
+              Wierzymy, że każdy zasługuje na szansę na godne życie, niezależnie od okoliczności. To przekonanie stanowi fundament naszych działań i napędza Fundację Odzyskajmy.
             </p>
           </FadeIn>
         </div>
@@ -90,26 +83,28 @@ const AboutUs = () => {
 
       {/* Professional Collaboration Section */}
       <SectionContainer id="collaboration" bgColor="bg-foundation-light dark:bg-gray-800">
-        <SectionTitle>Professional Collaboration</SectionTitle>
+        <SectionTitle>Profesjonalna współpraca</SectionTitle>
         <FadeIn>
           <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-8 mb-8">
             <p className="mb-4 text-lg">
-              The Odzyskajmy Foundation collaborates with a network of legal professionals and experts 
-              who provide invaluable guidance and support to our initiatives. Our partners include:
+            W ramach działalności naszej fundacji współpracujemy z profesjonalistami 
+            z zakresu prawa, m.in. adwokatami, radcami prawnymi, doradcami podatkowymi oraz restrukturyzacyjnymi.*
             </p>
-            <ul className="list-disc pl-6 mb-6 space-y-2">
+            {/* <ul className="list-disc pl-6 mb-6 space-y-2">
               <li>Lawyers specializing in social welfare law</li>
               <li>Legal advisors with expertise in human rights</li>
               <li>Tax consultants helping with financial planning</li>
               <li>Restructuring experts assisting with organizational challenges</li>
               <li>Mental health professionals providing counseling services</li>
               <li>Educational specialists developing learning programs</li>
-            </ul>
+            </ul> */}
             <div className="bg-foundation-light dark:bg-gray-600 p-4 rounded-md border-l-4 border-foundation-green">
               <p className="text-sm font-semibold">
-                Disclaimer: The Odzyskajmy Foundation is not a legal firm. While we collaborate with legal 
-                professionals, we do not provide formal legal advice. Our mission is to connect individuals 
-                with appropriate resources and support.
+              * Fundacja nie jest kancelarią prawną i nie świadczy usług prawnych w rozumieniu ustawy 
+              z dnia 6 lipca 1982 r. o Radcach prawnych, ustawy z dnia 26 maja 1982 r. 
+              Prawo o adwokaturze. W razie potrzeby Fundacja zapewnia usługi pośrednictwa i 
+              doradztwa ogólnego we współpracy z kancelariami prawnymi, prawnikami, radcami prawnymi, 
+              adwokatami i innymi osobami świadczącymi usługi prawne.
               </p>
             </div>
           </div>
@@ -118,7 +113,7 @@ const AboutUs = () => {
 
       {/* How We Work Section */}
       <SectionContainer id="how-we-work">
-        <SectionTitle>How We Work (Support)</SectionTitle>
+        <SectionTitle>Jak wspieramy ( działamy):</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {supportCategories.map((category, index) => (
             <FadeIn key={category.title} delay={index * 100}>
@@ -133,13 +128,9 @@ const AboutUs = () => {
         <FadeIn>
           <div className="bg-foundation-green/10 dark:bg-gray-700 rounded-lg p-6">
             <p className="text-lg mb-4">
-              Our approach is holistic and personalized. We understand that each individual has unique 
-              needs and challenges. That's why we develop customized support plans that address multiple 
-              aspects of a person's situation.
-            </p>
-            <p className="text-lg">
-              Through our network of professionals and volunteers, we provide comprehensive support 
-              that aims to remove barriers to social inclusion and create pathways to a better future.
+            Nasze podejście jest holistyczne i spersonalizowane. 
+            Rozumiemy, że każda osoba ma unikalne potrzeby i wyzwania. 
+            Dlatego opracowujemy spersonalizowane plany wsparcia, które odnoszą się do wielu aspektów sytuacji danej osoby.
             </p>
           </div>
         </FadeIn>
@@ -147,31 +138,25 @@ const AboutUs = () => {
 
       {/* Social Exclusion Section */}
       <SectionContainer id="social-exclusion" bgColor="bg-foundation-light dark:bg-gray-800">
-        <SectionTitle>Understanding Social Exclusion</SectionTitle>
+        <SectionTitle>Zrozumienie wykluczenia społecznego</SectionTitle>
         <div className="grid md:grid-cols-2 gap-10">
           <FadeIn direction="right">
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-foundation-brown">What Is Social Exclusion?</h3>
+              <h3 className="text-2xl font-bold mb-4 text-foundation-brown">Czym jest wykluczenie społeczne?</h3>
               <p className="mb-6">
-                Social exclusion refers to the processes through which individuals or groups are 
-                wholly or partially excluded from full participation in the society in which they live. 
-                This exclusion impacts various aspects of life, including economic, social, political, 
-                and cultural dimensions.
+              Wykluczenie społeczne to proces, w wyniku którego osoby lub grupy są częściowo lub całkowicie 
+              pozbawione możliwości pełnego uczestnictwa w życiu społecznym. To zjawisko ma wpływ na sfery ekonomiczne, 
+              społeczne, polityczne i kulturowe, ograniczając dostęp do usług i szans niezbędnych do godnego życia. 
               </p>
               <p className="mb-6">
-                People experiencing social exclusion often face multiple challenges simultaneously, 
-                creating a cycle that can be difficult to break without external support and intervention.
-              </p>
-              <p>
-                At the Odzyskajmy Foundation, we recognize the complex nature of social exclusion 
-                and work to address both its root causes and its consequences through our comprehensive 
-                support programs.
+              Osoby doświadczające wykluczenia społecznego często napotykają na wiele trudności jednocześnie, 
+              co tworzy błędne koło utrudniające wyjście z tej sytuacji bez zewnętrznego wsparcia.
               </p>
             </div>
           </FadeIn>
           <FadeIn direction="left">
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-foundation-brown">Common Causes of Social Exclusion</h3>
+              <h3 className="text-2xl font-bold mb-4 text-foundation-brown">Najczęstsze powody wykluczenia społecznego</h3>
               <ul className="space-y-3">
                 {exclusionCauses.map((cause, index) => (
                   <li key={index} className="flex items-start">
@@ -189,37 +174,37 @@ const AboutUs = () => {
 
       {/* Foundation Documents Section - Moved to the bottom */}
       <SectionContainer id="documents">
-        <SectionTitle>Foundation Documents</SectionTitle>
+        <SectionTitle>Dokumenty</SectionTitle>
         <FadeIn>
           <div className="max-w-2xl mx-auto text-center">
             <p className="text-lg mb-8">
-              Our foundation operates with full transparency. Below you can find our official documents 
-              that outline our mission, values, and operational guidelines.
+            Nasza fundacja działa z zachowaniem pełnej przejrzystości. 
+            Poniżej znajdują się nasze oficjalne dokumenty, które przedstawiają naszą misję, wartości i wytyczne operacyjne.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
                 <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
-                <h3 className="text-xl font-bold mb-3">Foundation Regulations</h3>
+                <h3 className="text-xl font-bold mb-3">Regulamin fundacji</h3>
                 <p className="mb-4 text-gray-700 dark:text-gray-300">
-                  Our comprehensive guidelines that govern all foundation activities and operations.
+                Nasze kompleksowe wytyczne, które regulują wszystkie działania i operacje fundacji.
                 </p>
                 <Button variant="secondary" className="w-full">
                   <a href="/documents/foundation-regulations.pdf" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
-                    Download PDF
+                    Pobierz
                   </a>
                 </Button>
               </div>
               
               <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
                 <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
-                <h3 className="text-xl font-bold mb-3">Foundation Statute</h3>
+                <h3 className="text-xl font-bold mb-3">Statut fundacji</h3>
                 <p className="mb-4 text-gray-700 dark:text-gray-300">
-                  The official legal document that establishes our foundation's purpose and structure.
+                Oficjalny dokument prawny, który ustanawia cel i strukturę naszej fundacji.
                 </p>
                 <Button variant="secondary" className="w-full">
                   <a href="/documents/foundation-statute.pdf" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
-                    Download PDF
+                    Pobierz
                   </a>
                 </Button>
               </div>

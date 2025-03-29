@@ -62,14 +62,13 @@ const Projects = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-foundation-purple text-white py-16">
+      <section className="bg-foundation-brown text-white py-16">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Projects</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Nasze Projekty</h1>
               <p className="text-xl">
-                Discover the initiatives and programs we've developed to support our community
-                and create positive change.
+              Odkryj inicjatywy i programy, które opracowaliśmy, aby wspierać naszą społeczność i tworzyć pozytywne zmiany.
               </p>
             </FadeIn>
           </div>
@@ -105,7 +104,7 @@ const Projects = () => {
           ) : (
             <div className="col-span-full text-center py-12">
               <p className="text-xl text-gray-600 dark:text-gray-400">
-                No projects found matching your search.
+                Brak projektów
               </p>
             </div>
           )}

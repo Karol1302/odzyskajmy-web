@@ -226,7 +226,7 @@ const ProjectDetail = () => {
       {/* Related Projects */}
       {relatedProjects.length > 0 && (
         <SectionContainer bgColor="bg-foundation-light dark:bg-gray-800">
-          <h2 className="text-3xl font-bold mb-8">Related Projects</h2>
+          <h2 className="text-3xl font-bold mb-8">Inne projekty</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedProjects.map((project, index) => (
               <ProjectCard

@@ -64,7 +64,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				foundation: {
-					green: '#15C39A',
+					green: '#3A9D87',
 					'green-light': '#E6F7F4',
 					'green-dark': '#0E8A6B',
 					brown: '#BF884E',
