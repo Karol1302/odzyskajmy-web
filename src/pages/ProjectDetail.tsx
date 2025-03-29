@@ -1,5 +1,4 @@
-
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, Share2, Mail } from 'lucide-react';
 import { SectionContainer } from '@/components/ui/section-container';
 import FadeIn from '@/components/ui/animations/FadeIn';
@@ -9,6 +8,7 @@ import { useEffect } from 'react';
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   
   // Mock project data - in a real app, you would fetch this data from an API
   const projectsData: Project[] = [
@@ -97,10 +97,10 @@ const ProjectDetail = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-foundation-dark text-white py-16">
+      <section className="bg-foundation-brown text-white py-16">
         <div className="container-custom">
           <FadeIn>
-            <Link to="/projects" className="inline-flex items-center text-white mb-8 hover:text-foundation-orange transition-colors">
+            <Link to="/projects" className="inline-flex items-center text-white mb-8 hover:text-foundation-light transition-colors">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Projects
             </Link>
@@ -187,13 +187,13 @@ const ProjectDetail = () => {
                   <div>
                     <h4 className="font-medium text-gray-700 dark:text-gray-300">Focus Areas</h4>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="px-3 py-1 bg-foundation-purple text-white text-sm rounded-full">
+                      <span className="px-3 py-1 bg-foundation-green text-white text-sm rounded-full">
                         {currentProject.id === 1 ? "Community Support" : 
                          currentProject.id === 2 ? "Youth" :
                          currentProject.id === 3 ? "Digital Skills" :
                          currentProject.id === 4 ? "Accessibility" : "Employment"}
                       </span>
-                      <span className="px-3 py-1 bg-foundation-purple/80 text-white text-sm rounded-full">
+                      <span className="px-3 py-1 bg-foundation-brown text-white text-sm rounded-full">
                         {currentProject.id === 1 ? "Family Welfare" : 
                          currentProject.id === 2 ? "Education" :
                          currentProject.id === 3 ? "Seniors" :
@@ -204,14 +204,17 @@ const ProjectDetail = () => {
                   <div>
                     <h4 className="font-medium text-gray-700 dark:text-gray-300">Contact</h4>
                     <p>For more information about this project, please contact us at:</p>
-                    <a href="mailto:projects@odzyskajmy.org" className="text-foundation-purple hover:underline">
+                    <a href="mailto:projects@odzyskajmy.org" className="text-foundation-green hover:underline">
                       projects@odzyskajmy.org
                     </a>
                   </div>
                   <div className="pt-4">
-                    <Link to="/contact">
-                      <Button className="w-full">Get Involved</Button>
-                    </Link>
+                    <Button 
+                      className="w-full"
+                      onClick={() => navigate(`/projects/${id}/subscribe`)}
+                    >
+                      Get Involved
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -222,7 +225,7 @@ const ProjectDetail = () => {
 
       {/* Related Projects */}
       {relatedProjects.length > 0 && (
-        <SectionContainer bgColor="bg-foundation-gray dark:bg-gray-800">
+        <SectionContainer bgColor="bg-foundation-light dark:bg-gray-800">
           <h2 className="text-3xl font-bold mb-8">Related Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedProjects.map((project, index) => (

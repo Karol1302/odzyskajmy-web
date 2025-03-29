@@ -110,11 +110,11 @@
     --accent: 240 100% 50%;
     --accent-foreground: 0 0% 100%;
     
-    @apply text-black bg-white;
+    @apply text-black bg-foundation-light;
   }
   
   .high-contrast a, .high-contrast button {
-    @apply underline text-blue-900 font-bold;
+    @apply underline text-foundation-brown font-bold;
   }
 }
 
@@ -133,12 +133,12 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-foundation-dark;
+  @apply bg-foundation-brown;
 }
 
 @layer components {
   .section {
-    @apply py-12 md:py-16 px-4;
+    @apply py-12 md:py-16 px-4 bg-foundation-light;
   }
   
   .container-custom {
@@ -146,7 +146,7 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-8 text-center relative;
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center relative text-foundation-brown;
   }
   
   .section-title::after {
@@ -155,7 +155,7 @@
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
+    @apply bg-foundation-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
   }
   
   .btn-primary {
@@ -163,10 +163,10 @@
   }
   
   .btn-secondary {
-    @apply bg-white text-foundation-green border border-foundation-green px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-foundation-light focus:outline-none focus:ring-2 focus:ring-foundation-green focus:ring-offset-2;
+    @apply bg-foundation-brown text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-foundation-brown/80 focus:outline-none focus:ring-2 focus:ring-foundation-brown focus:ring-offset-2;
   }
   
   .link {
-    @apply text-foundation-green hover:text-foundation-dark transition-colors duration-300 underline-offset-2 hover:underline;
+    @apply text-foundation-green hover:text-foundation-brown transition-colors duration-300 underline-offset-2 hover:underline;
   }
 }
