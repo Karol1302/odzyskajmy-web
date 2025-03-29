@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,9 +65,13 @@ export default {
 				},
 				foundation: {
 					green: '#15C39A',
+					'green-light': '#E6F7F4',
+					'green-dark': '#0E8A6B',
 					brown: '#BF884E',
-					light: '#EDE9FE',
-					dark: '#4C1D95',
+					'brown-light': '#F0E5D8',
+					'brown-dark': '#8A6235',
+					light: '#F5F5F5',
+					dark: '#333333',
 					orange: '#F97316',
 					gray: '#F1F5F9',
 					white: '#FFFFFF'

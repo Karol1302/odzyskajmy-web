@@ -48,7 +48,7 @@ const Contact = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-foundation-purple text-white py-16">
+      <section className="bg-foundation-brown text-white py-16">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn>
@@ -66,15 +66,15 @@ const Contact = () => {
       <SectionContainer bgColor="bg-white dark:bg-gray-900">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <FadeIn delay={100}>
-            <div className="bg-foundation-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
+            <div className="bg-foundation-green-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
               <div className="bg-white dark:bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Phone className="h-8 w-8 text-foundation-purple" />
+                <Phone className="h-8 w-8 text-foundation-green" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Phone</h3>
+              <h3 className="text-xl font-bold mb-2 text-foundation-brown">Phone</h3>
               <p className="mb-2">Call us directly:</p>
               <a 
                 href="tel:+48123456789" 
-                className="text-foundation-purple hover:underline"
+                className="text-foundation-green hover:underline"
                 aria-label="Call us at +48 123 456 789"
               >
                 +48 123 456 789
@@ -83,15 +83,15 @@ const Contact = () => {
           </FadeIn>
 
           <FadeIn delay={200}>
-            <div className="bg-foundation-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
+            <div className="bg-foundation-green-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
               <div className="bg-white dark:bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Mail className="h-8 w-8 text-foundation-purple" />
+                <Mail className="h-8 w-8 text-foundation-green" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Email</h3>
+              <h3 className="text-xl font-bold mb-2 text-foundation-brown">Email</h3>
               <p className="mb-2">Write to us at:</p>
               <a 
                 href="mailto:contact@odzyskajmy.org" 
-                className="text-foundation-purple hover:underline"
+                className="text-foundation-green hover:underline"
                 aria-label="Email us at contact@odzyskajmy.org"
               >
                 contact@odzyskajmy.org
@@ -100,11 +100,11 @@ const Contact = () => {
           </FadeIn>
 
           <FadeIn delay={300}>
-            <div className="bg-foundation-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
+            <div className="bg-foundation-green-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
               <div className="bg-white dark:bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-8 w-8 text-foundation-purple" />
+                <MapPin className="h-8 w-8 text-foundation-green" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Address</h3>
+              <h3 className="text-xl font-bold mb-2 text-foundation-brown">Address</h3>
               <p className="mb-2">Visit our office:</p>
               <address className="not-italic">
                 123 Foundation Street<br />
@@ -115,11 +115,11 @@ const Contact = () => {
           </FadeIn>
 
           <FadeIn delay={400}>
-            <div className="bg-foundation-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
+            <div className="bg-foundation-green-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
               <div className="bg-white dark:bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8 text-foundation-purple" />
+                <Clock className="h-8 w-8 text-foundation-green" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Hours</h3>
+              <h3 className="text-xl font-bold mb-2 text-foundation-brown">Hours</h3>
               <p className="mb-2">We're available:</p>
               <p>Monday - Friday<br />9:00 AM - 5:00 PM</p>
             </div>
@@ -128,7 +128,7 @@ const Contact = () => {
       </SectionContainer>
 
       {/* Map and Contact Form */}
-      <SectionContainer bgColor="bg-foundation-gray dark:bg-gray-800">
+      <SectionContainer bgColor="bg-foundation-light dark:bg-gray-800">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Map */}
           <FadeIn direction="right">
@@ -149,7 +149,7 @@ const Contact = () => {
           {/* Contact Form */}
           <FadeIn direction="left">
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+              <h2 className="text-2xl font-bold mb-6 text-foundation-brown">Send Us a Message</h2>
               <p className="mb-6 text-gray-700 dark:text-gray-300">
                 Having a problem? We will get back to you as soon as possible.
               </p>
@@ -248,7 +248,7 @@ const Contact = () => {
           <FadeIn>
             <div className="space-y-6">
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-bold mb-3">How can I get help from the foundation?</h3>
+                <h3 className="text-xl font-bold mb-3 text-foundation-brown">How can I get help from the foundation?</h3>
                 <p>
                   If you need assistance, the best way to start is by contacting us through 
                   this form, calling our phone number, or visiting our office during business hours. 
@@ -256,7 +256,7 @@ const Contact = () => {
                 </p>
               </div>
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-bold mb-3">How can I volunteer or donate?</h3>
+                <h3 className="text-xl font-bold mb-3 text-foundation-brown">How can I volunteer or donate?</h3>
                 <p>
                   We welcome both volunteers and donations. To get involved as a volunteer, 
                   please contact us with information about your skills and availability. 
@@ -265,7 +265,7 @@ const Contact = () => {
                 </p>
               </div>
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-bold mb-3">Do you provide legal advice?</h3>
+                <h3 className="text-xl font-bold mb-3 text-foundation-brown">Do you provide legal advice?</h3>
                 <p>
                   While we collaborate with legal professionals, the Odzyskajmy Foundation 
                   is not a legal firm and does not provide formal legal advice. We can, however, 

@@ -88,49 +88,8 @@ const AboutUs = () => {
         </div>
       </SectionContainer>
 
-      {/* Foundation Documents Section */}
-      <SectionContainer id="documents" bgColor="bg-foundation-light dark:bg-gray-800">
-        <SectionTitle>Foundation Documents</SectionTitle>
-        <FadeIn>
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-lg mb-8">
-              Our foundation operates with full transparency. Below you can find our official documents 
-              that outline our mission, values, and operational guidelines.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
-                <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
-                <h3 className="text-xl font-bold mb-3">Foundation Regulations</h3>
-                <p className="mb-4 text-gray-700 dark:text-gray-300">
-                  Our comprehensive guidelines that govern all foundation activities and operations.
-                </p>
-                <Button variant="secondary" className="w-full">
-                  <a href="/documents/foundation-regulations.pdf" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
-                    Download PDF
-                  </a>
-                </Button>
-              </div>
-              
-              <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
-                <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
-                <h3 className="text-xl font-bold mb-3">Foundation Statute</h3>
-                <p className="mb-4 text-gray-700 dark:text-gray-300">
-                  The official legal document that establishes our foundation's purpose and structure.
-                </p>
-                <Button variant="secondary" className="w-full">
-                  <a href="/documents/foundation-statute.pdf" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
-                    Download PDF
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </FadeIn>
-      </SectionContainer>
-
       {/* Professional Collaboration Section */}
-      <SectionContainer id="collaboration">
+      <SectionContainer id="collaboration" bgColor="bg-foundation-light dark:bg-gray-800">
         <SectionTitle>Professional Collaboration</SectionTitle>
         <FadeIn>
           <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-8 mb-8">
@@ -158,7 +117,7 @@ const AboutUs = () => {
       </SectionContainer>
 
       {/* How We Work Section */}
-      <SectionContainer id="how-we-work" bgColor="bg-foundation-light dark:bg-gray-800">
+      <SectionContainer id="how-we-work">
         <SectionTitle>How We Work (Support)</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {supportCategories.map((category, index) => (
@@ -187,7 +146,7 @@ const AboutUs = () => {
       </SectionContainer>
 
       {/* Social Exclusion Section */}
-      <SectionContainer id="social-exclusion">
+      <SectionContainer id="social-exclusion" bgColor="bg-foundation-light dark:bg-gray-800">
         <SectionTitle>Understanding Social Exclusion</SectionTitle>
         <div className="grid md:grid-cols-2 gap-10">
           <FadeIn direction="right">
@@ -226,6 +185,47 @@ const AboutUs = () => {
             </div>
           </FadeIn>
         </div>
+      </SectionContainer>
+
+      {/* Foundation Documents Section - Moved to the bottom */}
+      <SectionContainer id="documents">
+        <SectionTitle>Foundation Documents</SectionTitle>
+        <FadeIn>
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="text-lg mb-8">
+              Our foundation operates with full transparency. Below you can find our official documents 
+              that outline our mission, values, and operational guidelines.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
+                <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
+                <h3 className="text-xl font-bold mb-3">Foundation Regulations</h3>
+                <p className="mb-4 text-gray-700 dark:text-gray-300">
+                  Our comprehensive guidelines that govern all foundation activities and operations.
+                </p>
+                <Button variant="secondary" className="w-full">
+                  <a href="/documents/foundation-regulations.pdf" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
+                    Download PDF
+                  </a>
+                </Button>
+              </div>
+              
+              <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
+                <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
+                <h3 className="text-xl font-bold mb-3">Foundation Statute</h3>
+                <p className="mb-4 text-gray-700 dark:text-gray-300">
+                  The official legal document that establishes our foundation's purpose and structure.
+                </p>
+                <Button variant="secondary" className="w-full">
+                  <a href="/documents/foundation-statute.pdf" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
+                    Download PDF
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
       </SectionContainer>
     </>
   );

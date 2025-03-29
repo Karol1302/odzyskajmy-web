@@ -60,12 +60,12 @@ const Home = () => {
         <div className="relative container mx-auto h-full flex items-center justify-center px-4">
           <div className="max-w-2xl text-white text-center">
             <FadeIn direction="up" delay={100}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
                 Building a Better Future Together
               </h1>
             </FadeIn>
             <FadeIn direction="up" delay={200}>
-              <p className="text-xl md:text-2xl mb-8">
+              <p className="text-xl md:text-2xl mb-8 text-white">
                 Odzyskajmy Foundation is dedicated to helping people in need and creating opportunities for everyone.
               </p>
             </FadeIn>
@@ -88,7 +88,7 @@ const Home = () => {
       </section>
 
       {/* Statutory Goals Section */}
-      <SectionContainer id="goals" bgColor="bg-foundation-gray dark:bg-gray-800">
+      <SectionContainer id="goals" bgColor="bg-foundation-light dark:bg-gray-800">
         <SectionTitle>Our Statutory Goals</SectionTitle>
         <FadeIn>
           <p className="text-center text-lg mb-10 max-w-3xl mx-auto">
@@ -122,7 +122,7 @@ const Home = () => {
             />
           </FadeIn>
           <FadeIn direction="left">
-            <h3 className="text-2xl font-bold mb-4">{latestProject.title}</h3>
+            <h3 className="text-2xl font-bold mb-4 text-foundation-brown">{latestProject.title}</h3>
             <div className="mb-4 text-gray-600 dark:text-gray-400">{latestProject.date}</div>
             <p className="text-lg mb-6">{latestProject.description}</p>
             <p className="mb-6">
@@ -150,7 +150,7 @@ const Home = () => {
                   className="w-12 h-12 rounded-full mr-4"
                 />
                 <div>
-                  <h4 className="font-bold">Odzyskajmy Foundation</h4>
+                  <h4 className="font-bold text-foundation-brown">Odzyskajmy Foundation</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400">2 days ago</p>
                 </div>
               </div>
