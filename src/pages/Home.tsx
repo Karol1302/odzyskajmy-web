@@ -79,16 +79,24 @@ const Home = () => {
             </FadeIn>
             <FadeIn direction="up" delay={300}>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/projects">
-                  <Button size="lg" className="bg-foundation-green hover:bg-foundation-green/90 text-white">
-                    Nasze Projekty
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button size="lg" variant="outline" className="bg-foundation-brown text-white hover:bg-foundation-brown/90">
-                    Skontaktuj się
-                  </Button>
-                </Link>
+              <Link to="/projects">
+                <Button 
+                  size="lg" 
+                  className="bg-foundation-green hover:bg-foundation-green/90 text-white font-bold"
+                >
+                  Nasze Projekty
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="bg-foundation-brown text-white hover:bg-foundation-brown/90 font-bold"
+                >
+                  Skontaktuj się
+                </Button>
+              </Link>
+
               </div>
             </FadeIn>
           </div>
@@ -109,25 +117,25 @@ const Home = () => {
               title: "Pomoc społeczna",
               description: "Pomoc społeczna, w tym pomoc rodzinom i osobom w trudnej sytuacji życiowej oraz wyrównanie szans tych rodzin i osób",
               icon: <Heart className="h-6 w-6" />,
-              image: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=800&h=500",
+              image: "/spoleczna_s.jpg",
             },
             {
               title: "Reintegracja społeczna",
               description: "Działalność na rzecz integracji i reintegracji zawodowej i społecznej osób zagrożonych wykluczeniem społecznym i wykluczonych społecznie",
               icon: <Users className="h-6 w-6" />,
-              image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&h=500",
+              image: "/reintegracja_s.png",
             },
             {
               title: "Integracja europejska",
               description: "Promowanie integracji europejskiej w aspekcie m.in. współpracy edukacyjnej i kulturalnej, upawszechniania sportu, ochrony środowiska",
               icon: <Globe className="h-6 w-6" />,
-              image: "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=800&h=500",
+              image: "/unia_s.png",
             },
             {
               title: "Wsparcie i dostępność",
               description: "Działania na rzecz osób niepełnosprawnych i ich rodzin w celu zapewnienia równych szans i dostępności.",
               icon: <Accessibility className="h-6 w-6" />,
-              image: "https://images.unsplash.com/photo-1458668383970-8ddd3927deed?auto=format&fit=crop&w=800&h=500",
+              image: "/niepełnosprawnosci_s.png",
             },
           ].map((goal, index) => (
             <GoalCard
