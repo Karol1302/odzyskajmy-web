@@ -213,7 +213,7 @@ const ProjectDetail = () => {
                       className="w-full"
                       onClick={() => navigate(`/projects/${id}/subscribe`)}
                     >
-                      Get Involved
+                      Dołącz do projektu
                     </Button>
                   </div>
                 </div>

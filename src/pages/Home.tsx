@@ -59,7 +59,7 @@ const Home = () => {
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://raw.githubusercontent.com/karol1302/odzyskajmy-web/gh-pages/public/sunset2.png" 
+            src={import.meta.env.BASE_URL + "sunset2.png"}
             alt="Sunset over mountains"
             className="w-full h-full object-cover"
           />
@@ -117,25 +117,25 @@ const Home = () => {
               title: "Pomoc społeczna",
               description: "Pomoc społeczna, w tym pomoc rodzinom i osobom w trudnej sytuacji życiowej oraz wyrównanie szans tych rodzin i osób",
               icon: <Heart className="h-6 w-6" />,
-              image: "https://raw.githubusercontent.com/karol1302/odzyskajmy-web/gh-pages/public/spoleczna_s.jpg",
+              image: import.meta.env.BASE_URL + "spoleczna_s.jpg",
             },
             {
               title: "Reintegracja społeczna",
               description: "Działalność na rzecz integracji i reintegracji zawodowej i społecznej osób zagrożonych wykluczeniem społecznym i wykluczonych społecznie",
               icon: <Users className="h-6 w-6" />,
-              image: "https://raw.githubusercontent.com/karol1302/odzyskajmy-web/gh-pages/public/reintegracja_s.png",
+              image: import.meta.env.BASE_URL + "reintegracja_s.png",
             },
             {
               title: "Integracja europejska",
               description: "Promowanie integracji europejskiej w aspekcie m.in. współpracy edukacyjnej i kulturalnej, upawszechniania sportu, ochrony środowiska",
               icon: <Globe className="h-6 w-6" />,
-              image: "https://raw.githubusercontent.com/karol1302/odzyskajmy-web/gh-pages/public/unia_s.png",
+              image: import.meta.env.BASE_URL + "unia_s.png",
             },
             {
               title: "Wsparcie i dostępność",
               description: "Działania na rzecz osób niepełnosprawnych i ich rodzin w celu zapewnienia równych szans i dostępności.",
               icon: <Accessibility className="h-6 w-6" />,
-              image: "https://raw.githubusercontent.com/karol1302/odzyskajmy-web/gh-pages/public/niepełnosprawnosci_s.png",
+              image: import.meta.env.BASE_URL + "niepełnosprawnosci_s.png",
             },
           ].map((goal, index) => (
             <GoalCard
@@ -149,6 +149,7 @@ const Home = () => {
           ))}
         </div>
       </SectionContainer>
+
 
       {/* Latest Project Section */}
       <SectionContainer id="latest-project">

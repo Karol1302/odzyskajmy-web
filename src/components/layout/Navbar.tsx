@@ -55,7 +55,7 @@ const Navbar = () => {
             aria-label="Go to Odzyskajmy Foundation homepage"
           >
             <img 
-              src={isDarkMode ? 'https://raw.githubusercontent.com/karol1302/odzyskajmy-web/gh-pages/public/Logo.png' : 'https://raw.githubusercontent.com/karol1302/odzyskajmy-web/gh-pages/public/Logo2.png'} 
+              src={isDarkMode ? import.meta.env.BASE_URL + 'Logo.png' : import.meta.env.BASE_URL + 'Logo2.png'}
               alt="Odzyskajmy Foundation Logo" 
               className="h-10"
             />

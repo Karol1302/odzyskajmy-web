@@ -95,11 +95,11 @@ const ProjectSubscription = () => {
               className="inline-flex items-center text-white mb-8 hover:text-foundation-light transition-colors"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Project
+              Wróć do projektu
             </button>
             <h1 className="text-3xl md:text-5xl font-bold mb-4">Get Involved</h1>
             <p className="text-xl max-w-2xl">
-              Join us in making a difference. Fill out the form below to receive updates and opportunities to participate in this project.
+              Dołącz do nas! Wypełnij formularz
             </p>
           </FadeIn>
         </div>
@@ -182,7 +182,7 @@ const ProjectSubscription = () => {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <FormLabel>
-                            I consent to sharing my data with the Odzyskajmy Foundation for the purpose of this project.
+                            Zgadzam się na udostępnienie moich danych blabla
                           </FormLabel>
                           <FormMessage />
                         </div>
