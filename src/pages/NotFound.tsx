@@ -23,12 +23,11 @@ const NotFound = () => {
             Oops! Page not found
           </p>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-md mx-auto mb-8">
-            The page you are looking for might have been removed, had its name changed, 
-            or is temporarily unavailable.
+            Nie odnaleziono strony
           </p>
           <Link to="/">
             <Button size="lg" className="animate-pulse">
-              Return to Home
+              Powrót
             </Button>
           </Link>
         </FadeIn>

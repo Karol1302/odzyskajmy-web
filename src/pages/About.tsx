@@ -61,7 +61,7 @@ const AboutUs = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <FadeIn direction="right">
             <img
-              src="/help_s.jpg"
+              src="https://raw.githubusercontent.com/karol1302/odzyskajmy-web/gh-pages/public/help_s.jpg"
               alt="Odzyskajmy Foundation team"
               className="rounded-lg shadow-lg"
             />
