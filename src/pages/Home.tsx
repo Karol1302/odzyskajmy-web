@@ -59,7 +59,7 @@ const Home = () => {
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/sunset2.png"
+            src={`${import.meta.env.BASE_URL}sunset2.png`}
             alt="Sunset over mountains"
             className="w-full h-full object-cover"
           />
