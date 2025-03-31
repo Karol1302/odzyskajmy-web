@@ -80,7 +80,7 @@ const Contact = () => {
 
       {/* Contact Information */}
       <SectionContainer bgColor="bg-white dark:bg-gray-900">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-1">
           <FadeIn delay={100}>
             <div className="bg-foundation-green-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
               <div className="bg-white dark:bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">

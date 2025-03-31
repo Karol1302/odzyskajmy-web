@@ -1,3 +1,5 @@
+// src/pages/Home.tsx
+
 import { Heart, Users, Globe, Accessibility } from 'lucide-react';
 import { SectionContainer, SectionTitle } from '@/components/ui/section-container';
 import FadeIn from '@/components/ui/animations/FadeIn';
@@ -5,52 +7,10 @@ import GoalCard from '@/components/home/GoalCard';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
-  // Tablica z danymi projektów – w przyszłości warto przenieść ją do oddzielnego pliku np. src/data/projectsData.ts
-  const projectsData = [
-    {
-      id: 1,
-      title: "Community Support Program",
-      description: "Our latest initiative focuses on providing essential resources and support to families affected by recent economic challenges.",
-      images: ["https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&h=500"],
-      date: "June 2023 - Present",
-      content: "The Community Support Program is our flagship initiative focused on providing comprehensive support to families facing economic hardships. Through this program, we offer food assistance, educational resources, and mental health counseling to help individuals and families navigate challenging times. Our team of volunteers has dedicated countless hours to ensuring that community members have access to the resources they need to thrive."
-    },
-    {
-      id: 2,
-      title: "Youth Mentorship Initiative",
-      description: "Connecting at-risk youth with professional mentors to provide guidance and support for personal and academic development.",
-      images: ["https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=800&h=500"],
-      date: "January 2023 - Present",
-      content: "Our Youth Mentorship Initiative pairs at-risk youth with caring, professional mentors who provide guidance, support, and encouragement. Mentors help young people navigate challenges, set goals, and develop skills for success in school and beyond."
-    },
-    {
-      id: 3,
-      title: "Digital Inclusion Workshop",
-      description: "Teaching essential digital skills to seniors and disadvantaged groups to bridge the digital divide.",
-      images: ["https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&h=500"],
-      date: "March 2023 - August 2023",
-      content: "The Digital Inclusion Workshop was designed to address the growing digital divide affecting seniors and disadvantaged communities. Over a six-month period, we conducted weekly workshops teaching essential digital skills including computer basics, internet navigation, email communication, and online safety."
-    },
-    {
-      id: 4,
-      title: "Accessibility Renovation Project",
-      description: "Helping modify homes for individuals with disabilities to improve accessibility and independence.",
-      images: ["https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop&w=800&h=500"],
-      date: "September 2022 - May 2023",
-      content: "Our Accessibility Renovation Project focused on modifying homes for individuals with disabilities to enhance their independence and quality of life. Working with local contractors and volunteers, we completed renovations for 12 families."
-    },
-    {
-      id: 5,
-      title: "Career Readiness Program",
-      description: "Comprehensive job training and placement services for individuals facing barriers to employment.",
-      images: ["https://images.unsplash.com/photo-1458668383970-8ddd3927deed?auto=format&fit=crop&w=800&h=500"],
-      date: "February 2022 - Present",
-      content: "The Career Readiness Program provides comprehensive support to individuals facing barriers to employment. Through a combination of skills training, resume building, interview preparation, and job placement assistance, we help participants prepare for and secure meaningful employment."
-    },
-  ];
+import { projectsData } from '@/data/projectsData';
 
-  // Wybieramy najnowszy projekt – zakładamy, że projekt o największym id jest najnowszy
+const Home = () => {
+
   const latestProject = [...projectsData].sort((a, b) => b.id - a.id)[0];
 
   return (
@@ -79,24 +39,23 @@ const Home = () => {
             </FadeIn>
             <FadeIn direction="up" delay={300}>
               <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/projects">
-                <Button 
-                  size="lg" 
-                  className="bg-foundation-green hover:bg-foundation-green/90 text-white font-bold"
-                >
-                  Nasze Projekty
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="bg-foundation-brown text-white hover:bg-foundation-brown/90 font-bold"
-                >
-                  Skontaktuj się
-                </Button>
-              </Link>
-
+                <Link to="/projects">
+                  <Button
+                    size="lg"
+                    className="bg-foundation-green hover:bg-foundation-green/90 text-white font-bold"
+                  >
+                    Nasze Projekty
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-foundation-brown text-white hover:bg-foundation-brown/90 font-bold"
+                  >
+                    Skontaktuj się
+                  </Button>
+                </Link>
               </div>
             </FadeIn>
           </div>
@@ -115,25 +74,29 @@ const Home = () => {
           {[
             {
               title: "Pomoc społeczna",
-              description: "Pomoc społeczna, w tym pomoc rodzinom i osobom w trudnej sytuacji życiowej oraz wyrównanie szans tych rodzin i osób",
+              description:
+                "Pomoc społeczna, w tym pomoc rodzinom i osobom w trudnej sytuacji życiowej oraz wyrównanie szans tych rodzin i osób",
               icon: <Heart className="h-6 w-6" />,
               image: import.meta.env.BASE_URL + "spoleczna_s.jpg",
             },
             {
               title: "Reintegracja społeczna",
-              description: "Działalność na rzecz integracji i reintegracji zawodowej i społecznej osób zagrożonych wykluczeniem społecznym i wykluczonych społecznie",
+              description:
+                "Działalność na rzecz integracji i reintegracji zawodowej i społecznej osób zagrożonych wykluczeniem społecznym i wykluczonych społecznie",
               icon: <Users className="h-6 w-6" />,
               image: import.meta.env.BASE_URL + "reintegracja_s.png",
             },
             {
               title: "Integracja europejska",
-              description: "Promowanie integracji europejskiej w aspekcie m.in. współpracy edukacyjnej i kulturalnej, upawszechniania sportu, ochrony środowiska",
+              description:
+                "Promowanie integracji europejskiej w aspekcie m.in. współpracy edukacyjnej i kulturalnej, upowszechniania sportu, ochrony środowiska",
               icon: <Globe className="h-6 w-6" />,
               image: import.meta.env.BASE_URL + "unia_s.png",
             },
             {
               title: "Wsparcie i dostępność",
-              description: "Działania na rzecz osób niepełnosprawnych i ich rodzin w celu zapewnienia równych szans i dostępności.",
+              description:
+                "Działania na rzecz osób niepełnosprawnych i ich rodzin w celu zapewnienia równych szans i dostępności.",
               icon: <Accessibility className="h-6 w-6" />,
               image: import.meta.env.BASE_URL + "niepełnosprawnosci_s.png",
             },
@@ -150,7 +113,6 @@ const Home = () => {
         </div>
       </SectionContainer>
 
-
       {/* Latest Project Section */}
       <SectionContainer id="latest-project">
         <SectionTitle>Nasz najnowszy projekt</SectionTitle>
@@ -163,9 +125,13 @@ const Home = () => {
             />
           </FadeIn>
           <FadeIn direction="left">
-            <h3 className="text-2xl font-bold mb-4 text-foundation-brown">{latestProject.title}</h3>
-            <div className="mb-4 text-gray-600 dark:text-gray-400">{latestProject.date}</div>
-            {/* Opis skrócony – używamy klasy Tailwind CSS line-clamp do ograniczenia liczby linii */}
+            <h3 className="text-2xl font-bold mb-4 text-foundation-brown">
+              {latestProject.title}
+            </h3>
+            <div className="mb-4 text-gray-600 dark:text-gray-400">
+              {latestProject.date}
+            </div>
+            {/* Ograniczamy tekst do krótkiego opisu */}
             <p className="text-lg mb-6 line-clamp-3">
               {latestProject.description}
             </p>
@@ -194,7 +160,7 @@ const Home = () => {
                 </div>
               </div>
               <p className="mb-4">
-                Testowy wpis dla przykładu na stronie
+                Testowy wpis dla przykładu na stronie facebook...
                 #CommunitySupport #Odzyskajmy
               </p>
               <img
@@ -209,7 +175,6 @@ const Home = () => {
               </div>
             </div>
           </FadeIn>
-          {/* Możesz dodać dodatkowy przycisk/link do obserwowania fundacji w social media */}
         </div>
       </SectionContainer>
     </>

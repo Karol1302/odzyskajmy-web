@@ -97,9 +97,9 @@ const ProjectSubscription = () => {
               <ArrowLeft className="mr-2 h-4 w-4" />
               Wróć do projektu
             </button>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">Get Involved</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">Dołącz</h1>
             <p className="text-xl max-w-2xl">
-              Dołącz do nas! Wypełnij formularz
+              Dołącz do projektu! Wypełnij formularz
             </p>
           </FadeIn>
         </div>
@@ -116,9 +116,9 @@ const ProjectSubscription = () => {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>First Name</FormLabel>
+                        <FormLabel>Imię</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter your first name" {...field} />
+                          <Input placeholder="Podaj swoje imię" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -129,9 +129,9 @@ const ProjectSubscription = () => {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Last Name</FormLabel>
+                        <FormLabel>Nazwisko</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter your last name" {...field} />
+                          <Input placeholder="podaj swoje nazwisko" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -145,9 +145,9 @@ const ProjectSubscription = () => {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Phone Number</FormLabel>
+                        <FormLabel>Numer telefonu</FormLabel>
                         <FormControl>
-                          <Input type="tel" placeholder="Enter your phone number" {...field} />
+                          <Input type="tel" placeholder="Podaj swój numer telefonu" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -158,9 +158,9 @@ const ProjectSubscription = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email Address</FormLabel>
+                        <FormLabel>Adres email</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="Enter your email" {...field} />
+                          <Input type="email" placeholder="Wpisz swój email" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -182,7 +182,7 @@ const ProjectSubscription = () => {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <FormLabel>
-                            Zgadzam się na udostępnienie moich danych blabla
+                            Zgadzam się na udostępnienie moich danych (...)
                           </FormLabel>
                           <FormMessage />
                         </div>
@@ -223,11 +223,11 @@ const ProjectSubscription = () => {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Submitting...
+                      Wysyłanie...
                     </span>
                   ) : (
                     <span className="flex items-center">
-                      Send
+                      Wyślij
                       <Send className="ml-2 h-4 w-4" />
                     </span>
                   )}
