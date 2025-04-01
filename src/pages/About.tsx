@@ -1,11 +1,10 @@
-
 import { Brain, BookOpen, Heart, Briefcase, FileText } from 'lucide-react';
 import { SectionContainer, SectionTitle } from '@/components/ui/section-container';
 import FadeIn from '@/components/ui/animations/FadeIn';
 import { Button } from '@/components/ui/button';
 
 const AboutUs = () => {
-  // Support categories with icons
+  // Kategorie wsparcia z ikonami
   const supportCategories = [
     {
       title: "Wsparcie zdrowia psychicznego",
@@ -20,16 +19,16 @@ const AboutUs = () => {
     {
       title: "Integracja",
       icon: <Heart className="h-12 w-12 text-foundation-green" />,
-      description: "Oferujemy pomoc z integracją ze społeczeństwem, pomoc w budowaniu więzi rodzinnych",
+      description: "Pomoc w integracji ze społeczeństwem, wsparcie w budowaniu więzi rodzinnych",
     },
     {
       title: "Pomoc w karierze",
       icon: <Briefcase className="h-12 w-12 text-foundation-green" />,
-      description: "Pomoc w znalezieniu pracy (rozmowa z doradcą zawodowym, pomoc w napisaniu CV, przygotowanie do rozmowy kwalifikacyjnej)",
+      description: "Wsparcie w znalezieniu pracy (doradca zawodowy, pisanie CV, przygotowanie do rozmowy)",
     },
   ];
 
-  // Social exclusion causes
+  // Przyczyny wykluczenia społecznego
   const exclusionCauses = [
     "Niski poziom wykształcenia i ograniczony dostęp do nauki",
     "Ubóstwo i trudności ekonomiczne",
@@ -42,21 +41,21 @@ const AboutUs = () => {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Sekcja hero */}
       <section className="relative bg-foundation-brown text-white py-20">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">O nas</h1>
               <p className="text-xl">
-              Pomagamy osobom zagrożonym wykluczeniem. Razem tworzymy szanse na godne życie.
+                Pomagamy osobom zagrożonym wykluczeniem. Razem tworzymy szanse na godne życie.
               </p>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* Our Story Section */}
+      {/* Nasza misja */}
       <SectionContainer id="our-story">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <FadeIn direction="right">
@@ -69,51 +68,51 @@ const AboutUs = () => {
           <FadeIn direction="left">
             <h2 className="text-3xl font-bold mb-6 text-foundation-brown">Nasza misja</h2>
             <p className="mb-4">
-              Fundacja Odzyskajmy została powołana, aby odpowiedzieć na rosnące potrzeby osób zagrożonych wykluczeniem społecznym w naszych społecznościach. Jej założyciele dostrzegli luki w systemach wsparcia i postanowili stworzyć organizację, która naprawdę może zmienić życie.
+              Fundacja Odzyskajmy została powołana, aby odpowiedzieć na rosnące potrzeby
+              osób zagrożonych wykluczeniem społecznym. Jej założyciele dostrzegli
+              luki w systemach wsparcia i postanowili stworzyć organizację,
+              która realnie zmienia życie tych, którzy potrzebują pomocy.
             </p>
             <p className="mb-4">
-              Od samego początku nieustannie pracujemy nad rozwojem programów, które odpowiadają nie tylko na bieżące potrzeby, ale także oferują długoterminowe rozwiązania pomagające odbudować życie i reintegrować osoby dotknięte wykluczeniem.
+              Od samego początku nieustannie pracujemy nad rozwojem programów,
+              które odpowiadają nie tylko na bieżące potrzeby, ale także
+              oferują długoterminowe rozwiązania pomagające odbudować życie
+              i reintegrować osoby dotknięte wykluczeniem.
             </p>
             <p>
-              Wierzymy, że każdy zasługuje na szansę na godne życie, niezależnie od okoliczności. To przekonanie stanowi fundament naszych działań i napędza Fundację Odzyskajmy.
+              Wierzymy, że każdy zasługuje na szansę na godne życie, niezależnie od okoliczności.
+              To przekonanie stanowi fundament naszych działań i napędza Fundację Odzyskajmy.
             </p>
           </FadeIn>
         </div>
       </SectionContainer>
 
-      {/* Professional Collaboration Section */}
+      {/* Profesjonalna współpraca */}
       <SectionContainer id="collaboration" bgColor="bg-foundation-light dark:bg-gray-800">
         <SectionTitle>Profesjonalna współpraca</SectionTitle>
         <FadeIn>
           <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-8 mb-8">
             <p className="mb-4 text-lg">
-            W ramach działalności naszej fundacji współpracujemy z profesjonalistami 
-            z zakresu prawa, m.in. adwokatami, radcami prawnymi, doradcami podatkowymi oraz restrukturyzacyjnymi.*
+              W ramach działalności naszej fundacji współpracujemy z profesjonalistami między innymi z
+              zakresu zdrowia psychicznego (psychologami, terapeutami, socjologami, psychoterapeutami), prawa
+              (adwokatami, doradcami podatkowymi), doradcami zawodowymi oraz trenerami terapeutycznymi.
             </p>
-            {/* <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>Lawyers specializing in social welfare law</li>
-              <li>Legal advisors with expertise in human rights</li>
-              <li>Tax consultants helping with financial planning</li>
-              <li>Restructuring experts assisting with organizational challenges</li>
-              <li>Mental health professionals providing counseling services</li>
-              <li>Educational specialists developing learning programs</li>
-            </ul> */}
             <div className="bg-foundation-light dark:bg-gray-600 p-4 rounded-md border-l-4 border-foundation-green">
               <p className="text-sm font-semibold">
-              * Fundacja nie jest kancelarią prawną i nie świadczy usług prawnych w rozumieniu ustawy 
-              z dnia 6 lipca 1982 r. o Radcach prawnych, ustawy z dnia 26 maja 1982 r. 
-              Prawo o adwokaturze. W razie potrzeby Fundacja zapewnia usługi pośrednictwa i 
-              doradztwa ogólnego we współpracy z kancelariami prawnymi, prawnikami, radcami prawnymi, 
-              adwokatami i innymi osobami świadczącymi usługi prawne.
+                * Fundacja nie jest kancelarią prawną i nie świadczy usług prawnych w rozumieniu ustawy 
+                z dnia 6 lipca 1982 r. o Radcach prawnych, ustawy z dnia 26 maja 1982 r. 
+                Prawo o adwokaturze. W razie potrzeby Fundacja zapewnia usługi pośrednictwa i 
+                doradztwa ogólnego we współpracy z kancelariami prawnymi, prawnikami, radcami prawnymi, 
+                adwokatami i innymi osobami świadczącymi usługi prawne.
               </p>
             </div>
           </div>
         </FadeIn>
       </SectionContainer>
 
-      {/* How We Work Section */}
+      {/* Jak wspieramy (działamy) */}
       <SectionContainer id="how-we-work">
-        <SectionTitle>Jak wspieramy ( działamy):</SectionTitle>
+        <SectionTitle>Jak wspieramy (działamy):</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {supportCategories.map((category, index) => (
             <FadeIn key={category.title} delay={index * 100}>
@@ -128,35 +127,42 @@ const AboutUs = () => {
         <FadeIn>
           <div className="bg-foundation-green/10 dark:bg-gray-700 rounded-lg p-6">
             <p className="text-lg mb-4">
-            Nasze podejście jest holistyczne i spersonalizowane. 
-            Rozumiemy, że każda osoba ma unikalne potrzeby i wyzwania. 
-            Dlatego opracowujemy spersonalizowane plany wsparcia, które odnoszą się do wielu aspektów sytuacji danej osoby.
+              Nasze podejście jest holistyczne i spersonalizowane. 
+              Rozumiemy, że każda osoba ma unikalne potrzeby i wyzwania. 
+              Dlatego opracowujemy spersonalizowane plany wsparcia, 
+              które odnoszą się do wielu aspektów sytuacji danej osoby.
             </p>
           </div>
         </FadeIn>
       </SectionContainer>
 
-      {/* Social Exclusion Section */}
+      {/* Wykluczenie społeczne */}
       <SectionContainer id="social-exclusion" bgColor="bg-foundation-light dark:bg-gray-800">
         <SectionTitle>Zrozumienie wykluczenia społecznego</SectionTitle>
         <div className="grid md:grid-cols-2 gap-10">
           <FadeIn direction="right">
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-foundation-brown">Czym jest wykluczenie społeczne?</h3>
+              <h3 className="text-2xl font-bold mb-4 text-foundation-brown">
+                Czym jest wykluczenie społeczne?
+              </h3>
               <p className="mb-6">
-              Wykluczenie społeczne to proces, w wyniku którego osoby lub grupy są częściowo lub całkowicie 
-              pozbawione możliwości pełnego uczestnictwa w życiu społecznym. To zjawisko ma wpływ na sfery ekonomiczne, 
-              społeczne, polityczne i kulturowe, ograniczając dostęp do usług i szans niezbędnych do godnego życia. 
+                Wykluczenie społeczne to proces, w wyniku którego osoby lub grupy 
+                są częściowo lub całkowicie pozbawione możliwości pełnego uczestnictwa 
+                w życiu społecznym. Ma to wpływ na sfery ekonomiczne, społeczne, polityczne 
+                i kulturowe, ograniczając dostęp do usług i szans niezbędnych do godnego życia.
               </p>
               <p className="mb-6">
-              Osoby doświadczające wykluczenia społecznego często napotykają na wiele trudności jednocześnie, 
-              co tworzy błędne koło utrudniające wyjście z tej sytuacji bez zewnętrznego wsparcia.
+                Osoby doświadczające wykluczenia społecznego często napotykają na wiele trudności
+                jednocześnie, co tworzy błędne koło utrudniające wyjście z tej sytuacji bez
+                zewnętrznego wsparcia.
               </p>
             </div>
           </FadeIn>
           <FadeIn direction="left">
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-foundation-brown">Najczęstsze powody wykluczenia społecznego</h3>
+              <h3 className="text-2xl font-bold mb-4 text-foundation-brown">
+                Najczęstsze powody wykluczenia
+              </h3>
               <ul className="space-y-3">
                 {exclusionCauses.map((cause, index) => (
                   <li key={index} className="flex items-start">
@@ -172,38 +178,83 @@ const AboutUs = () => {
         </div>
       </SectionContainer>
 
-      {/* Foundation Documents Section - Moved to the bottom */}
+      {/* Dokumenty fundacji */}
       <SectionContainer id="documents">
-        <SectionTitle>Dokumenty</SectionTitle>
+        <SectionTitle>Dokumenty fundacji</SectionTitle>
         <FadeIn>
-          <div className="max-w-2xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg mb-8">
-            Nasza fundacja działa z zachowaniem pełnej przejrzystości. 
-            Poniżej znajdują się nasze oficjalne dokumenty, które przedstawiają naszą misję, wartości i wytyczne operacyjne.
+              Działamy z zachowaniem pełnej przejrzystości. 
+              Poniżej znajdują się nasze oficjalne dokumenty, które przedstawiają 
+              misję, wartości oraz zasady działania Fundacji.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Statut */}
               <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
                 <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
-                <h3 className="text-xl font-bold mb-3">Regulamin fundacji</h3>
+                <h3 className="text-xl font-bold mb-3">Statut</h3>
                 <p className="mb-4 text-gray-700 dark:text-gray-300">
-                Nasze kompleksowe wytyczne, które regulują wszystkie działania i operacje fundacji.
+                  Oficjalny dokument prawny, który ustanawia fundament 
+                  i strukturę naszej fundacji.
                 </p>
                 <Button variant="secondary" className="w-full">
-                  <a href="/documents/foundation-regulations.pdf" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
+                  <a
+                    href={
+                      import.meta.env.BASE_URL + 
+                      "201210_statut-fundacji_odzyskajmy-poprawiony.pdf"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-block"
+                  >
                     Pobierz
                   </a>
                 </Button>
               </div>
-              
+
+              {/* Regulamin świadczenia pomocy */}
               <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
                 <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
-                <h3 className="text-xl font-bold mb-3">Statut fundacji</h3>
+                <h3 className="text-xl font-bold mb-3">
+                  Regulamin świadczenia pomocy
+                </h3>
                 <p className="mb-4 text-gray-700 dark:text-gray-300">
-                Oficjalny dokument prawny, który ustanawia cel i strukturę naszej fundacji.
+                  Zasady i wytyczne dotyczące udzielania wsparcia
                 </p>
                 <Button variant="secondary" className="w-full">
-                  <a href="/documents/foundation-statute.pdf" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
+                  <a
+                    href={
+                      import.meta.env.BASE_URL + 
+                      "Regulamin-świadczenia-pomocy-Fundacji-Odzyskajmy.pl_20210217.pdf"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-block"
+                  >
+                    Pobierz
+                  </a>
+                </Button>
+              </div>
+
+              {/* Polityka prywatności */}
+              <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
+                <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
+                <h3 className="text-xl font-bold mb-3">Polityka prywatności</h3>
+                <p className="mb-4 text-gray-700 dark:text-gray-300">
+                  Dokument określający sposoby gromadzenia, przetwarzania
+                  i ochrony danych osobowych.
+                </p>
+                <Button variant="secondary" className="w-full">
+                  <a
+                    href={
+                      import.meta.env.BASE_URL + 
+                      "Polityka-prywatności-Fundacji-Odzyskajmy.pl_20200217.pdf"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-block"
+                  >
                     Pobierz
                   </a>
                 </Button>

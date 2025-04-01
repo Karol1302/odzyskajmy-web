@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon, ZoomIn } from 'lucide-react';
@@ -32,16 +31,18 @@ const Navbar = () => {
     });
   };
 
-  // Close mobile menu when changing routes
+  // Zamykamy menu mobilne po nawigacji do innej podstrony
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
+  // Dodajemy nowy link "Wesprzyj nas" prowadzący do /donate
   const navLinks = [
     { title: 'Strona główna', path: '/' },
     { title: 'O nas', path: '/about' },
     { title: 'Projekty', path: '/projects' },
     { title: 'Kontakt', path: '/contact' },
+    { title: 'Wesprzyj nas', path: '/donate' },
   ];
 
   return (
@@ -55,7 +56,10 @@ const Navbar = () => {
             aria-label="Go to Odzyskajmy Foundation homepage"
           >
             <img 
-              src={isDarkMode ? import.meta.env.BASE_URL + 'Logo.png' : import.meta.env.BASE_URL + 'Logo2.png'}
+              src={isDarkMode 
+                ? import.meta.env.BASE_URL + 'Logo.png' 
+                : import.meta.env.BASE_URL + 'Logo2.png'
+              }
               alt="Odzyskajmy Foundation Logo" 
               className="h-10"
             />
@@ -85,8 +89,8 @@ const Navbar = () => {
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-              title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={isDarkMode ? "Przełącz na tryb jasny" : "Przełącz na tryb ciemny"}
+              title={isDarkMode ? "Przełącz na tryb jasny" : "Przełącz na tryb ciemny"}
               className="hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20"
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -95,8 +99,14 @@ const Navbar = () => {
               variant="ghost"
               size="icon"
               onClick={toggleHighContrast}
-              aria-label={isHighContrast ? "Switch to standard contrast" : "Switch to high contrast mode"}
-              title={isHighContrast ? "Switch to standard contrast" : "Switch to high contrast mode"}
+              aria-label={isHighContrast 
+                ? "Przełącz na standardowy kontrast" 
+                : "Przełącz na wysoki kontrast"
+              }
+              title={isHighContrast 
+                ? "Przełącz na standardowy kontrast" 
+                : "Przełącz na wysoki kontrast"
+              }
               className="hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20"
             >
               <ZoomIn className="h-5 w-5" />
@@ -109,7 +119,7 @@ const Navbar = () => {
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={isDarkMode ? "Tryb jasny" : "Tryb ciemny"}
               className="hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20"
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -119,7 +129,7 @@ const Navbar = () => {
               size="icon"
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-label={isMenuOpen ? "Zamknij menu" : "Otwórz menu"}
               className="hover:bg-foundation-brown-light dark:hover:bg-foundation-brown-dark/20"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

@@ -13,6 +13,9 @@ import ProjectSubscription from "./pages/ProjectSubscription";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+// Nowa podstrona
+import Donate from "./pages/Donate";
+
 // ScrollToTop component to handle automatic scrolling when navigating
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -37,6 +40,7 @@ const AppContent = () => (
         <Route path="/projects/:id" element={<ProjectDetail />} />
         <Route path="/projects/:id/subscribe" element={<ProjectSubscription />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/donate" element={<Donate />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </PageLayout>
@@ -48,6 +52,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      {/* Upewnij się, że basename odpowiada Twoim potrzebom (GitHub Pages) */}
       <BrowserRouter basename="/odzyskajmy-web">
         <AppContent />
       </BrowserRouter>

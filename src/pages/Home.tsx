@@ -1,5 +1,3 @@
-// src/pages/Home.tsx
-
 import { Heart, Users, Globe, Accessibility } from 'lucide-react';
 import { SectionContainer, SectionTitle } from '@/components/ui/section-container';
 import FadeIn from '@/components/ui/animations/FadeIn';
@@ -10,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { projectsData } from '@/data/projectsData';
 
 const Home = () => {
-
   const latestProject = [...projectsData].sort((a, b) => b.id - a.id)[0];
 
   return (
@@ -18,8 +15,9 @@ const Home = () => {
       {/* Hero Banner Section */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
+          {/* Użyj import.meta.env.BASE_URL + "sunset2.png" jeśli potrzebujesz prefixu. */}
           <img
-            src={import.meta.env.BASE_URL + "sunset2.png"}
+            src="/sunset2.png"
             alt="Sunset over mountains"
             className="w-full h-full object-cover"
           />
@@ -77,28 +75,28 @@ const Home = () => {
               description:
                 "Pomoc społeczna, w tym pomoc rodzinom i osobom w trudnej sytuacji życiowej oraz wyrównanie szans tych rodzin i osób",
               icon: <Heart className="h-6 w-6" />,
-              image: import.meta.env.BASE_URL + "spoleczna_s.jpg",
+              image: "/spoleczna_s.jpg",
             },
             {
               title: "Reintegracja społeczna",
               description:
                 "Działalność na rzecz integracji i reintegracji zawodowej i społecznej osób zagrożonych wykluczeniem społecznym i wykluczonych społecznie",
               icon: <Users className="h-6 w-6" />,
-              image: import.meta.env.BASE_URL + "reintegracja_s.png",
+              image: "/reintegracja_s.png",
             },
             {
               title: "Integracja europejska",
               description:
                 "Promowanie integracji europejskiej w aspekcie m.in. współpracy edukacyjnej i kulturalnej, upowszechniania sportu, ochrony środowiska",
               icon: <Globe className="h-6 w-6" />,
-              image: import.meta.env.BASE_URL + "unia_s.png",
+              image: "/unia_s.png",
             },
             {
               title: "Wsparcie i dostępność",
               description:
                 "Działania na rzecz osób niepełnosprawnych i ich rodzin w celu zapewnienia równych szans i dostępności.",
               icon: <Accessibility className="h-6 w-6" />,
-              image: import.meta.env.BASE_URL + "niepełnosprawnosci_s.png",
+              image: "/niepełnosprawnosci_s.png",
             },
           ].map((goal, index) => (
             <GoalCard
@@ -131,7 +129,6 @@ const Home = () => {
             <div className="mb-4 text-gray-600 dark:text-gray-400">
               {latestProject.date}
             </div>
-            {/* Ograniczamy tekst do krótkiego opisu */}
             <p className="text-lg mb-6 line-clamp-3">
               {latestProject.description}
             </p>
@@ -160,7 +157,7 @@ const Home = () => {
                 </div>
               </div>
               <p className="mb-4">
-                Testowy wpis dla przykładu na stronie facebook...
+                Testowy wpis dla przykładu na stronie...
                 #CommunitySupport #Odzyskajmy
               </p>
               <img
@@ -176,6 +173,23 @@ const Home = () => {
             </div>
           </FadeIn>
         </div>
+      </SectionContainer>
+
+      {/* CTA / Zachęta do wsparcia */}
+      <SectionContainer>
+        <FadeIn>
+          <div className="bg-foundation-green-light dark:bg-gray-700 rounded-lg p-8 text-center">
+            <h3 className="text-2xl font-bold mb-4 text-foundation-brown">Wesprzyj Nas</h3>
+            <p className="mb-6">
+              Twoje wsparcie ma realny wpływ na rozwój naszych projektów i pomoc osobom potrzebującym.
+            </p>
+            <Link to="/donate">
+              <Button className="bg-foundation-green text-white hover:bg-foundation-green/90">
+                Przekaż darowiznę
+              </Button>
+            </Link>
+          </div>
+        </FadeIn>
       </SectionContainer>
     </>
   );
