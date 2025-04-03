@@ -90,9 +90,9 @@ const Contact = () => {
               <a 
                 href="tel:+48123456789" 
                 className="text-foundation-green hover:underline"
-                aria-label="Call us at +48 123 456 789"
+                aria-label="Call us at +48 505 239 465"
               >
-                +48 123 456 789
+                +48 505 239 465
               </a>
             </div>
           </FadeIn>
@@ -133,7 +133,7 @@ const Contact = () => {
                 <Clock className="h-8 w-8 text-foundation-green" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-foundation-brown">Godziny otwarcia</h3>
-              <p>Poniedziałek - Piątek<br />8:00 - 19:00</p>
+              <p>Poniedziałek - Piątek<br />8:00 - 17:00</p>
             </div>
           </FadeIn>
         </div>
@@ -250,6 +250,7 @@ const Contact = () => {
                     required
                     aria-required="true"
                     maxLength={1000}
+                    className="resize-none"
                   />
                 </div>
                 <Button 

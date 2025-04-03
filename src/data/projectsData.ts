@@ -30,7 +30,7 @@ export interface Project {
         import.meta.env.BASE_URL + "nh_s.png",
         import.meta.env.BASE_URL + "slaskie_s.jpg"
       ],
-      date: "Zakończony 21.12.2024",
+      date: "04.04.2025",
     },
     {
       id: 2,

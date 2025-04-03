@@ -25,7 +25,7 @@ const Home = () => {
           <div className="max-w-2xl text-white text-center">
             <FadeIn direction="up" delay={100}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
-                Fundacja Odzyskajmy
+                Fundacja ODZYSKAJMY.PL
               </h1>
             </FadeIn>
             <FadeIn direction="up" delay={200}>
@@ -73,7 +73,7 @@ const Home = () => {
               description:
                 "Pomoc społeczna, w tym pomoc rodzinom i osobom w trudnej sytuacji życiowej oraz wyrównanie szans tych rodzin i osób",
               icon: <Heart className="h-6 w-6" />,
-              image: import.meta.env.BASE_URL + "sunset2.png"
+              image: import.meta.env.BASE_URL + "spoleczna_s.jpg"
             },
             {
               title: "Reintegracja społeczna",

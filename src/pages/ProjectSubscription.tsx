@@ -182,7 +182,7 @@ const ProjectSubscription = () => {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <FormLabel>
-                            Zgadzam się na udostępnienie moich danych (...)
+                          Wyrażam zgodę na przetwarzanie moich danych osobowych przez Fundację Odzyskajmy z siedzibą w Żywcu w celu organizacji wydarzenia "NOWE HORYZONTY - Edukacja i wsparcie zatrudnienia osób z niepełnosprawnościami" zgodnie z art. 6 ust. 1 lit. a RODO. Informacje dotyczące przetwarzania danych znajdują się w polityce prywatności. Podanie danych jest dobrowolne, ale niezbędne do udziału w spotkaniu.
                           </FormLabel>
                           <FormMessage />
                         </div>
@@ -190,26 +190,7 @@ const ProjectSubscription = () => {
                     )}
                   />
                   
-                  <FormField
-                    control={form.control}
-                    name="personalData"
-                    render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                        <FormControl>
-                          <Checkbox 
-                            checked={field.value} 
-                            onCheckedChange={field.onChange} 
-                          />
-                        </FormControl>
-                        <div className="space-y-1 leading-none">
-                          <FormLabel>
-                            I agree to the processing of my personal data in accordance with the Privacy Policy.
-                          </FormLabel>
-                          <FormMessage />
-                        </div>
-                      </FormItem>
-                    )}
-                  />
+
                 </div>
 
                 <Button 

@@ -12,7 +12,7 @@ const Footer = () => {
           
           {/* About section */}
           <div>
-            <h2 className="text-xl font-bold mb-4">Fundacja Odzyskajmy</h2>
+            <h2 className="text-xl font-bold mb-4">Fundacja ODZYSKAJMY.PL</h2>
             <p className="mb-4">
               Zapewniamy wsparcie, edukację i szanse na lepszą przyszłość
             </p>
@@ -28,7 +28,7 @@ const Footer = () => {
                   href="tel:+48123456789" 
                   className="hover:text-foundation-green transition-colors"
                 >
-                  +48 123 456 789
+                  +48 505 239 465
                 </a>
               </p>
               <p className="flex items-center">
@@ -56,7 +56,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-white/20 mt-8 pt-8 text-center">
-          <p>© {currentYear} Fundacja Odzyskajmy</p>
+          <p>© {currentYear} Fundacja ODZYSKAJMY.PL</p>
         </div>
       </div>
     </footer>

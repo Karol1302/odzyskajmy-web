@@ -28,7 +28,7 @@ const Donate = () => {
             </p>
             <div className="bg-foundation-green-light dark:bg-gray-700 rounded-lg p-6 mb-8">
               <h3 className="text-xl font-bold mb-2 text-foundation-brown">Numer rachunku:</h3>
-              <p className="text-lg font-mono mb-4">12 3456 7890 1234 5678 9012 3456</p>
+              <p className="text-lg font-mono mb-4">84 1240 4881 1111 0011 4568 4117</p>
               <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Fundacja Odzyskajmy<br/>
                 ul. Dworcowa 3, 34-300 Żywiec
