@@ -20,46 +20,40 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, delay = 0 }) => {
   /**
    * Sprawdza, czy projekt jest aktywny.
-   * Zasady:
-   * 1. Jeśli w date występuje 'Zakończony' (małe/duże litery) lub 'Ended' => NIEAKTYWNY
-   * 2. Jeśli zawiera 'Present' lub 'ciągły' => AKTYWNY
-   * 3. W przeciwnym razie — spróbujmy sparsować ostatnią część daty i sprawdzić, czy jest w przyszłości
-   *    (opcjonalne, zależy czy chcesz taką logikę).
+   * Reguły:
+   * 1. Jeśli w date występuje 'zakończony' lub 'ended' → NIEAKTYWNY
+   * 2. Jeśli zawiera 'present' lub 'ciągły' → AKTYWNY
+   * 3. Jeśli data ma format dd.mm.yyyy → aktywny gdy data >= dzisiejsza (start dnia)
+   * 4. W przeciwnym razie → AKTYWNY
    */
-  const checkActive = () => {
-    const lowerCaseDate = project.date.toLowerCase();
+  const checkActive = (): boolean => {
+    const lower = project.date.toLowerCase();
 
-    // 1. Sprawdzamy słowo "zakończony" lub "ended"
-    if (lowerCaseDate.includes('zakończony') || lowerCaseDate.includes('ended')) {
+    // 1. Zakończony
+    if (lower.includes('zakończony') || lower.includes('ended')) {
       return false;
     }
 
-    // 2. Sprawdzamy słowo "present" lub "ciągły"
-    if (lowerCaseDate.includes('present') || lowerCaseDate.includes('ciągły')) {
+    // 2. Ciągły / present
+    if (lower.includes('present') || lower.includes('ciągły')) {
       return true;
     }
 
-    // 3. Parsowanie na wypadek, gdy data ma format np. "21.12.2024" (przyszłość -> aktywne)
-    //    Jest to opcjonalne — jeśli wolisz prostsze reguły, możesz to usunąć.
-    //    Załóżmy, że format to np. "21.12.2024" => spróbujmy sparsować:
-    if (/\d{2}\.\d{2}\.\d{4}/.test(project.date)) {
-      // np. "21.12.2024"
-      const parts = project.date.split('.');
-      // parts[0] = 21, parts[1] = 12, parts[2] = 2024
-      const day = Number(parts[0]);
-      const month = Number(parts[1]) - 1; // JS liczy miesiące od 0
-      const year = Number(parts[2]);
-      const dateObj = new Date(year, month, day);
+    // 3. Parsowanie dd.mm.yyyy
+    const match = project.date.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+    if (match) {
+      const [, dd, mm, yyyy] = match.map(Number); 
+      const dateObj = new Date(yyyy, mm - 1, dd);
 
-      // Jeśli data w przyszłości -> aktywny
-      if (dateObj.getTime() > Date.now()) {
-        return true;
-      } else {
-        return false;
-      }
+      // Początek dzisiejszego dnia
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      // Aktywny jeśli data projektu >= początek dzisiejszego dnia
+      return dateObj.getTime() >= today.getTime();
     }
 
-    // Jeśli żadna reguła nie pasuje — domyślnie aktywny (lub false, zależnie od Twoich preferencji)
+    // 4. Domyślnie aktywny
     return true;
   };
 

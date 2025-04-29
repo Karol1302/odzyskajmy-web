@@ -7,16 +7,21 @@ const Donate = () => {
     <>
       <section className="bg-foundation-brown text-white py-16">
         <div className="container-custom">
-          <FadeIn>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">Wesprzyj nas</h1>
-            <p className="text-xl max-w-3xl">
-              Dzięki Twojej darowiźnie możemy kontynuować nasze działania,
-              wspierać osoby potrzebujące i rozwijać nowe projekty.
-            </p>
-          </FadeIn>
+          {/* dodajemy wrapper dla tekstu hero, z centrowaniem */}
+          <div className="max-w-3xl mx-auto text-center">
+            <FadeIn>
+              <h1 className="text-3xl md:text-5xl font-bold mb-4">
+                Wesprzyj nas
+              </h1>
+              <p className="text-xl max-w-3xl mx-auto">
+                Dzięki Twojej darowiźnie możemy kontynuować nasze działania,
+                wspierać osoby zagrożone wykluczeniem społecznym i wykluczone
+                społecznie szczególnie młodzież.
+              </p>
+            </FadeIn>
+          </div>
         </div>
       </section>
-
       <SectionContainer>
         <FadeIn>
           <SectionTitle>Jak możesz pomóc?</SectionTitle>

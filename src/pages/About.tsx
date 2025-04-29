@@ -189,7 +189,7 @@ const AboutUs = () => {
               misję, wartości oraz zasady działania Fundacji.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Statut */}
               <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
                 <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
@@ -203,30 +203,6 @@ const AboutUs = () => {
                     href={
                       import.meta.env.BASE_URL + 
                       "201210_statut-fundacji_odzyskajmy-poprawiony.pdf"
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-block"
-                  >
-                    Pobierz
-                  </a>
-                </Button>
-              </div>
-
-              {/* Regulamin świadczenia pomocy */}
-              <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 text-center">
-                <FileText className="h-12 w-12 mx-auto mb-4 text-foundation-green" />
-                <h3 className="text-xl font-bold mb-3">
-                  Regulamin świadczenia pomocy
-                </h3>
-                <p className="mb-4 text-gray-700 dark:text-gray-300">
-                  Zasady i wytyczne dotyczące udzielania wsparcia
-                </p>
-                <Button variant="secondary" className="w-full">
-                  <a
-                    href={
-                      import.meta.env.BASE_URL + 
-                      "Regulamin-świadczenia-pomocy-Fundacji-Odzyskajmy.pl_20210217.pdf"
                     }
                     target="_blank"
                     rel="noopener noreferrer"

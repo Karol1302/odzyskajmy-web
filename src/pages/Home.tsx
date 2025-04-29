@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
+      <section className="home-hero relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
           <img
             src= {import.meta.env.BASE_URL + "sunset2.png"}
@@ -138,7 +138,7 @@ const Home = () => {
       </SectionContainer>
 
       {/* Social Media Section */}
-      <SectionContainer id="social-media" bgColor="bg-foundation-light dark:bg-gray-800">
+      {/* <SectionContainer id="social-media" bgColor="bg-foundation-light dark:bg-gray-800">
         <SectionTitle>Nasza fundacja w social media</SectionTitle>
         <div className="max-w-3xl mx-auto">
           <FadeIn>
@@ -171,7 +171,7 @@ const Home = () => {
             </div>
           </FadeIn>
         </div>
-      </SectionContainer>
+      </SectionContainer> */}
 
       {/* CTA / Zachęta do wsparcia */}
       <SectionContainer>

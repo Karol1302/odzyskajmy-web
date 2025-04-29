@@ -83,6 +83,79 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 33 47% 52%;
   }
+    /* ——————————————————————————
+    HIGH CONTRAST (tylko jasny tryb)
+    — wszystkie teksty → czarne
+    — tła brunatne (.bg-foundation-brown) → białe
+    — przyciski → tło białe, tekst czarny
+    — tytuły w sekcji #goals → białe
+  —————————————————————————— */
+
+  .high-contrast * {
+    /* wymuszamy czarny tekst */
+    color: rgb(0 0% 0%) !important;
+  }
+
+  /* przyciski i buttony */
+  .high-contrast button,
+  .high-contrast input[type="button"],
+  .high-contrast input[type="submit"] {
+    background-color: rgb(100% 100% 100%) !important; /* białe tło */
+    color:           rgb(0 0% 0%)     !important; /* czarny tekst */
+    border-color:    rgb(0 0% 0%)     !important;
+  }
+
+  /* hero-sekcje i inne z klasą bg-foundation-brown */
+  .high-contrast .bg-foundation-brown {
+    background-color: rgb(100% 100% 100%) !important; /* białe tło */
+    color:            rgb(0 0% 0%)       !important; /* czarny tekst w nich */
+  }
+
+  /* ——————————————————————————————
+    HIGH CONTRAST (jasny) – sekcja #goals
+    — biały bg tylko za tytułami, czarny tekst
+  —————————————————————————————— */
+  .high-contrast #goals .section-title {
+    display: inline-block !important;             /* tło tylko za tekstem */
+    background-color: rgb(100% 100% 100%) !important;
+    color:           rgb(0 0% 0%)       !important;
+    padding:         0.25rem 0.5rem;              /* odstęp wokół tekstu */
+    border-radius:   0.25rem;                     /* zaokrąglone rogi */
+  }
+  /* ——————————————————————————————
+     HIGH CONTRAST (jasny) – hero i cele statutowe
+  —————————————————————————————— */
+
+  /* Hero na głównej – biały bg tylko za tekstem, czarny tekst */
+  .high-contrast .home-hero .max-w-2xl h1,
+  .high-contrast .home-hero .max-w-2xl p {
+    display: inline-block !important;
+    background-color: rgb(100% 100% 100%) !important;
+    color:           rgb(0 0% 0%) !important;
+    padding:         0.25rem 0.5rem;
+    border-radius:   0.25rem;
+  }
+
+  /* Sekcja #goals – biały bg tylko za tytułami */
+  .high-contrast #goals .section-title {
+    display: inline-block !important;
+    background-color: rgb(100% 100% 100%) !important;
+    color:           rgb(0 0% 0%) !important;
+    padding:       0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+    /* ——————————————————————————————
+     HIGH CONTRAST (jasny) – tytuły kart w #goals
+     (GoalCard tytuły to <h3>)
+  —————————————————————————————— */
+  .high-contrast #goals h3 {
+    display:         inline-block !important;   /* tło tylko za tekstem */
+    background-color: rgb(100% 100% 100%) !important; /* biały */
+    color:            rgb(0 0% 0%)       !important; /* czarny */
+    padding:          0.25rem 0.5rem     !important; /* odstęp */
+    border-radius:    0.25rem            !important; /* zaokr. rogi */
+  }
+
 }
 
 @layer base {

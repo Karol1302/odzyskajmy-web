@@ -14,22 +14,41 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    const willEnableDark = !isDarkMode;
+  
+    // Jeśli włączamy dark mode, wyłączamy high-contrast
+    if (willEnableDark && isHighContrast) {
+      setIsHighContrast(false);
+      document.documentElement.classList.remove('high-contrast');
+    }
+  
+    setIsDarkMode(willEnableDark);
     document.documentElement.classList.toggle('dark');
+  
     toast({
-      title: isDarkMode ? "Tryb jasny włączony" : "Tryb ciemny włączony",
+      title: willEnableDark ? "Tryb ciemny włączony" : "Tryb jasny włączony",
       description: "Twoje preferencje zostały zapisane",
     });
   };
   
+  
   const toggleHighContrast = () => {
-    setIsHighContrast(!isHighContrast);
+    // Jeśli jesteśmy w dark mode, wyłączamy go:
+    if (isDarkMode) {
+      setIsDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
+  
+    // Włączamy/wyłączamy high-contrast (będzie działać tylko w jasnym)
+    setIsHighContrast((prev) => !prev);
     document.documentElement.classList.toggle('high-contrast');
+  
     toast({
-      title: isHighContrast ? "Kontrast standardowy" : "Tryb wysokiego kontrastu włączony",
-      description: "Zaktualizowano ułatwienia dostępu.",
+      title: isHighContrast ? "Standardowy kontrast" : "Tryb wysokiego kontrastu włączony",
+      description: "Wysoki kontrast działa tylko w trybie jasnym.",
     });
   };
+  
 
   // Zamykamy menu mobilne po nawigacji do innej podstrony
   useEffect(() => {

@@ -3,9 +3,15 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/odzyskajmy-web/' : '/',
+export default defineConfig(({ mode }) => {
+    // w trybie deweloperskim (npm run dev) serwer będzie sygnalizować, że działasz pod /odzyskajmy-web/
+    // w trybie produkcyjnym (npm run build) bazą będzie główny katalog '/'
+    const base = mode === 'development'
+      ? '/odzyskajmy-web/'
+      : '/';
+  
+    return {
+      base,
   server: {
     host: "::",
     port: 8080,
@@ -20,4 +26,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-}));
+};
+});

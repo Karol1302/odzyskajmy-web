@@ -1,65 +1,89 @@
-import { useState } from 'react';
-import { SectionContainer, SectionTitle } from '@/components/ui/section-container';
-import FadeIn from '@/components/ui/animations/FadeIn';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { useToast } from '@/hooks/use-toast';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { useState, useEffect, useRef, ChangeEvent, FormEvent } from 'react'
+import { SectionContainer } from '@/components/ui/section-container'
+import FadeIn from '@/components/ui/animations/FadeIn'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
+import { useToast } from '@/hooks/use-toast'
+import { Phone, Mail, MapPin, Clock } from 'lucide-react'
+
+const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY
 
 const Contact = () => {
-  const { toast } = useToast();
+  const { toast } = useToast()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     subject: '',
     message: '',
-    website: '', // Honeypot - pole ukryte dla botów
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+    website: '', // honeypot
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const recaptchaRef = useRef<HTMLDivElement>(null)
 
-  // Funkcja sanitizująca – usuwa wszystkie znaczniki HTML
-  const sanitizeInput = (input: string): string => {
-    return input.replace(/<[^>]*>/g, '');
-  };
+  const sanitizeInput = (input: string) =>
+    input.replace(/<[^>]*>/g, '')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    // Czyszczenie danych przed ustawieniem stanu
-    const sanitizedValue = sanitizeInput(value);
-    setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
-  };
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: sanitizeInput(value),
+    }))
+  }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  useEffect(() => {
+    const tryRender = () => {
+      if (window.grecaptcha && recaptchaRef.current) {
+        window.grecaptcha.render(recaptchaRef.current, {
+          sitekey: SITE_KEY,
+        })
+        return true
+      }
+      return false
+    }
+    const interval = setInterval(() => {
+      if (tryRender()) clearInterval(interval)
+    }, 500)
+    return () => clearInterval(interval)
+  }, [])
 
-    // Sprawdzenie honeypot – jeśli pole "website" zostało wypełnione, traktujemy zgłoszenie jako bot
-    if (formData.website) {
-      return;
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    if (formData.website) return // honeypot
+
+    const token = window.grecaptcha.getResponse()
+    if (!token) {
+      toast({ title: 'Proszę potwierdzić, że nie jesteś robotem', variant: 'destructive' })
+      return
     }
 
-    // Tutaj można dodać obsługę CAPTCHA, np. Google reCAPTCHA, przed przystąpieniem do przesłania formularza
+    setIsSubmitting(true)
+    const payload = { ...formData, recaptchaToken: token }
 
-    setIsSubmitting(true);
-    
-    // Symulacja wysyłania formularza (na produkcji wywołanie API)
-    setTimeout(() => {
-      toast({
-        title: "Wiadomość wysłana",
-        description: "Dziękujemy za skontaktowanie się z nami. Odezwiemy się najszybciej jak to możliwe",
-      });
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-        website: '',
-      });
-      setIsSubmitting(false);
-    }, 1500);
-  };
+    try {
+      const res = await fetch('/send_mail.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const { status } = await res.json()
+      if (res.ok && status === 'success') {
+        toast({ title: 'Wiadomość wysłana', description: 'Dziękujemy za kontakt!' })
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '', website: '' })
+        window.grecaptcha.reset()
+      } else {
+        toast({ title: 'Błąd wysyłki', variant: 'destructive' })
+      }
+    } catch {
+      toast({ title: 'Błąd sieci', variant: 'destructive' })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <>
@@ -68,9 +92,11 @@ const Contact = () => {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Skontaktuj się z nami</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Skontaktuj się z nami
+              </h1>
               <p className="text-xl">
-                Masz pytanie lub potrzebujesz pomocy? Jesteśmy tutaj, aby pomóc. 
+                Masz pytanie lub potrzebujesz pomocy? Jesteśmy tutaj, aby pomóc.
                 Skontaktuj się z nami, a my odpowiemy tak szybko, jak to możliwe.
               </p>
             </FadeIn>
@@ -87,32 +113,28 @@ const Contact = () => {
                 <Phone className="h-8 w-8 text-foundation-green" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-foundation-brown">Telefon</h3>
-              <a 
-                href="tel:+48123456789" 
+              <a
+                href="tel:+48123456789"
                 className="text-foundation-green hover:underline"
-                aria-label="Call us at +48 505 239 465"
               >
                 +48 505 239 465
               </a>
             </div>
           </FadeIn>
-
           <FadeIn delay={200}>
             <div className="bg-foundation-green-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
               <div className="bg-white dark:bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Mail className="h-8 w-8 text-foundation-green" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-foundation-brown">Email</h3>
-              <a 
-                href="mailto:contact@odzyskajmy.org" 
+              <a
+                href="mailto:kontakt@odzyskajmy.pl"
                 className="text-foundation-green hover:underline"
-                aria-label="Email us at contact@odzyskajmy.org"
               >
                 kontakt@odzyskajmy.pl
               </a>
             </div>
           </FadeIn>
-
           <FadeIn delay={300}>
             <div className="bg-foundation-green-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
               <div className="bg-white dark:bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -126,23 +148,21 @@ const Contact = () => {
               </address>
             </div>
           </FadeIn>
-
           <FadeIn delay={400}>
             <div className="bg-foundation-green-light dark:bg-gray-800 rounded-lg p-6 text-center h-full">
               <div className="bg-white dark:bg-gray-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Clock className="h-8 w-8 text-foundation-green" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-foundation-brown">Godziny otwarcia</h3>
-              <p>Poniedziałek - Piątek<br />8:00 - 17:00</p>
+              <p>Poniedziałek – Piątek<br />8:00 – 17:00</p>
             </div>
           </FadeIn>
         </div>
       </SectionContainer>
 
-      {/* Map and Contact Form */}
+      {/* Map + Form */}
       <SectionContainer bgColor="bg-foundation-light dark:bg-gray-800">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
-          {/* Map */}
           <FadeIn direction="right">
             <div className="h-[500px] rounded-lg overflow-hidden shadow-md">
               <iframe
@@ -152,27 +172,24 @@ const Contact = () => {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-              ></iframe>
+              />
             </div>
           </FadeIn>
 
-          {/* Contact Form */}
           <FadeIn direction="left">
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold mb-6 text-foundation-brown">Wyślij wiadomość</h2>
-              <p className="mb-6 text-gray-700 dark:text-gray-300">
-                Darmowa konsultacja
-              </p>
-              <form onSubmit={handleSubmit}>
-                {/* Pole honeypot - niewidoczne dla użytkownika */}
-                <input 
-                  type="text" 
-                  name="website" 
-                  value={formData.website} 
-                  onChange={handleChange} 
-                  style={{ display: 'none' }} 
+              <h2 className="text-2xl font-bold mb-6 text-foundation-brown">
+                Wyślij wiadomość
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* honeypot */}
+                <input
+                  type="text"
+                  name="website"
+                  className="hidden"
                   tabIndex={-1}
                 />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label htmlFor="name" className="block mb-2 font-medium">
@@ -185,8 +202,6 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Twoje imię i nazwisko"
                       required
-                      aria-required="true"
-                      maxLength={50}
                     />
                   </div>
                   <div>
@@ -201,11 +216,10 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Twój adres e-mail"
                       required
-                      aria-required="true"
-                      maxLength={100}
                     />
                   </div>
                 </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label htmlFor="phone" className="block mb-2 font-medium">
@@ -217,7 +231,6 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="Twój numer kontaktowy"
-                      maxLength={20}
                     />
                   </div>
                   <div>
@@ -231,11 +244,10 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Temat"
                       required
-                      aria-required="true"
-                      maxLength={100}
                     />
                   </div>
                 </div>
+
                 <div className="mb-6">
                   <label htmlFor="message" className="block mb-2 font-medium">
                     Wiadomość <span className="text-red-500">*</span>
@@ -248,60 +260,26 @@ const Contact = () => {
                     placeholder="Treść wiadomości"
                     rows={5}
                     required
-                    aria-required="true"
-                    maxLength={1000}
-                    className="resize-none"
                   />
                 </div>
-                <Button 
-                  type="submit" 
-                  className="w-full md:w-auto px-8"
+
+                {/* recaptcha */}
+                <div ref={recaptchaRef} />
+
+                <Button
+                  type="submit"
                   disabled={isSubmitting}
+                  className="w-full"
                 >
-                  {isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}
+                  {isSubmitting ? 'Wysyłanie...' : 'Wyślij wiadomość'}
                 </Button>
               </form>
             </div>
           </FadeIn>
         </div>
       </SectionContainer>
-
-      {/* FAQ Section */}
-      <SectionContainer>
-        <SectionTitle>Najczęściej zadawane pytania</SectionTitle>
-        <div className="max-w-3xl mx-auto">
-          <FadeIn>
-            <div className="space-y-6">
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-bold mb-3 text-foundation-brown">Pytanie 1?</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Vestibulum varius hendrerit purus, eget maximus augue elementum vestibulum. 
-                  Integer sollicitudin dignissim neque vel varius. Maecenas placerat iaculis ante.
-                </p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-bold mb-3 text-foundation-brown">Pytanie 2?</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Vestibulum varius hendrerit purus, eget maximus augue elementum vestibulum. 
-                  Integer sollicitudin dignissim neque vel varius. Maecenas placerat iaculis ante.
-                </p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-bold mb-3 text-foundation-brown">Pytanie 3?</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Vestibulum varius hendrerit purus, eget maximus augue elementum vestibulum. 
-                  Integer sollicitudin dignissim neque vel varius. Maecenas placerat iaculis ante.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </SectionContainer>
     </>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

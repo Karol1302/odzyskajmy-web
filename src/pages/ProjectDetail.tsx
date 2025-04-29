@@ -1,5 +1,3 @@
-// src/pages/ProjectDetail.tsx
-
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, Share2, Mail } from 'lucide-react';
 import { SectionContainer } from '@/components/ui/section-container';
@@ -13,44 +11,18 @@ const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  // Szukamy aktualnego projektu
-  const currentProject = projectsData.find(project => project.id === Number(id));
-
-  // Lista 3 innych projektów do sekcji "Inne projekty"
+  // Pobranie projektu
+  const currentProject = projectsData.find(p => p.id === Number(id));
   const relatedProjects = currentProject
     ? projectsData.filter(p => p.id !== currentProject.id).slice(0, 3)
     : [];
 
-  // Po zmianie id przewijamy do góry
+  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  // Funkcja sprawdzająca aktywność
-  const checkActive = (dateStr: string) => {
-    const lowerCaseDate = dateStr.toLowerCase();
-
-    // 1. "zakończony" / "ended"
-    if (lowerCaseDate.includes('zakończony') || lowerCaseDate.includes('ended')) {
-      return false;
-    }
-    // 2. "present" / "ciągły"
-    if (lowerCaseDate.includes('present') || lowerCaseDate.includes('ciągły')) {
-      return true;
-    }
-    // 3. Parsowanie daty dd.mm.yyyy (opcjonalne)
-    if (/\d{2}\.\d{2}\.\d{4}/.test(dateStr)) {
-      const parts = dateStr.split('.');
-      const day = Number(parts[0]);
-      const month = Number(parts[1]) - 1;
-      const year = Number(parts[2]);
-      const dateObj = new Date(year, month, day);
-      return dateObj.getTime() > Date.now();
-    }
-    // Domyślnie true
-    return true;
-  };
-
+  // Jeśli brak projektu
   if (!currentProject) {
     return (
       <SectionContainer className="min-h-[60vh] flex items-center justify-center">
@@ -65,7 +37,25 @@ const ProjectDetail = () => {
     );
   }
 
-  const isActive = checkActive(currentProject.date);
+  // Sprawdzenie czy data jest dziś lub później (inclusive)
+  const isActive = (() => {
+    const ds = currentProject.date.toLowerCase();
+    if (ds.includes('zakończony') || ds.includes('ended')) return false;
+    if (ds.includes('present') || ds.includes('ciągły')) return true;
+
+    const match = ds.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+    if (match) {
+      const [_, dd, mm, yyyy] = match;
+      const projDate = new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return projDate.getTime() >= today.getTime();
+    }
+    return true;
+  })();
+
+  // Czy w ogóle włączone zapisy (z danych)
+  const canSubscribe = !!currentProject.allowSubscription && isActive;
 
   return (
     <>
@@ -95,7 +85,6 @@ const ProjectDetail = () => {
           {/* Main Content */}
           <div className="lg:col-span-2">
             <FadeIn>
-              {/* Image Gallery */}
               <div className="mb-8">
                 <img
                   src={currentProject.images[0]}
@@ -104,11 +93,11 @@ const ProjectDetail = () => {
                 />
                 {currentProject.images.length > 1 && (
                   <div className="grid grid-cols-3 gap-4">
-                    {currentProject.images.slice(1).map((image, idx) => (
+                    {currentProject.images.slice(1).map((img, i) => (
                       <img
-                        key={idx}
-                        src={image}
-                        alt={`${currentProject.title} - image ${idx + 2}`}
+                        key={i}
+                        src={img}
+                        alt={`${currentProject.title} - ${i + 2}`}
                         className="w-full h-32 object-cover rounded-md shadow-sm"
                       />
                     ))}
@@ -116,24 +105,22 @@ const ProjectDetail = () => {
                 )}
               </div>
 
-              {/* Full Content */}
               <div className="prose prose-lg max-w-none dark:prose-invert">
-                {currentProject.content.split('\n\n').map((paragraph, index) => (
-                  <div key={index}>
-                    {paragraph.startsWith('- ') ? (
+                {currentProject.content.split('\n\n').map((p, idx) => (
+                  <div key={idx}>
+                    {p.startsWith('- ') ? (
                       <ul className="list-disc pl-5 mb-4">
-                        {paragraph.split('\n- ').map((item, itemIndex) => (
-                          <li key={itemIndex}>{item.replace('- ', '')}</li>
+                        {p.split('\n- ').map((item, j) => (
+                          <li key={j}>{item.replace('- ', '')}</li>
                         ))}
                       </ul>
                     ) : (
-                      <p className="mb-4">{paragraph}</p>
+                      <p className="mb-4">{p}</p>
                     )}
                   </div>
                 ))}
               </div>
 
-              {/* Share buttons */}
               <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex items-center">
                   <span className="mr-4 font-medium">Udostępnij:</span>
@@ -163,28 +150,29 @@ const ProjectDetail = () => {
                   <div>
                     <h4 className="font-medium text-gray-700 dark:text-gray-300">Kontakt</h4>
                     <p>Po więcej informacji o tym projekcie zapraszamy do kontaktu:</p>
-                    <a
-                      href="mailto:kontakt@odzyskajmy.pl"
-                      className="text-foundation-green hover:underline"
-                    >
+                    <a href="mailto:kontakt@odzyskajmy.pl" className="text-foundation-green hover:underline">
                       kontakt@odzyskajmy.pl
                     </a>
                   </div>
-                  <div className="pt-4">
-                    {/* Przycisk zapisu wyszarzony, jeśli projekt nieaktywny */}
-                    <Button
-                      className="w-full"
-                      disabled={!isActive}
-                      onClick={() => navigate(`/projects/${currentProject.id}/subscribe`)}
-                    >
-                      Dołącz do projektu
-                    </Button>
-                    {!isActive && (
-                      <p className="text-xs mt-2 text-red-600 dark:text-red-400">
-                        Ten projekt jest już zakończony – nie można się zapisać.
-                      </p>
-                    )}
-                  </div>
+
+                  {/* Tylko jeśli allowSubscription i jest aktywny */}
+                  {canSubscribe && (
+                    <div className="pt-4">
+                      <Button
+                        className="w-full"
+                        onClick={() => navigate(`/projects/${currentProject.id}/subscribe`)}
+                      >
+                        Dołącz do projektu
+                      </Button>
+                    </div>
+                  )}
+
+                  {/* Jeśli włączone, ale nieaktywne */}
+                  {currentProject.allowSubscription && !isActive && (
+                    <p className="text-xs mt-2 text-red-600 dark:text-red-400">
+                      Ten projekt jest już zakończony – nie można się zapisać.
+                    </p>
+                  )}
                 </div>
               </div>
             </FadeIn>
@@ -197,8 +185,8 @@ const ProjectDetail = () => {
         <SectionContainer bgColor="bg-foundation-light dark:bg-gray-800">
           <h2 className="text-3xl font-bold mb-8">Inne projekty</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {relatedProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} delay={index * 100} />
+            {relatedProjects.map((proj, i) => (
+              <ProjectCard key={proj.id} project={proj} delay={i * 100} />
             ))}
           </div>
         </SectionContainer>

@@ -12,7 +12,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import ProjectSubscription from "./pages/ProjectSubscription";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 // Nowa podstrona
 import Donate from "./pages/Donate";
 
@@ -52,9 +52,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      {/* Upewnij się, że basename odpowiada Twoim potrzebom (GitHub Pages) */}
-      <BrowserRouter basename="/odzyskajmy-web">
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <AppContent />
+        <CookieSettingsButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
