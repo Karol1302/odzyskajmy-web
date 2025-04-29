@@ -10,6 +10,7 @@ npm run build
 ```
 
 Po wykonaniu npm run build w katalogu <repo-folder> powstaje:
+```
 <repo-folder>/
 ├── dist/            # zbudowane pliki React najpierw tutaj
 │   ├── assets/
@@ -23,9 +24,11 @@ Po wykonaniu npm run build w katalogu <repo-folder> powstaje:
 ├── tailwind.config.ts
 ├── package.json
 └── ...              # inne pliki projektu
+```
 
 ## 2. Przygotowanie struktury na serwerze
 Na serwerze Apache (np. w katalogu public_html/) powinieneś mieć końcowy widok:
+```
 public_html/
 ├── index.html          # skopiowane z dist/index.html
 ├── assets/             # skopiowane z dist/assets/
@@ -33,6 +36,7 @@ public_html/
 ├── send_mail.php       # z katalogu public/ twojego repo
 ├── .htaccess           # z katalogu public/ twojego repo
 └── (opcjonalne inne zasoby)
+```
 
 Uwaga: możesz po prostu wypakować zawartość dist/ do public_html/, a następnie skopiować do niego send_mail.php i .htaccess.
 
