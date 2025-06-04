@@ -1,8 +1,17 @@
 <?php
 
-define('TO_ADDRESS', 'kontakt@odzyskajmy.pl','karol130013@gmail.com');
+define('TO_ADDRESS', 'kontakt@odzyskajmy.pl');
 define('FROM_ADDRESS', 'admin@odzyskajmy.pl');
+
 $recaptchaSecret = getenv('RECAPTCHA_SECRET');
+if (!$recaptchaSecret && file_exists(__DIR__ . '/.env')) {
+  foreach (file(__DIR__ . '/.env') as $line) {
+    if (strpos($line, 'RECAPTCHA_SECRET=') === 0) {
+      $recaptchaSecret = trim(substr($line, strlen('RECAPTCHA_SECRET=')));
+      break;
+    }
+  }
+}
 
 if (!$recaptchaSecret) {
   http_response_code(500);
