@@ -1,7 +1,14 @@
 <?php
 
 define('TO_ADDRESS', 'kontakt@odzyskajmy.pl');
-define('RECAPTCHA_SECRET', '6LcCuCcrAAAAAGHZjPTD6kFglUjhkv8vlzhoT6o8');
+define('FROM_ADDRESS', 'admin@odzyskajmy.pl');
+$recaptchaSecret = getenv('RECAPTCHA_SECRET');
+
+if (!$recaptchaSecret) {
+  http_response_code(500);
+  echo json_encode(['status' => 'error', 'message' => 'Server misconfiguration']);
+  exit;
+}
 
 header('Content-Type: application/json');
 
@@ -63,14 +70,22 @@ foreach ($spamKeywords as $kw) {
   }
 }
 
-if (!empty($data['recaptchaToken'])) {
-  $token  = $data['recaptchaToken'];
-  $url    = 'https://www.google.com/recaptcha/api/siteverify';
-  $params = [
-    'secret'   => RECAPTCHA_SECRET,
-    'response' => $token,
-    'remoteip' => $_SERVER['REMOTE_ADDR'],
-  ];
+if (empty($data['recaptchaToken'])) {
+  http_response_code(400);
+  echo json_encode([
+    'status'  => 'error',
+    'message' => 'Failed CAPTCHA',
+  ]);
+  exit;
+}
+
+$token  = $data['recaptchaToken'];
+$url    = 'https://www.google.com/recaptcha/api/siteverify';
+$params = [
+  'secret'   => $recaptchaSecret,
+  'response' => $token,
+  'remoteip' => $_SERVER['REMOTE_ADDR'],
+];
 
   $ch = curl_init($url);
   // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -104,7 +119,6 @@ if (!empty($data['recaptchaToken'])) {
       // 'debug'   => $r,
     ]);
     exit;
-  }
 }
 
 $name    = '';
@@ -127,7 +141,7 @@ if (!$email) {
 }
 
 $to      = TO_ADDRESS;
-$headers  = "From: admin@odzyskajmy.pl\r\n";
+$headers  = "From: " . FROM_ADDRESS . "\r\n";
 $headers .= "Reply-To: {$email}\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
