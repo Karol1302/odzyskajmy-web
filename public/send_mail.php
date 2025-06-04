@@ -1,7 +1,14 @@
 <?php
 
-define('TO_ADDRESS', 'kontakt@odzyskajmy.pl');
-define('RECAPTCHA_SECRET', '6LcCuCcrAAAAAGHZjPTD6kFglUjhkv8vlzhoT6o8');
+define('TO_ADDRESS', 'kontakt@odzyskajmy.pl','karol130013@gmail.com');
+define('FROM_ADDRESS', 'admin@odzyskajmy.pl');
+$recaptchaSecret = getenv('RECAPTCHA_SECRET');
+
+if (!$recaptchaSecret) {
+  http_response_code(500);
+  echo json_encode(['status' => 'error', 'message' => 'Server misconfiguration']);
+  exit;
+}
 
 header('Content-Type: application/json');
 
@@ -63,11 +70,19 @@ foreach ($spamKeywords as $kw) {
   }
 }
 
-if (!empty($data['recaptchaToken'])) {
-  $token  = $data['recaptchaToken'];
+if (empty($data['recaptchaToken'])) {
+  http_response_code(400);
+  echo json_encode([
+    'status'  => 'error',
+    'message' => 'Failed CAPTCHA',
+  ]);
+  exit;
+}
+
+$token  = $data['recaptchaToken'];
   $url    = 'https://www.google.com/recaptcha/api/siteverify';
   $params = [
-    'secret'   => RECAPTCHA_SECRET,
+    'secret'   => $recaptchaSecret,
     'response' => $token,
     'remoteip' => $_SERVER['REMOTE_ADDR'],
   ];
@@ -105,7 +120,6 @@ if (!empty($data['recaptchaToken'])) {
     ]);
     exit;
   }
-}
 
 $name    = '';
 if (!empty($data['firstName']) && !empty($data['lastName'])) {
@@ -127,7 +141,7 @@ if (!$email) {
 }
 
 $to      = TO_ADDRESS;
-$headers  = "From: kontakt@odzyskajmy.pl\r\n";
+$headers  = "From: " . FROM_ADDRESS . "\r\n";
 $headers .= "Reply-To: {$email}\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 

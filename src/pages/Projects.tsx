@@ -1,16 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SectionContainer, SectionTitle } from '@/components/ui/section-container';
 import ProjectCard from '@/components/projects/ProjectCard';
 import FadeIn from '@/components/ui/animations/FadeIn';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
-import { projectsData } from '@/data/projectsData';
+import { fetchProjects, Project } from '@/data/projectsData';
 
 const Projects = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [projects, setProjects] = useState<Project[]>([]);
 
-  // Filtrujemy projekty na podstawie wpisanego tekstu (tytuł lub description)
-  const filteredProjects = projectsData.filter((project) =>
+  useEffect(() => {
+    fetchProjects().then(setProjects);
+  }, []);
+
+  const filteredProjects = projects.filter((project) =>
     project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     project.description.toLowerCase().includes(searchTerm.toLowerCase())
   );

@@ -1,14 +1,20 @@
 import { Heart, Users, Globe, Accessibility } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { SectionContainer, SectionTitle } from '@/components/ui/section-container';
 import FadeIn from '@/components/ui/animations/FadeIn';
 import GoalCard from '@/components/home/GoalCard';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-
-import { projectsData } from '@/data/projectsData';
+import { fetchProjects, Project } from '@/data/projectsData';
 
 const Home = () => {
-  const latestProject = [...projectsData].sort((a, b) => b.id - a.id)[0];
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    fetchProjects().then(setProjects);
+  }, []);
+
+  const latestProject = [...projects].sort((a, b) => b.id - a.id)[0];
 
   return (
     <>
@@ -110,32 +116,34 @@ const Home = () => {
       </SectionContainer>
 
       {/* Latest Project Section */}
-      <SectionContainer id="latest-project">
-        <SectionTitle>Nasz najnowszy projekt</SectionTitle>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <FadeIn direction="right">
-            <img
-              src={latestProject.images[0]}
-              alt={latestProject.title}
-              className="rounded-lg shadow-lg w-full h-auto max-h-96 object-cover"
-            />
-          </FadeIn>
-          <FadeIn direction="left">
-            <h3 className="text-2xl font-bold mb-4 text-foundation-brown">
-              {latestProject.title}
-            </h3>
-            <div className="mb-4 text-gray-600 dark:text-gray-400">
-              {latestProject.date}
-            </div>
-            <p className="text-lg mb-6 line-clamp-3">
-              {latestProject.description}
-            </p>
-            <Link to={`/projects/${latestProject.id}`}>
-              <Button>Czytaj dalej</Button>
-            </Link>
-          </FadeIn>
-        </div>
-      </SectionContainer>
+      {latestProject && (
+        <SectionContainer id="latest-project">
+          <SectionTitle>Nasz najnowszy projekt</SectionTitle>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <FadeIn direction="right">
+              <img
+                src={latestProject.images[0]}
+                alt={latestProject.title}
+                className="rounded-lg shadow-lg w-full h-auto max-h-96 object-cover"
+              />
+            </FadeIn>
+            <FadeIn direction="left">
+              <h3 className="text-2xl font-bold mb-4 text-foundation-brown">
+                {latestProject.title}
+              </h3>
+              <div className="mb-4 text-gray-600 dark:text-gray-400">
+                {latestProject.date}
+              </div>
+              <p className="text-lg mb-6 line-clamp-3">
+                {latestProject.description}
+              </p>
+              <Link to={`/projects/${latestProject.id}`}>
+                <Button>Czytaj dalej</Button>
+              </Link>
+            </FadeIn>
+          </div>
+        </SectionContainer>
+      )}
 
       {/* Social Media Section */}
       {/* <SectionContainer id="social-media" bgColor="bg-foundation-light dark:bg-gray-800">

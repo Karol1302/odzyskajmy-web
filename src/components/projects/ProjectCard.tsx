@@ -2,15 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FadeIn from '@/components/ui/animations/FadeIn';
-
-export interface Project {
-  id: number;
-  title: string;
-  description: string; // krótki opis
-  content: string;     // pełny opis
-  images: string[];
-  date: string;
-}
+import type { Project } from '@/data/projectsData';
 
 interface ProjectCardProps {
   project: Project;
@@ -21,12 +13,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, delay = 0 }) => {
   /**
    * Sprawdza, czy projekt jest aktywny.
    * Reguły:
+   * 0. Jeśli istnieje projekt.forceActive === true → AKTYWNY
    * 1. Jeśli w date występuje 'zakończony' lub 'ended' → NIEAKTYWNY
    * 2. Jeśli zawiera 'present' lub 'ciągły' → AKTYWNY
-   * 3. Jeśli data ma format dd.mm.yyyy → aktywny gdy data >= dzisiejsza (start dnia)
+   * 3. Jeśli data ma format dd.mm.yyyy → aktywny, gdy data >= dzisiejsza (start dnia)
    * 4. W przeciwnym razie → AKTYWNY
    */
   const checkActive = (): boolean => {
+    // 0. forceActive → zawsze aktywny
+    if (project.forceActive) {
+      return true;
+    }
+
     const lower = project.date.toLowerCase();
 
     // 1. Zakończony
@@ -42,7 +40,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, delay = 0 }) => {
     // 3. Parsowanie dd.mm.yyyy
     const match = project.date.match(/(\d{2})\.(\d{2})\.(\d{4})/);
     if (match) {
-      const [, dd, mm, yyyy] = match.map(Number); 
+      const [, dd, mm, yyyy] = match.map(Number);
       const dateObj = new Date(yyyy, mm - 1, dd);
 
       // Początek dzisiejszego dnia
@@ -56,7 +54,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, delay = 0 }) => {
     // 4. Domyślnie aktywny
     return true;
   };
-
   const isActive = checkActive();
 
   return (

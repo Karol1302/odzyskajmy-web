@@ -1,70 +1,84 @@
-# Wdrażanie na produkcję
+# Fundacja Odzyskajmy – instrukcja uruchomienia i wdrożenia
 
-## 1. Sklonowanie i budowa
+Ten projekt to aplikacja front‑endowa napisana w React z wykorzystaniem
+Tailwind CSS oraz Vite. W katalogu `public` znajdują się także pliki PHP
+odpowiedzialne za obsługę formularza kontaktowego.
+
+## Struktura katalogów
+
+├── src/                 # kod źródłowy React/TypeScript
+├── public/              # statyczne zasoby dołączane przy budowie
+│   ├── projects/        # dane projektów w formacie JSON wraz z obrazami
+│   ├── send_mail.php    # skrypt obsługujący formularz
+│   ├── cacert.pem       # certyfikat używany przez cURL w PHP
+│   └── .htaccess        # konfiguracja Apache
+├── .env                 # zmienne środowiskowe (np. klucz reCAPTCHA)
+├── dist/                # wynik komendy `npm run build`
+└── ...
+```
+
+Plik `.env` jest ignorowany przez Git. Musi on znajdować się lokalnie przed
+uruchomieniem budowania, ponieważ wartości w nim zapisane zostaną wstrzyknięte
+w procesie kompilacji.
+
+## Uruchomienie w trybie deweloperskim
+
+1. Zainstaluj zależności:
+   ```bash
+   npm install
+   ```
+2. Umieść plik `.env` w katalogu głównym projektu.
+3. Uruchom serwer deweloperski:
+   ```bash
+   npm run dev
+   ```
+   Aplikacja będzie dostępna pod adresem `http://localhost:8080`.
+
+## Budowanie wersji produkcyjnej
+
+Aby przygotować aplikację do publikacji, wykonaj:
 
 ```bash
-git clone <repo-url>
-cd <repo-folder>
-npm install
 npm run build
 ```
 
-Po wykonaniu npm run build w katalogu <repo-folder> powstaje:
-```
-<repo-folder>/
-├── dist/            # zbudowane pliki React najpierw tutaj
-│   ├── assets/
-│   ├── favicon.ico
-│   └── index.html   # główny punkt wejścia przeniesiony dalej
-├── public/          # katalog publiczny z .htaccess i send_mail.php
-│   ├── send_mail.php
-│   └── .htaccess
-├── src/             # źródła React
-├── vite.config.ts
-├── tailwind.config.ts
-├── package.json
-└── ...              # inne pliki projektu
-```
+Po zakończeniu budowania w katalogu `dist/` pojawi się gotowa wersja strony.
+Do katalogu tego kopiowane są również wszystkie pliki z `public/`.
 
-## 2. Przygotowanie struktury na serwerze
-Na serwerze Apache (np. w katalogu public_html/) powinieneś mieć końcowy widok:
-```
-public_html/
-├── index.html          # skopiowane z dist/index.html
-├── assets/             # skopiowane z dist/assets/
-├── favicon.ico         # skopiowane z dist/favicon.ico
-├── send_mail.php       # z katalogu public/ twojego repo
-├── .htaccess           # z katalogu public/ twojego repo
-└── (opcjonalne inne zasoby)
-```
+## Publikacja na serwerze (np. dhosting)
 
-Uwaga: możesz po prostu wypakować zawartość dist/ do public_html/, a następnie skopiować do niego send_mail.php i .htaccess.
+1. Zbuduj projekt komendą `npm run build`.
+2. Na serwerze przygotuj katalog `public_html` (lub inny katalog, który jest
+   katalogiem głównym witryny).
+3. Skopiuj **całą zawartość** katalogu `dist/` do `public_html/`:
+   ```bash
+   cp -r dist/* /sciezka/do/public_html/
+   ```
+4. Dodatkowo skopiuj z repozytorium następujące pliki do `public_html/`:
+   - `.env` – jeżeli konfiguracja jest wymagana po stronie serwera,
+   - `public/send_mail.php`
+   - `public/cacert.pem`
+   - `public/.htaccess` (w efekcie plik na serwerze będzie się nazywał `.htaccess`).
+5. Upewnij się, że struktura `public_html/projects/` zawiera wszystkie pliki JSON
+   oraz obrazy projektów skopiowane podczas kroku 3.
+6. Ścieżki w aplikacji zakładają, że strona jest dostępna w katalogu głównym
+domeny (tj. `DocumentRoot` wskazuje na `public_html`).
 
-## 3. Konfiguracja Apache
-DocumentRoot powinien wskazywać na Twój katalog public_html/:
-```
-<VirtualHost *:80>
-  ServerName twojadomena.pl
-  DocumentRoot /ścieżka/do/public_html
-  <Directory /ścieżka/do/public_html>
-    AllowOverride All
-    Require all granted
-  </Directory>
-</VirtualHost>
-```
+Po wgraniu plików strona powinna być od razu dostępna. Skrypt PHP będzie
+wysyłał wiadomości z adresu zdefiniowanego w `send_mail.php`, korzystając z
+lokalnego programu `sendmail`. Jeżeli plik `.env` zawiera klucz reCAPTCHA,
+nie zapomnij go również umieścić na serwerze.
 
-Włącz mod_rewrite i zrestartuj:
-```bash
-a2enmod rewrite
-service apache2 restart
-```
+## Aktualizacja danych projektów
 
-Sprawdź .htaccess (z katalogu public/):
-```
-IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ index.html [L]
-</IfModule>
-```
+Dane każdego projektu znajdują się w osobnym pliku JSON w katalogu
+`public/projects/<id>/<id>.json`. Lista dostępnych projektów znajduje się w
+`public/projects/projects.json`. Aby dodać nowy projekt lub zmodyfikować istniejący,
+wystarczy edytować odpowiednie pliki JSON i (opcjonalnie) dodać obrazy w tym samym
+katalogu. Nie ma potrzeby ponownego budowania aplikacji, o ile zmieniasz jedynie
+te pliki statyczne na serwerze.
+
+---
+
+Powyższe kroki pozwolą uruchomić i wdrożyć aplikację Fundacji Odzyskajmy zarówno
+na lokalnym komputerze, jak i na hostingu produkcyjnym.

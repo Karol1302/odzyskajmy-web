@@ -1,25 +1,28 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Share2, Mail } from 'lucide-react';
+import { ArrowLeft, Calendar, Share2, Facebook } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 import { SectionContainer } from '@/components/ui/section-container';
 import FadeIn from '@/components/ui/animations/FadeIn';
 import ProjectCard from '@/components/projects/ProjectCard';
 import { Button } from '@/components/ui/button';
-import { useEffect } from 'react';
-import { projectsData } from '@/data/projectsData';
+import { useEffect, useState } from 'react';
+import { fetchProjects, fetchProject, Project } from '@/data/projectsData';
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
   // Pobranie projektu
-  const currentProject = projectsData.find(p => p.id === Number(id));
-  const relatedProjects = currentProject
-    ? projectsData.filter(p => p.id !== currentProject.id).slice(0, 3)
-    : [];
+  const [currentProject, setCurrentProject] = useState<Project | undefined>(undefined);
+  const [relatedProjects, setRelatedProjects] = useState<Project[]>([]);
 
-  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (!id) return;
+    fetchProject(Number(id)).then(setCurrentProject);
+    fetchProjects().then((all) => {
+      setRelatedProjects(all.filter(p => p.id !== Number(id)).slice(0, 3));
+    });
   }, [id]);
 
   // Jeśli brak projektu
@@ -39,6 +42,9 @@ const ProjectDetail = () => {
 
   // Sprawdzenie czy data jest dziś lub później (inclusive)
   const isActive = (() => {
+    if (currentProject.forceActive) {
+      return true;
+    }
     const ds = currentProject.date.toLowerCase();
     if (ds.includes('zakończony') || ds.includes('ended')) return false;
     if (ds.includes('present') || ds.includes('ciągły')) return true;
@@ -56,6 +62,18 @@ const ProjectDetail = () => {
 
   // Czy w ogóle włączone zapisy (z danych)
   const canSubscribe = !!currentProject.allowSubscription && isActive;
+  const handleShareFacebook = () => {
+    const url = encodeURIComponent(window.location.href);
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+      '_blank'
+    );
+  };
+
+  const handleCopyLink = async () => {
+    await navigator.clipboard.writeText(window.location.href);
+    toast({ title: 'Skopiowano do schowka' });
+  };
 
   return (
     <>
@@ -125,11 +143,21 @@ const ProjectDetail = () => {
                 <div className="flex items-center">
                   <span className="mr-4 font-medium">Udostępnij:</span>
                   <div className="flex space-x-2">
-                    <Button variant="outline" size="icon" aria-label="Share on Facebook">
+                    <Button
+                        variant="outline"
+                        size="icon"
+                        aria-label="Udostępnij na Facebooku"
+                        onClick={handleShareFacebook}
+                      >
+                        <Facebook className="h-4 w-4" />
+                      </Button>
+                        <Button
+                        variant="outline"
+                        size="icon"
+                        aria-label="Kopiuj link"
+                        onClick={handleCopyLink}
+                      >
                       <Share2 className="h-4 w-4" />
-                    </Button>
-                    <Button variant="outline" size="icon" aria-label="Share via email">
-                      <Mail className="h-4 w-4" />
                     </Button>
                   </div>
                 </div>
