@@ -6,6 +6,7 @@ odpowiedzialne za obsługę formularza kontaktowego.
 
 ## Struktura katalogów
 
+```
 ├── src/                 # kod źródłowy React/TypeScript
 ├── public/              # statyczne zasoby dołączane przy budowie
 │   ├── projects/        # dane projektów w formacie JSON wraz z obrazami
@@ -32,6 +33,7 @@ w procesie kompilacji.
    ```bash
    npm run dev
    ```
+
    Aplikacja będzie dostępna pod adresem `http://localhost:8080`.
 
 ## Budowanie wersji produkcyjnej
@@ -62,7 +64,7 @@ Do katalogu tego kopiowane są również wszystkie pliki z `public/`.
 5. Upewnij się, że struktura `public_html/projects/` zawiera wszystkie pliki JSON
    oraz obrazy projektów skopiowane podczas kroku 3.
 6. Ścieżki w aplikacji zakładają, że strona jest dostępna w katalogu głównym
-domeny (tj. `DocumentRoot` wskazuje na `public_html`).
+   domeny (tj. `DocumentRoot` wskazuje na `public_html`).
 
 Po wgraniu plików strona powinna być od razu dostępna. Skrypt PHP będzie
 wysyłał wiadomości z adresu zdefiniowanego w `send_mail.php`, korzystając z
@@ -80,5 +82,5 @@ te pliki statyczne na serwerze.
 
 ---
 
-Powyższe kroki pozwolą uruchomić i wdrożyć aplikację Fundacji Odzyskajmy zarówno
+Powyższe kroki pozwolą uruchomić i wdrożyć stronę Fundacji zarówno
 na lokalnym komputerze, jak i na hostingu produkcyjnym.
