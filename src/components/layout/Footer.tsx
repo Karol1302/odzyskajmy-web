@@ -16,6 +16,13 @@ const Footer = () => {
             <p className="mb-4">
               Zapewniamy wsparcie, edukację i szanse na lepszą przyszłość
             </p>
+            <p className="mb-4">
+            NIP: 5532569341 KRS: 0000879689
+            </p>
+            <p className="mb-4">
+            REGON: 387976557
+            </p>
+
           </div>
           
           {/* Contact information */}

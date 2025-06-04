@@ -1,20 +1,10 @@
 <?php
-// send_mail.php
 
-// ------------------------
-// KONFIGURACJA
-// ------------------------
 define('TO_ADDRESS', 'kontakt@odzyskajmy.pl');
-define('RECAPTCHA_SECRET', '6LfbsycrAAAAACfYpUSK0YxECkIUS-ZQbOj373v2'); // wklej swój sekret z Google
+define('RECAPTCHA_SECRET', '6LcCuCcrAAAAAGHZjPTD6kFglUjhkv8vlzhoT6o8');
 
-// ------------------------
-// NAGŁÓWKI
-// ------------------------
 header('Content-Type: application/json');
 
-// ------------------------
-// 1. ODCZYT REQUESTU
-// ------------------------
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true);
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !is_array($data)) {
@@ -23,39 +13,104 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !is_array($data)) {
   exit;
 }
 
-// ------------------------
-// 2. HONEYPOT
-// ------------------------
 if (!empty($data['website'])) {
-  // bot — zwracamy sukces, ale nie wysyłamy maila
   echo json_encode(['status'=>'success']);
   exit;
 }
 
-// ------------------------
-// 3. SPRAWDZENIE reCAPTCHA
-// ------------------------
-if (!empty($data['recaptchaToken'])) {
-  $token = $data['recaptchaToken'];
-  $resp  = file_get_contents(
-    'https://www.google.com/recaptcha/api/siteverify?secret='
-    .urlencode(RECAPTCHA_SECRET)
-    .'&response='.urlencode($token)
-  );
-  $r     = json_decode($resp, true);
-  if (empty($r['success']) || ($r['score'] ?? 0) < 0.5) {
-    http_response_code(403);
-    echo json_encode(['status'=>'error','message'=>'Failed CAPTCHA']);
+$ip = $_SERVER['REMOTE_ADDR'];
+$maxRequests = 5;
+$period      = 3600;
+$rateFile    = sys_get_temp_dir()
+               .'/contact_rate_'
+               .preg_replace('/[^A-Za-z0-9]/','_',$ip)
+               .'.json';
+
+if (file_exists($rateFile)) {
+  $times = json_decode(file_get_contents($rateFile), true) ?: [];
+} else {
+  $times = [];
+}
+$now   = time();
+$times = array_filter($times, fn($t)=> ($now-$t) < $period);
+if (count($times) >= $maxRequests) {
+  http_response_code(429);
+  echo json_encode(['status'=>'error','message'=>'Too many requests']);
+  exit;
+}
+$times[] = $now;
+file_put_contents($rateFile, json_encode($times));
+
+$msgRaw = $data['message'] ?? '';
+if (preg_match_all('/https?:\/\//i', $msgRaw) > 2) {
+  http_response_code(400);
+  echo json_encode(['status'=>'error','message'=>'Spam detected']);
+  exit;
+}
+$spamKeywords = [
+  'viagra','cialis','casino','free money','click here','earn','loan',
+  'credit','bitcoin','crypto','sex','xxx','porn','gambling','winner',
+  'outstanding','pre-approved','deal','offer','risk free','cheap meds',
+  'darmowy','pożyczka','kredyt','lek na','okazja','oferta specjalna',
+  'wygraj','natychmiastowy przelew','super promocja','bez ryzyka',
+  'tabletki','biznes w domu','zarób','nagroda','spam','fax','SMS',
+];
+foreach ($spamKeywords as $kw) {
+  if (stripos($msgRaw, $kw) !== false) {
+    http_response_code(400);
+    echo json_encode(['status'=>'error','message'=>'Spam detected']);
     exit;
   }
 }
 
-// ------------------------
-// 4. SANITYZACJA PÓL
-// ------------------------
+if (!empty($data['recaptchaToken'])) {
+  $token  = $data['recaptchaToken'];
+  $url    = 'https://www.google.com/recaptcha/api/siteverify';
+  $params = [
+    'secret'   => RECAPTCHA_SECRET,
+    'response' => $token,
+    'remoteip' => $_SERVER['REMOTE_ADDR'],
+  ];
+
+  $ch = curl_init($url);
+  // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+  curl_setopt($ch, CURLOPT_POST, true);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+  curl_setopt($ch, CURLOPT_CAINFO, __DIR__ . '/cacert.pem');
+
+  $resp = curl_exec($ch);
+  if ($resp === false) {
+    $err = curl_error($ch);
+    curl_close($ch);
+    http_response_code(500);
+    echo json_encode([
+      'status'  => 'error',
+      'message' => 'cURL error',
+      // 'error'   => $err,
+    ]);
+    exit;
+  }
+  curl_close($ch);
+
+  $r = json_decode($resp, true);
+  if (empty($r['success'])) {
+    http_response_code(403);
+    echo json_encode([
+      'status'  => 'error',
+      'message' => 'Failed CAPTCHA',
+      // 'debug'   => $r,
+    ]);
+    exit;
+  }
+}
+
 $name    = '';
 if (!empty($data['firstName']) && !empty($data['lastName'])) {
-  $name = filter_var($data['firstName'].' '.$data['lastName'], FILTER_SANITIZE_STRING);
+  $n = $data['firstName'].' '.$data['lastName'];
+  $name = filter_var($n, FILTER_SANITIZE_STRING);
 } elseif (!empty($data['name'])) {
   $name = filter_var($data['name'], FILTER_SANITIZE_STRING);
 }
@@ -63,35 +118,26 @@ if (!empty($data['firstName']) && !empty($data['lastName'])) {
 $email   = filter_var($data['email'] ?? '', FILTER_VALIDATE_EMAIL);
 $phone   = filter_var($data['phone'] ?? '', FILTER_SANITIZE_STRING);
 $subject = filter_var($data['subject'] ?? '', FILTER_SANITIZE_STRING) ?: 'Bez tematu';
-$message = filter_var($data['message'] ?? '', FILTER_SANITIZE_STRING);
+$message = filter_var($msgRaw, FILTER_SANITIZE_STRING);
 
-// walidacja email
 if (!$email) {
   http_response_code(400);
   echo json_encode(['status'=>'error','message'=>'Invalid email']);
   exit;
 }
 
-// ------------------------
-// 5. BUDOWA MAILA
-// ------------------------
 $to      = TO_ADDRESS;
 $headers  = "From: kontakt@odzyskajmy.pl\r\n";
 $headers .= "Reply-To: {$email}\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-$body  = "Nadawca: {$name}\n";
+$body  = "Imię i nazwisko: {$name}\n";
 $body .= "Email: {$email}\n";
-if ($phone !== '') {
-  $body .= "Telefon: {$phone}\n";
-}
-$body .= "\n=== Wiadomość ===\n{$message}\n\n";
-$body .= "IP: ".$_SERVER['REMOTE_ADDR']."\n";
-$body .= "Agent: ".$_SERVER['HTTP_USER_AGENT']."\n";
+$body .= "Telefon: {$phone}\n\n";
+$body .= "=== Wiadomość ===\n{$message}\n\n";
+$body .= "IP: "    .$_SERVER['REMOTE_ADDR']."\n";
+$body .= "Agent: " .$_SERVER['HTTP_USER_AGENT']."\n";
 
-// ------------------------
-// 6. WYSYŁKA
-// ------------------------
 if (mail($to, "Formularz: {$subject}", $body, $headers)) {
   echo json_encode(['status'=>'success']);
 } else {

@@ -1,0 +1,100 @@
+"filename", "language", "Properties", "JSON", "HTML", "JavaScript", "Markdown", "JSON with Comments", "TypeScript", "TypeScript JSX", "PHP", "XML", "CSS", "Ini", "comment", "blank", "total"
+"d:\Mg\odzyskajmy-web\.env", "Properties", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"d:\Mg\odzyskajmy-web\404.html", "HTML", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 32
+"d:\Mg\odzyskajmy-web\README.md", "Markdown", 0, 0, 0, 0, 62, 0, 0, 0, 0, 0, 0, 0, 0, 8, 70
+"d:\Mg\odzyskajmy-web\components.json", "JSON", 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20
+"d:\Mg\odzyskajmy-web\dist\assets\index-DrP3dja8.js", "JavaScript", 0, 0, 0, 68, 0, 0, 0, 0, 0, 0, 0, 0, 168, 13, 249
+"d:\Mg\odzyskajmy-web\dist\assets\index-Dyq01Vli.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 2
+"d:\Mg\odzyskajmy-web\dist\index.html", "HTML", 0, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 47
+"d:\Mg\odzyskajmy-web\dist\placeholder.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"d:\Mg\odzyskajmy-web\dist\send_mail.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 109, 0, 0, 0, 1, 17, 127
+"d:\Mg\odzyskajmy-web\eslint.config.js", "JavaScript", 0, 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 30
+"d:\Mg\odzyskajmy-web\index.html", "HTML", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5, 33
+"d:\Mg\odzyskajmy-web\package-lock.json", "JSON", 0, 7468, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7469
+"d:\Mg\odzyskajmy-web\package.json", "JSON", 0, 87, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 88
+"d:\Mg\odzyskajmy-web\postcss.config.js", "JavaScript", 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"d:\Mg\odzyskajmy-web\public\.user.ini", "Ini", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2
+"d:\Mg\odzyskajmy-web\public\placeholder.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"d:\Mg\odzyskajmy-web\public\send_mail.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 125, 0, 0, 0, 4, 18, 147
+"d:\Mg\odzyskajmy-web\src\App.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43, 0, 0, 5, 48
+"d:\Mg\odzyskajmy-web\src\App.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 54, 0, 0, 0, 0, 2, 7, 63
+"d:\Mg\odzyskajmy-web\src\components\CookieSettingsButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 107, 0, 0, 0, 0, 3, 11, 121
+"d:\Mg\odzyskajmy-web\src\components\ScrollToTopButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 7, 40
+"d:\Mg\odzyskajmy-web\src\components\home\GoalCard.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 5, 51
+"d:\Mg\odzyskajmy-web\src\components\layout\Footer.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 55, 0, 0, 0, 0, 4, 7, 66
+"d:\Mg\odzyskajmy-web\src\components\layout\Navbar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 164, 0, 0, 0, 0, 10, 20, 194
+"d:\Mg\odzyskajmy-web\src\components\layout\PageLayout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 4, 24
+"d:\Mg\odzyskajmy-web\src\components\projects\ProjectCard.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 72, 0, 0, 0, 0, 15, 13, 100
+"d:\Mg\odzyskajmy-web\src\components\ui\accordion.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 49, 0, 0, 0, 0, 0, 8, 57
+"d:\Mg\odzyskajmy-web\src\components\ui\alert-dialog.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 126, 0, 0, 0, 0, 0, 14, 140
+"d:\Mg\odzyskajmy-web\src\components\ui\alert.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 53, 0, 0, 0, 0, 0, 7, 60
+"d:\Mg\odzyskajmy-web\src\components\ui\animations\FadeIn.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 76, 0, 0, 0, 0, 1, 10, 87
+"d:\Mg\odzyskajmy-web\src\components\ui\aspect-ratio.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 6
+"d:\Mg\odzyskajmy-web\src\components\ui\avatar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 43, 0, 0, 0, 0, 0, 6, 49
+"d:\Mg\odzyskajmy-web\src\components\ui\badge.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 6, 37
+"d:\Mg\odzyskajmy-web\src\components\ui\breadcrumb.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 105, 0, 0, 0, 0, 0, 11, 116
+"d:\Mg\odzyskajmy-web\src\components\ui\button.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 51, 0, 0, 0, 0, 0, 7, 58
+"d:\Mg\odzyskajmy-web\src\components\ui\calendar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 5, 65
+"d:\Mg\odzyskajmy-web\src\components\ui\card.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 71, 0, 0, 0, 0, 0, 9, 80
+"d:\Mg\odzyskajmy-web\src\components\ui\carousel.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 231, 0, 0, 0, 0, 0, 30, 261
+"d:\Mg\odzyskajmy-web\src\components\ui\chart.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 326, 0, 0, 0, 0, 2, 36, 364
+"d:\Mg\odzyskajmy-web\src\components\ui\checkbox.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 4, 29
+"d:\Mg\odzyskajmy-web\src\components\ui\collapsible.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 10
+"d:\Mg\odzyskajmy-web\src\components\ui\command.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 136, 0, 0, 0, 0, 0, 18, 154
+"d:\Mg\odzyskajmy-web\src\components\ui\context-menu.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 181, 0, 0, 0, 0, 0, 18, 199
+"d:\Mg\odzyskajmy-web\src\components\ui\dialog.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 108, 0, 0, 0, 0, 0, 13, 121
+"d:\Mg\odzyskajmy-web\src\components\ui\drawer.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 104, 0, 0, 0, 0, 0, 13, 117
+"d:\Mg\odzyskajmy-web\src\components\ui\dropdown-menu.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 181, 0, 0, 0, 0, 0, 18, 199
+"d:\Mg\odzyskajmy-web\src\components\ui\form.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 152, 0, 0, 0, 0, 0, 25, 177
+"d:\Mg\odzyskajmy-web\src\components\ui\hover-card.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 6, 28
+"d:\Mg\odzyskajmy-web\src\components\ui\input-otp.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 62, 0, 0, 0, 0, 0, 8, 70
+"d:\Mg\odzyskajmy-web\src\components\ui\input.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 4, 23
+"d:\Mg\odzyskajmy-web\src\components\ui\label.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 5, 25
+"d:\Mg\odzyskajmy-web\src\components\ui\menubar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 216, 0, 0, 0, 0, 0, 19, 235
+"d:\Mg\odzyskajmy-web\src\components\ui\navigation-menu.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 117, 0, 0, 0, 0, 0, 12, 129
+"d:\Mg\odzyskajmy-web\src\components\ui\pagination.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 107, 0, 0, 0, 0, 0, 11, 118
+"d:\Mg\odzyskajmy-web\src\components\ui\popover.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 6, 30
+"d:\Mg\odzyskajmy-web\src\components\ui\progress.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Mg\odzyskajmy-web\src\components\ui\radio-group.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 5, 43
+"d:\Mg\odzyskajmy-web\src\components\ui\resizable.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 6, 44
+"d:\Mg\odzyskajmy-web\src\components\ui\scroll-area.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 42, 0, 0, 0, 0, 0, 5, 47
+"d:\Mg\odzyskajmy-web\src\components\ui\section-container.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 54, 0, 0, 0, 0, 0, 5, 59
+"d:\Mg\odzyskajmy-web\src\components\ui\select.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 145, 0, 0, 0, 0, 0, 14, 159
+"d:\Mg\odzyskajmy-web\src\components\ui\separator.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 4, 30
+"d:\Mg\odzyskajmy-web\src\components\ui\sheet.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 116, 0, 0, 0, 0, 0, 16, 132
+"d:\Mg\odzyskajmy-web\src\components\ui\sidebar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 696, 0, 0, 0, 0, 12, 54, 762
+"d:\Mg\odzyskajmy-web\src\components\ui\skeleton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 3, 16
+"d:\Mg\odzyskajmy-web\src\components\ui\slider.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 4, 27
+"d:\Mg\odzyskajmy-web\src\components\ui\sonner.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 5, 30
+"d:\Mg\odzyskajmy-web\src\components\ui\switch.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 4, 28
+"d:\Mg\odzyskajmy-web\src\components\ui\table.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 107, 0, 0, 0, 0, 0, 11, 118
+"d:\Mg\odzyskajmy-web\src\components\ui\tabs.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 47, 0, 0, 0, 0, 0, 7, 54
+"d:\Mg\odzyskajmy-web\src\components\ui\textarea.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 5, 25
+"d:\Mg\odzyskajmy-web\src\components\ui\toast.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 115, 0, 0, 0, 0, 0, 13, 128
+"d:\Mg\odzyskajmy-web\src\components\ui\toaster.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 3, 34
+"d:\Mg\odzyskajmy-web\src\components\ui\toggle-group.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 51, 0, 0, 0, 0, 0, 9, 60
+"d:\Mg\odzyskajmy-web\src\components\ui\toggle.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 6, 44
+"d:\Mg\odzyskajmy-web\src\components\ui\tooltip.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 7, 29
+"d:\Mg\odzyskajmy-web\src\components\ui\use-toast.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 4
+"d:\Mg\odzyskajmy-web\src\data\projectsData.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 0, 13, 112
+"d:\Mg\odzyskajmy-web\src\hooks\use-mobile.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 5, 20
+"d:\Mg\odzyskajmy-web\src\hooks\use-toast.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 159, 0, 0, 0, 0, 0, 2, 31, 192
+"d:\Mg\odzyskajmy-web\src\index.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, 0, 26, 48, 246
+"d:\Mg\odzyskajmy-web\src\lib\utils.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 2, 7
+"d:\Mg\odzyskajmy-web\src\main.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 2, 6
+"d:\Mg\odzyskajmy-web\src\pages\About.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 225, 0, 0, 0, 0, 10, 12, 247
+"d:\Mg\odzyskajmy-web\src\pages\Contact.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 261, 0, 0, 0, 0, 5, 20, 286
+"d:\Mg\odzyskajmy-web\src\pages\Donate.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 55, 0, 0, 0, 0, 1, 2, 58
+"d:\Mg\odzyskajmy-web\src\pages\Home.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 150, 0, 0, 0, 0, 38, 8, 196
+"d:\Mg\odzyskajmy-web\src\pages\Index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 1, 3, 15
+"d:\Mg\odzyskajmy-web\src\pages\NotFound.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 34, 0, 0, 0, 0, 0, 6, 40
+"d:\Mg\odzyskajmy-web\src\pages\ProjectDetail.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 170, 0, 0, 0, 0, 12, 17, 199
+"d:\Mg\odzyskajmy-web\src\pages\ProjectSubscription.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 238, 0, 0, 0, 0, 6, 18, 262
+"d:\Mg\odzyskajmy-web\src\pages\Projects.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 0, 3, 7, 73
+"d:\Mg\odzyskajmy-web\src\vite-env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2
+"d:\Mg\odzyskajmy-web\tailwind.config.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 118, 0, 0, 0, 0, 0, 0, 3, 121
+"d:\Mg\odzyskajmy-web\tsconfig.app.json", "JSON", 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 31
+"d:\Mg\odzyskajmy-web\tsconfig.json", "JSON with Comments", 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 1, 20
+"d:\Mg\odzyskajmy-web\tsconfig.node.json", "JSON", 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 23
+"d:\Mg\odzyskajmy-web\vite.config.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 1, 2, 23
+"Total", "-", 1, 7618, 89, 102, 62, 19, 403, 6175, 234, 2, 216, 1, 337, 897, 16156
