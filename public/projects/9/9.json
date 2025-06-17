@@ -1,0 +1,10 @@
+{
+    "id": 9,
+    "title": "Projekt Młodzi Kulturalnie",
+    "description": "Projekt Młodzi Kulturalnie – Przestrzeń Twórczego - projekt skierowany jest do młodzieży z ośrodków wychowawczych na terenie województwa śląskiego.",
+    "content": "Zapisy dla młodzieży w wieku 14–19 lat, głównie przebywających w placówkach opiekuńczo-wychowawczych, które nie mają na co dzień dostępu do szerokiego wachlarza działań artystycznych i kulturalnych. Szczególnie zapraszamy młodzież  z niepełnosprawnościami w tym młodzież neuro-atypową. Ten projekt jest dofinansowany z Fundacji PGNIG im Ignacego Łukasiewicza w ramach programu Kulturalny Orlen.\n\n Zapisy na:\n\n1) Zajęcia artystyczne (m.in. sztuki plastyczne, teatr, muzyka) prowadzone przez doświadczonych edukatorów i animatorów kultury. \n\n2) Zajęcia edukacyjne i rozwojowe, czyli spotkania z psychologami i trenerami umiejętności społecznych (TUS), wzmacniające pewność siebie, komunikację i współpracę w grupie. \n\n3) Integracyjne wydarzenia kulturalne, czyli wspólne spotkania, wyjścia do instytucji kultury (m.in. muzeów, galerii, teatrów),(które ułatwią uczestnikom poznawanie nowych form ekspresji artystycznej i budowanie relacji z rówieśnikami)",
+    "images": ["projects/9/kulturalnie.png"],
+    "date": "Od 16.06.2025",
+    "allowSubscription": true,
+    "forceActive": true 
+  }

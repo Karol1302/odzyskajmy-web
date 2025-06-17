@@ -1,0 +1,10 @@
+{
+    "id": 8,
+    "title": "Komunikacja to Podstawa",
+    "description": "Komunikacja to Podstawa - projekt realizowany w Bielsu Białej.",
+    "content": "Rozpoczynamy Warsztaty z komunikacji dla nastolatków z Placówek Opiekuńczo Wychowawczych w Bielsku – Białej. \n\nBędziemy mówić o:\n\n- emocjach i rozpoznawaniu ich,\n\n- metodach radzenia sobie ze stresem i złością,\n\n- manipulacji i sile perswazji,\n\n- byciu asertywnym,\n\n- zarządzaniu sobą w czasie,\n\n- robieniu planów długoterminowych.",
+    "images": ["projects/8/komunikacja.png"],
+    "date": "16.06.2025 - 30.09.2025",
+    "allowSubscription": false,
+    "forceActive": true 
+  }

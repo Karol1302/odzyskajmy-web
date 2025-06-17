@@ -1,5 +1,7 @@
 {
     "projects": [
+      {"id": 9, "title": "Razem w przyszłość", "path": "projects/9/9.json"},
+      {"id": 8, "title": "Komunikacja to Podstawa", "path": "projects/8/8.json"},
       {"id": 7, "title": "Razem w przyszłość", "path": "projects/7/7.json"},
       {"id": 6, "title": "EKO ŻYWIEC", "path": "projects/6/6.json"},
       {"id": 5, "title": "NOWE HORYZONTY", "path": "projects/5/5.json"},
