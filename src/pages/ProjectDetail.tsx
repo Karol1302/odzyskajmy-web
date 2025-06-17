@@ -7,6 +7,8 @@ import ProjectCard from '@/components/projects/ProjectCard';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import { fetchProjects, fetchProject, Project } from '@/data/projectsData';
+import { cn } from '@/lib/utils';
+import ImageLightbox from '@/components/projects/ImageLightbox';
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,6 +17,8 @@ const ProjectDetail = () => {
   // Pobranie projektu
   const [currentProject, setCurrentProject] = useState<Project | undefined>(undefined);
   const [relatedProjects, setRelatedProjects] = useState<Project[]>([]);
+  const [isPortrait, setIsPortrait] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,6 +28,15 @@ const ProjectDetail = () => {
       setRelatedProjects(all.filter(p => p.id !== Number(id)).slice(0, 3));
     });
   }, [id]);
+
+  useEffect(() => {
+    if (!currentProject) return;
+    const img = new Image();
+    img.onload = () => {
+      setIsPortrait(img.naturalHeight > img.naturalWidth);
+    };
+    img.src = currentProject.images[0];
+  }, [currentProject]);
 
   // Jeśli brak projektu
   if (!currentProject) {
@@ -75,6 +88,8 @@ const ProjectDetail = () => {
     toast({ title: 'Skopiowano do schowka' });
   };
 
+  const handleCloseLightbox = () => setLightboxIndex(null);
+
   return (
     <>
       {/* Hero Section */}
@@ -107,7 +122,11 @@ const ProjectDetail = () => {
                 <img
                   src={currentProject.images[0]}
                   alt={currentProject.title}
-                  className="w-full h-auto rounded-lg shadow-md mb-4"
+                  onClick={() => setLightboxIndex(0)}
+                  className={cn(
+                    'h-auto rounded-lg shadow-md mb-4 cursor-zoom-in',
+                    isPortrait ? 'w-1/2 mx-auto' : 'w-full'
+                  )}
                 />
                 {currentProject.images.length > 1 && (
                   <div className="grid grid-cols-3 gap-4">
@@ -116,7 +135,8 @@ const ProjectDetail = () => {
                         key={i}
                         src={img}
                         alt={`${currentProject.title} - ${i + 2}`}
-                        className="w-full h-32 object-cover rounded-md shadow-sm"
+                        onClick={() => setLightboxIndex(i + 1)}
+                        className="w-full h-32 object-cover rounded-md shadow-sm cursor-pointer"
                       />
                     ))}
                   </div>
@@ -219,6 +239,11 @@ const ProjectDetail = () => {
           </div>
         </SectionContainer>
       )}
+      <ImageLightbox
+        images={currentProject.images}
+        index={lightboxIndex}
+        onClose={handleCloseLightbox}
+      />
     </>
   );
 };
