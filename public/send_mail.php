@@ -20,7 +20,8 @@ function env(string $key, $default = null) {
         // INI_SCANNER_RAW: nie ucina znaku #
         $cache = parse_ini_file(__DIR__.'/.env', false, INI_SCANNER_RAW);
     }
-    return $_ENV[$key] ?? $_SERVER[$key] ?? $cache[$key] ?? $default;
+    $val = $_ENV[$key] ?? $_SERVER[$key] ?? $cache[$key] ?? $default;
+    return is_string($val) ? trim($val, "\"'") : $val;
 }
 
 /* ==================================================
