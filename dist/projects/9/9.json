@@ -1,10 +1,12 @@
 {
-    "id": 9,
-    "title": "Młodzi Kulturalnie",
-    "description": "Młodzi Kulturalnie – Przestrzeń Twórczego rozwoju - projekt skierowany jest do młodzieży z ośrodków wychowawczych na terenie województwa śląskiego.",
-    "content": "Zapisy dla młodzieży w wieku 14–19 lat, głównie przebywających w placówkach opiekuńczo-wychowawczych, które nie mają na co dzień dostępu do szerokiego wachlarza działań artystycznych i kulturalnych. Szczególnie zapraszamy młodzież  z niepełnosprawnościami w tym młodzież neuro-atypową. Ten projekt jest dofinansowany z Fundacji PGNIG im Ignacego Łukasiewicza w ramach programu Kulturalny Orlen.\n\n Zapisy na:\n\n1) Zajęcia artystyczne (m.in. sztuki plastyczne, teatr, muzyka) prowadzone przez doświadczonych edukatorów i animatorów kultury. \n\n2) Zajęcia edukacyjne i rozwojowe, czyli spotkania z psychologami i trenerami umiejętności społecznych (TUS), wzmacniające pewność siebie, komunikację i współpracę w grupie. \n\n3) Integracyjne wydarzenia kulturalne, czyli wspólne spotkania, wyjścia do instytucji kultury (m.in. muzeów, galerii, teatrów),(które ułatwią uczestnikom poznawanie nowych form ekspresji artystycznej i budowanie relacji z rówieśnikami)",
-    "images": ["projects/9/kulturalnie2.png"],
-    "date": "Od 16.06.2025",
-    "allowSubscription": true,
-    "forceActive": true 
-  }
+  "id": 9,
+  "title": "Młodzi Kulturalnie",
+  "description": "Młodzi Kulturalnie – Przestrzeń Twórczego Rozwoju – seria warsztatów artystycznych, muzycznych i teatralnych dla młodzieży. To okazja do świetnej zabawy, wyrażania siebie, nawiązywania nowych znajomości i rozwijania kreatywności w inspirującej, bezpiecznej atmosferze.",
+  "content": "To seria bezpłatnych warsztatów i spotkań skierowanych do młodzieży, które pozwalają odkrywać talenty, wyrażać siebie i spędzić czas w twórczej, wspierającej atmosferze. Każdy znajdzie tu coś dla siebie – od teatru, przez sztuki plastyczne, po muzykę. Sprawdź, co przygotowaliśmy:\n\n- Warsztaty muzyczne dla młodzieży\n\n🎼 nauka podstaw śpiewu, gitary lub pianina – w małych grupach  \n🥁 wspólne eksperymenty z rytmem, melodią i dynamiką  \n🎶 tworzenie krótkich form – piosenek, motywów, rytmicznych układów  \n🎤 zabawa dźwiękiem, bez stresu i oceniania\n\nZajęcia prowadzone przez grupę muzyczno-taneczną z Bielska-Białej.\n\n🗓️ Data 21-07-2025 10:00  \n📍 Miejsce Żywiec, ul. Dworcowa 3\n\nMiejsc jest niewiele – złap swoje i daj się ponieść muzyce!\n\n- Warsztaty teatralne dla młodzieży\n\n🎭 Chcesz poczuć scenę pod stopami?  \n🔥 przełamiesz tremę  \n🎤 nauczysz się mówić tak, żeby Cię słuchali  \n🧠 rozwiniesz kreatywność  \n👯‍♂️ poznasz świetnych ludzi  \n🎬 a na koniec... może zagrasz w spektaklu, lub przygotujesz scenografię!\n\nZero nudy. Dużo ruchu. Dużo emocji. Teatr, który zaskakuje.\n\n📅 1 Spotkanie 22-07-2025 Godzina??  \n📍 Ul. Dworcowa 3, Żywiec  \n👥 Dla kogo? Dla młodzieży 13–18 lat\n\n🎟️ Liczba miejsc ograniczona – scena nie czeka! 😉\n\n- Warsztaty artystyczne dla młodzieży\n\n🎨 Przestrzeń do wyrażenia siebie.  \n🌳 Będziemy bawić się w terenie przy ładnej pogodzie, a w deszczu będziemy korzystać z balkonu  \n🌿 Cisza, skupienie, bezpieczna atmosfera  \n🖌️ Tworzenie bez ocen, w swoim tempie. Będziemy bawić się akwarelą, węglem, farbami olejnymi, dzięki którym powstaną szkice, obrazy olejne i małe akwarele.  \n🏛️ Pójdziemy do muzeum, aby poobcować z wielkimi artystami  \n🖼️ Na koniec wakacji zrobimy wystawę naszych prac, na którą zaprosimy wszystkich tych, na których nam zależy.\n\n🗓️ 21-07-2025 10:00  \n📍 Żywiec, ul. Dworcowa 3\n\nTwórz. Odkrywaj. Pokaż światu, co masz w środku.\n\nTen projekt jest dofinansowany z Fundacji PGNIG im Ignacego Łukasiewicza w ramach programu Kulturalny Orlen.",
+  "images": [
+    "projects/9/Plakatlaczony.png"
+  ],
+  "date": "21.07.2025",
+  "allowSubscription": true,
+  "forceActive": true
+}

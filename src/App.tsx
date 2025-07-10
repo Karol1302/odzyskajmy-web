@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import PageLayout from "./components/layout/PageLayout";
 import Home from "./pages/Home";
@@ -27,10 +27,27 @@ const ScrollToTop = () => {
   return null;
 };
 
+const RemoveTrailingSlash = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Obsługa tylko dla /projects i /projects/:id
+    const projectsRegex = /^\/projects(\/\d+)?\/$/;
+    if (projectsRegex.test(location.pathname)) {
+      // Usuwa końcowy slash
+      const newPath = location.pathname.slice(0, -1) + location.search + location.hash;
+      navigate(newPath, { replace: true });
+    }
+  }, [location, navigate]);
+
+  return null;
+};
+
 const queryClient = new QueryClient();
 
 const AppContent = () => (
-  <>
+  <><RemoveTrailingSlash />
     <ScrollToTop />
     <PageLayout>
       <Routes>

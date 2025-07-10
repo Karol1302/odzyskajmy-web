@@ -206,11 +206,18 @@ const ProjectDetail = () => {
                   {/* Tylko jeśli allowSubscription i jest aktywny */}
                   {canSubscribe && (
                     <div className="pt-4">
-                      <Button
+                      {/* <Button
                         className="w-full"
                         onClick={() => navigate(`/projects/${currentProject.id}/subscribe`)}
                       >
-                        Dołącz do projektu
+                        Dołącz do projektu */}
+                      <Button className="w-full">
+                        <a
+                          href="https://docs.google.com/forms/d/e/1FAIpQLSesvb5Qmd-kxfyYDixcWPTM8y6Th_NaqxJxqnODVotmdLLSXw/viewform?usp=header"
+                          className="w-full inline-block"
+                        >
+                          Dołącz do projektu
+                        </a>
                       </Button>
                     </div>
                   )}
