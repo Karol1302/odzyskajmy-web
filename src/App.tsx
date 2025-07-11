@@ -47,7 +47,7 @@ const RemoveTrailingSlash = () => {
 const queryClient = new QueryClient();
 
 const AppContent = () => (
-  <><RemoveTrailingSlash />
+  <>
     <ScrollToTop />
     <PageLayout>
       <Routes>
@@ -72,7 +72,7 @@ const App = () => (
       <BrowserRouter
         basename={import.meta.env.BASE_URL}
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-      >
+      ><RemoveTrailingSlash />
         <AppContent />
         <CookieSettingsButton />
       </BrowserRouter>
