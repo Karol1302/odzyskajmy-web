@@ -1,21 +1,22 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Share2, Facebook } from 'lucide-react';
-import { toast } from '@/components/ui/use-toast';
-import { SectionContainer } from '@/components/ui/section-container';
-import FadeIn from '@/components/ui/animations/FadeIn';
-import ProjectCard from '@/components/projects/ProjectCard';
-import { Button } from '@/components/ui/button';
-import { useEffect, useState } from 'react';
-import { fetchProjects, fetchProject, Project } from '@/data/projectsData';
-import { cn } from '@/lib/utils';
-import ImageLightbox from '@/components/projects/ImageLightbox';
+import { useParams, Link } from "react-router-dom";
+import { ArrowLeft, Calendar, Share2, Facebook } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
+import { SectionContainer } from "@/components/ui/section-container";
+import FadeIn from "@/components/ui/animations/FadeIn";
+import ProjectCard from "@/components/projects/ProjectCard";
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { fetchProjects, fetchProject, Project } from "@/data/projectsData";
+import { cn } from "@/lib/utils";
+import ImageLightbox from "@/components/projects/ImageLightbox";
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
 
   // Pobranie projektu
-  const [currentProject, setCurrentProject] = useState<Project | undefined>(undefined);
+  const [currentProject, setCurrentProject] = useState<Project | undefined>(
+    undefined,
+  );
   const [relatedProjects, setRelatedProjects] = useState<Project[]>([]);
   const [isPortrait, setIsPortrait] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -25,7 +26,7 @@ const ProjectDetail = () => {
     if (!id) return;
     fetchProject(Number(id)).then(setCurrentProject);
     fetchProjects().then((all) => {
-      setRelatedProjects(all.filter(p => p.id !== Number(id)).slice(0, 3));
+      setRelatedProjects(all.filter((p) => p.id !== Number(id)).slice(0, 3));
     });
   }, [id]);
 
@@ -44,7 +45,9 @@ const ProjectDetail = () => {
       <SectionContainer className="min-h-[60vh] flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">Nie znaleziono projektu</h2>
-          <p className="mb-6">Projekt którego szukasz nie istnieje lub został usunięty.</p>
+          <p className="mb-6">
+            Projekt którego szukasz nie istnieje lub został usunięty.
+          </p>
           <Link to="/projects">
             <Button>Wróć do projektów</Button>
           </Link>
@@ -59,8 +62,8 @@ const ProjectDetail = () => {
       return true;
     }
     const ds = currentProject.date.toLowerCase();
-    if (ds.includes('zakończony') || ds.includes('ended')) return false;
-    if (ds.includes('present') || ds.includes('ciągły')) return true;
+    if (ds.includes("zakończony") || ds.includes("ended")) return false;
+    if (ds.includes("present") || ds.includes("ciągły")) return true;
 
     const match = ds.match(/(\d{2})\.(\d{2})\.(\d{4})/);
     if (match) {
@@ -74,18 +77,21 @@ const ProjectDetail = () => {
   })();
 
   // Czy w ogóle włączone zapisy (z danych)
-  const canSubscribe = !!currentProject.allowSubscription && isActive;
+  const canSubscribe =
+    !!currentProject.allowSubscription &&
+    !!currentProject.subscriptionLink &&
+    isActive;
   const handleShareFacebook = () => {
     const url = encodeURIComponent(window.location.href);
     window.open(
       `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-      '_blank'
+      "_blank",
     );
   };
 
   const handleCopyLink = async () => {
     await navigator.clipboard.writeText(window.location.href);
-    toast({ title: 'Skopiowano do schowka' });
+    toast({ title: "Skopiowano do schowka" });
   };
 
   const handleCloseLightbox = () => setLightboxIndex(null);
@@ -103,7 +109,9 @@ const ProjectDetail = () => {
               <ArrowLeft className="mr-2 h-4 w-4" />
               Wróć do projektów
             </Link>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">{currentProject.title}</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">
+              {currentProject.title}
+            </h1>
             <div className="flex items-center text-foundation-light mb-6">
               <Calendar className="h-5 w-5 mr-2" />
               <span>{currentProject.date}</span>
@@ -124,8 +132,8 @@ const ProjectDetail = () => {
                   alt={currentProject.title}
                   onClick={() => setLightboxIndex(0)}
                   className={cn(
-                    'h-auto rounded-lg shadow-md mb-4 cursor-zoom-in',
-                    isPortrait ? 'w-1/2 mx-auto' : 'w-full'
+                    "h-auto rounded-lg shadow-md mb-4 cursor-zoom-in",
+                    isPortrait ? "w-1/2 mx-auto" : "w-full",
                   )}
                 />
                 {currentProject.images.length > 1 && (
@@ -144,12 +152,12 @@ const ProjectDetail = () => {
               </div>
 
               <div className="prose prose-lg max-w-none dark:prose-invert">
-                {currentProject.content.split('\n\n').map((p, idx) => (
+                {currentProject.content.split("\n\n").map((p, idx) => (
                   <div key={idx}>
-                    {p.startsWith('- ') ? (
+                    {p.startsWith("- ") ? (
                       <ul className="list-disc pl-5 mb-4">
-                        {p.split('\n- ').map((item, j) => (
-                          <li key={j}>{item.replace('- ', '')}</li>
+                        {p.split("\n- ").map((item, j) => (
+                          <li key={j}>{item.replace("- ", "")}</li>
                         ))}
                       </ul>
                     ) : (
@@ -164,19 +172,19 @@ const ProjectDetail = () => {
                   <span className="mr-4 font-medium">Udostępnij:</span>
                   <div className="flex space-x-2">
                     <Button
-                        variant="outline"
-                        size="icon"
-                        aria-label="Udostępnij na Facebooku"
-                        onClick={handleShareFacebook}
-                      >
-                        <Facebook className="h-4 w-4" />
-                      </Button>
-                        <Button
-                        variant="outline"
-                        size="icon"
-                        aria-label="Kopiuj link"
-                        onClick={handleCopyLink}
-                      >
+                      variant="outline"
+                      size="icon"
+                      aria-label="Udostępnij na Facebooku"
+                      onClick={handleShareFacebook}
+                    >
+                      <Facebook className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      aria-label="Kopiuj link"
+                      onClick={handleCopyLink}
+                    >
                       <Share2 className="h-4 w-4" />
                     </Button>
                   </div>
@@ -192,13 +200,23 @@ const ProjectDetail = () => {
                 <h3 className="text-xl font-bold mb-4">Szczegóły projektu</h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-gray-700 dark:text-gray-300">Data</h4>
+                    <h4 className="font-medium text-gray-700 dark:text-gray-300">
+                      Data
+                    </h4>
                     <p>{currentProject.date}</p>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-700 dark:text-gray-300">Kontakt</h4>
-                    <p>Po więcej informacji o tym projekcie zapraszamy do kontaktu:</p>
-                    <a href="mailto:kontakt@odzyskajmy.pl" className="text-foundation-green hover:underline">
+                    <h4 className="font-medium text-gray-700 dark:text-gray-300">
+                      Kontakt
+                    </h4>
+                    <p>
+                      Po więcej informacji o tym projekcie zapraszamy do
+                      kontaktu:
+                    </p>
+                    <a
+                      href="mailto:kontakt@odzyskajmy.pl"
+                      className="text-foundation-green hover:underline"
+                    >
                       kontakt@odzyskajmy.pl
                     </a>
                   </div>
@@ -206,14 +224,9 @@ const ProjectDetail = () => {
                   {/* Tylko jeśli allowSubscription i jest aktywny */}
                   {canSubscribe && (
                     <div className="pt-4">
-                      {/* <Button
-                        className="w-full"
-                        onClick={() => navigate(`/projects/${currentProject.id}/subscribe`)}
-                      >
-                        Dołącz do projektu */}
-                      <Button className="w-full">
+                      <Button asChild className="w-full">
                         <a
-                          href="https://docs.google.com/forms/d/e/1FAIpQLSesvb5Qmd-kxfyYDixcWPTM8y6Th_NaqxJxqnODVotmdLLSXw/viewform?usp=header"
+                          href={currentProject.subscriptionLink}
                           className="w-full inline-block"
                         >
                           Dołącz do projektu
@@ -223,11 +236,13 @@ const ProjectDetail = () => {
                   )}
 
                   {/* Jeśli włączone, ale nieaktywne */}
-                  {currentProject.allowSubscription && !isActive && (
-                    <p className="text-xs mt-2 text-red-600 dark:text-red-400">
-                      Ten projekt jest już zakończony – nie można się zapisać.
-                    </p>
-                  )}
+                  {currentProject.allowSubscription &&
+                    currentProject.subscriptionLink &&
+                    !isActive && (
+                      <p className="text-xs mt-2 text-red-600 dark:text-red-400">
+                        Ten projekt jest już zakończony – nie można się zapisać.
+                      </p>
+                    )}
                 </div>
               </div>
             </FadeIn>
