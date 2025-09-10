@@ -1,5 +1,6 @@
 {
     "projects": [
+      {"id": 12, "title": "Sport wczoraj i dziś", "path": "projects/12/12.json"},
       {"id": 11, "title": "Aktywni zawodowo", "path": "projects/11/11.json"},
       {"id": 10, "title": "RAZEM W PRZYSZŁOŚĆ", "path": "projects/10/10.json"},
       {"id": 9, "title": "Młodzi Kulturalnie", "path": "projects/9/9.json"},
