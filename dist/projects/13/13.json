@@ -1,0 +1,13 @@
+{
+  "id": 13,
+  "title": "Grupa wsparcia dla Rodziców dzieci i młodzieży z niepełnosprawnością.",
+  "description": "Grupa wsparcia dla Rodziców dzieci i młodzieży z niepełnosprawnością.",
+  "content": "Opieka nad dzieckiem czy dorastającym nastolatkiem nigdy nie jest łatwa. Szczególnie jeśli jest z niepełnosprawnością. Każdy dzień to walka, potrzeba opieki, wsparcia i codziennego funkcjonowania. Opieka nad najbliższymi wymaga dużych pokładów energii, a codzienne obowiązki mogą przytłoczyć swoim ciężarem.\n\nDlatego Rodzicu zapraszamy Cię do skorzystania z darmowej Grupy wsparcia, w której znajdziesz zrozumienie, pomoc, wsparcie a może tylko chwilę wytchnienia.\n\nGrupę poprowadzi Pani Psycholog.",
+  "images": [
+    "projects/13/GRUPA WSPARCIA.png"
+  ],
+  "date": "13.10.2025 - 31.12.2025",
+  "allowSubscription": true,
+  "subscriptionLink": "https://forms.gle/V5VLqqsq4NdXE1kX6",
+  "forceActive": false
+}

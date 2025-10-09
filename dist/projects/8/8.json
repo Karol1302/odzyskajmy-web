@@ -6,5 +6,5 @@
     "images": ["projects/8/komunikacja.png"],
     "date": "16.06.2025 - 30.09.2025",
     "allowSubscription": false,
-    "forceActive": true 
+    "forceActive": false 
   }

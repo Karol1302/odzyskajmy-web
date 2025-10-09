@@ -6,7 +6,7 @@
   "images": [
     "projects/10/razemwprzyszlosc.png"
   ],
-  "date": "01-06-2025 - 30-11-2025",
+  "date": "01.06.2025 - 30.11.2025",
   "allowSubscription": false,
-  "forceActive": true
+  "forceActive": false
 }
