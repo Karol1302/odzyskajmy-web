@@ -1,0 +1,15 @@
+{
+  "id": 16,
+  "title": "Otwieramy się na siebie",
+  "description": "Rodzinny dzień integracyjny dla rodzin dzieci i młodzieży z niepełnosprawnością",
+  "content": "Rodzinny dzień integracyjny dla rodzin dzieci i młodzieży z niepełnosprawnością.\n\n Spotkajmy się w:\n\n - Miejsce Aktywności Społecznej (remiza OSP) Lipowa 15.11.2025 od godz. 9:00\n\n - Gminny Ośrodek Kultury, ul. Plebańska 1 Jeleśnia 22.11.2025 od godz. 9:00 \n\n - Klub Seniora Smaki Życia Węgierska Górka 29.11.2025 od godz. 9:00 \n\n Gry i zabawy po okiem wykwalifikowanego trenera \n\n Indywidualne wsparcie psychologa dla rodziców \n\n Napoje i przekąski",
+  "images": [
+    "projects/16/Lipowa.png",
+    "projects/16/Wegierska.png",
+    "projects/16/Jelesnia.png"
+  ],
+  "date": "01.09.2025 - 30.11.2025",
+  "allowSubscription": true,
+  "subscriptionLink": "https://forms.gle/tbx2Vj9jMPctoxe17",
+  "forceActive": true
+}

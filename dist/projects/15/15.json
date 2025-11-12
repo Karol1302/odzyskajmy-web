@@ -1,0 +1,13 @@
+{
+  "id": 15,
+  "title": "START it UP",
+  "description": "Mentoring przedsiębiorczości dla mazowieckiej młodzieży",
+  "content": "Ruszamy z nowym projektem w Ośrodkach Wychowawczych.\n\nTym razem będziemy działać tylko w województwie Mazowieckim. Młodzież będzie uczyć się jak założyć własną działalność. Czyli od Pomysłu do Biznesu.\n\nSprawdzimy ich predyspozycje do zakładania biznesu, powiemy jak założyć firmę krok po kroku, omówimy jak wykorzystywać AI w biznesie i na koniec młodzież będzie mogła porozmawiać z Przedsiębiorcami, kórzy opowiedzą o swoich firmach.",
+  "images": [
+    "projects/15/startitup.png"
+  ],
+  "date": "01.09.2025 - 28.11.2025",
+  "allowSubscription": false,
+  "subscriptionLink": "",
+  "forceActive": true
+}
