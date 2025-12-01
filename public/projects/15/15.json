@@ -1,13 +1,13 @@
 {
   "id": 15,
-  "title": "START it UP",
-  "description": "Mentoring przedsiębiorczości dla mazowieckiej młodzieży",
-  "content": "Ruszamy z nowym projektem w Ośrodkach Wychowawczych.\n\nTym razem będziemy działać tylko w województwie Mazowieckim. Młodzież będzie uczyć się jak założyć własną działalność. Czyli od Pomysłu do Biznesu.\n\nSprawdzimy ich predyspozycje do zakładania biznesu, powiemy jak założyć firmę krok po kroku, omówimy jak wykorzystywać AI w biznesie i na koniec młodzież będzie mogła porozmawiać z Przedsiębiorcami, kórzy opowiedzą o swoich firmach.",
+  "title": "Grupa Wsparcia dla osób doświadczających przemocy domowej.",
+  "description": "Grupa Wsparcia dla osób doświadczających przemocy domowej.",
+  "content": "Start 15.10.2025 godzina 17:30\n\n Przemoc ma wiele twarzy \n\n - może być fizyczna- bicie, popychanie, szturchanie, \n- psychiczna - ograniczanie od najbliższych, krzyki, wyzwiska, \n- ekonomiczna - rozliczanie z pieniędzy, ograniczanie finasów,\n- czy emocjonalna- manipulowanie, zastraszanie.\n\nCzasem trudno o niej mówić, a jeszcze trudniej zrobić pierwszy krok, by poszukać pomocy.\n\n Nie musisz przechodzić przez to sam/a. Tworzymy bezpieczne, poufne miejsce, w którym możesz porozmawiać, otrzymać wsparcie i zrozumienie — bez oceniania. \n\n  Spotkania prowadzą osoby z doświadczeniem pracy z ofiarami przemocy. Możesz przyjść, posłuchać, porozmawiać, po prostu być. Wspólnie szukamy siły, nadziei i dróg do zmian. Jeśli chcesz dowiedzieć się więcej lub dołączyć do grupy — napisz do nas prywatnie. \n\n Pamiętaj — nie jesteś sam/a Jeśli potrzebujesz wsparcia indywidualnego również możesz do nas zadzwonić.",
   "images": [
-    "projects/15/startitup.png"
+    "projects/15/GRUPA WSPARCIA 2.jpg"
   ],
-  "date": "01.09.2025 - 28.11.2025",
-  "allowSubscription": false,
-  "subscriptionLink": "",
+  "date": "15.10.2025 - 31.12.2025",
+  "allowSubscription": true,
+  "subscriptionLink": "https://forms.gle/fsGpjVJ9UAjQHhFH9",
   "forceActive": true
 }

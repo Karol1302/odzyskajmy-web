@@ -1,9 +1,10 @@
 {
     "projects": [
-      {"id": 16, "title": "Otwieramy się na siebie", "path": "projects/16/16.json"},
-      {"id": 15, "title": "START it UP", "path": "projects/15/15.json"},
-      {"id": 14, "title": "Grupa Wsparcia dla osób doświadczających przemocy domowej", "path": "projects/14/14.json"},
-      {"id": 13, "title": "Grupa wsparcia dla rodziców dzieci z niepełnosprawnościami", "path": "projects/13/13.json"},
+      {"id": 17, "title": "Otwieramy się na siebie", "path": "projects/17/17.json"},
+      {"id": 16, "title": "START it UP", "path": "projects/16/16.json"},
+      {"id": 15, "title": "Grupa Wsparcia dla osób doświadczających przemocy domowej", "path": "projects/15/15.json"},
+      {"id": 14, "title": "Grupa wsparcia dla rodziców dzieci z niepełnosprawnościami", "path": "projects/14/14.json"},
+      {"id": 13, "title": "Bezpieczna Szkoła", "path": "projects/13/13.json"},
       {"id": 12, "title": "Sport wczoraj i dziś", "path": "projects/12/12.json"},
       {"id": 11, "title": "Aktywni zawodowo", "path": "projects/11/11.json"},
       {"id": 10, "title": "RAZEM W PRZYSZŁOŚĆ", "path": "projects/10/10.json"},

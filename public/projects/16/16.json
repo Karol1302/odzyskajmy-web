@@ -1,16 +1,13 @@
 {
   "id": 16,
-  "title": "Otwieramy się na siebie",
-  "description": "Rodzinny dzień integracyjny dla rodzin dzieci i młodzieży z niepełnosprawnością",
-  "content": "Rodzinny dzień integracyjny dla rodzin dzieci i młodzieży z niepełnosprawnością.\n\n Spotkajmy się w:\n\n - Miejsce Aktywności Społecznej (remiza OSP) Lipowa 15.11.2025 od godz. 9:00\n\n - Gminny Ośrodek Kultury, ul. Plebańska 1 Jeleśnia 22.11.2025 od godz. 9:00 \n\n - Klub Seniora Smaki Życia Węgierska Górka 29.11.2025 od godz. 9:00 \n\n Gry i zabawy po okiem wykwalifikowanego trenera \n\n Indywidualne wsparcie psychologa dla rodziców \n\n Napoje i przekąski",
+  "title": "START it UP",
+  "description": "Mentoring przedsiębiorczości dla mazowieckiej młodzieży",
+  "content": "Ruszamy z nowym projektem w Ośrodkach Wychowawczych.\n\nTym razem będziemy działać tylko w województwie Mazowieckim. Młodzież będzie uczyć się jak założyć własną działalność. Czyli od Pomysłu do Biznesu.\n\nSprawdzimy ich predyspozycje do zakładania biznesu, powiemy jak założyć firmę krok po kroku, omówimy jak wykorzystywać AI w biznesie i na koniec młodzież będzie mogła porozmawiać z Przedsiębiorcami, kórzy opowiedzą o swoich firmach.",
   "images": [
-    "projects/16/Otwieramy.png",
-    "projects/16/Lipowa.png",
-    "projects/16/Wegierska.png",
-    "projects/16/Jelesnia.png"
+    "projects/16/startitup.png"
   ],
-  "date": "01.09.2025 - 30.11.2025",
-  "allowSubscription": true,
-  "subscriptionLink": "https://forms.gle/tbx2Vj9jMPctoxe17",
+  "date": "01.09.2025 - 28.11.2025",
+  "allowSubscription": false,
+  "subscriptionLink": "",
   "forceActive": true
 }
